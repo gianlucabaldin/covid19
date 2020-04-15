@@ -1,4 +1,11 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Libraries used
+
+- Base template project: [Create React App](https://github.com/facebook/create-react-app).
+- ESLint / Prettier
+
+## Methodologies used
+
+- TDD - Enzyme, Jest, JestCli
 
 ## Available Scripts
 
