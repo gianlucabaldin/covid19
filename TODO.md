@@ -23,6 +23,7 @@
 - React-vis package
 - VictoryCharts package
 - App_old.js
+- logo
 
 ##### Review if to use
 
