@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavButtons renders properly 1`] = `
+<div
+  className="makeStyles-root-1"
+>
+  <WithStyles(ForwardRef(Button))
+    color="primary"
+    variant="contained"
+  >
+    Worldwide
+  </WithStyles(ForwardRef(Button))>
+  <WithStyles(ForwardRef(Button))
+    color="primary"
+    variant="contained"
+  >
+    Italy
+  </WithStyles(ForwardRef(Button))>
+  <WithStyles(ForwardRef(Button))
+    color="primary"
+    disabled={true}
+    variant="contained"
+  >
+    Country List
+  </WithStyles(ForwardRef(Button))>
+</div>
+`;

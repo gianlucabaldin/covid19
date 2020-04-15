@@ -5,9 +5,10 @@
 
 ## Methodologies used
 
-- TDD - Enzyme, Jest, JestCli, Jest-Enzyme
-
-- Jest-Enzyme Matchers https://github.com/FormidableLabs/enzyme-matchers/blob/master/packages/jest-enzyme/README.md
+- TDD - [react-tdd](https://github.com/15Dkatz/react-tdd/blob/master/lootcheck/src/components/App.test.js)
+- [Jest](https://jestjs.io/docs/en/expect.html) and JestCli
+- Enzyme https://gist.github.com/jahe/9bf2cb1f849b7ed96c6ce20ede7f66a2 and https://devhints.io/enzyme
+- Jest-Enzyme Matchers by FormidableLabs https://github.com/FormidableLabs/enzyme-matchers/blob/master/packages/jest-enzyme/README.md
 
 ## Available Scripts
 

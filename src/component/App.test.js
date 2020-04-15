@@ -1,7 +1,9 @@
 import React from 'react';
 // import { render } from '@testing-library/react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import App from './App';
+import NavButtons from './NavButtons';
+import Header from './Header';
 /*
 test('renders learn react link', () => {
   const { getByText } = render(<App />);
@@ -11,13 +13,28 @@ test('renders learn react link', () => {
 */
 
 describe('App', () => {
-  const app = shallow(<App />);
-
-  it('renders correctly', () => {
-    expect(app).toMatchSnapshot();
+  let wrapper;
+  beforeAll(() => {
+    wrapper = shallow(<App />);
   });
 
-  it('contains an Header component', () => {
-    expect(app.find('Header').exists()).toBe(true);
+  it('renders correctly', () => {
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  describe('contains', () => {
+    beforeAll(() => {
+      wrapper = mount(<App />);
+    });
+
+    // Enzyme-matchers --> expect(wrapper).toContainReact(<ReactComponent />)
+    // https://github.com/FormidableLabs/enzyme-matchers/blob/master/packages/jest-enzyme/README.md#tocontainreact
+    it('contains an Header component', () => {
+      expect(wrapper).toContainReact(<Header />);
+    });
+
+    it('contains NavButtons component', () => {
+      expect(wrapper).toContainReact(<NavButtons />);
+    });
   });
 });
