@@ -5,7 +5,9 @@
 
 ## Methodologies used
 
-- TDD - Enzyme, Jest, JestCli
+- TDD - Enzyme, Jest, JestCli, Jest-Enzyme
+
+- Jest-Enzyme Matchers https://github.com/FormidableLabs/enzyme-matchers/blob/master/packages/jest-enzyme/README.md
 
 ## Available Scripts
 
