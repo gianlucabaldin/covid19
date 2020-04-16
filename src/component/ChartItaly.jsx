@@ -15,8 +15,17 @@ const ChartItaly = ({ data }) => {
       {data.recovered}
       <br />
       {data.deaths}
+      wgnfoeurb
     </Box>
   );
+};
+
+ChartItaly.defaultProps = {
+  data: {
+    confirmed: 0,
+    recovered: 0,
+    deaths: 0,
+  },
 };
 
 export default ChartItaly;

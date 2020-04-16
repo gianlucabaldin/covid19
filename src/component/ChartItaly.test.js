@@ -1,6 +1,5 @@
 import React from 'react';
-// import { render } from '@testing-library/react';
-import { shallow, mount } from 'enzyme';
+import { shallow, mount, render } from 'enzyme';
 import ChartItaly from './ChartItaly';
 
 describe('ChartItaly', () => {
@@ -10,11 +9,8 @@ describe('ChartItaly', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should have a Box', () => {
+  it('renders with default props', () => {
     wrapper = mount(<ChartItaly />);
-    // console.log(wrapper.debug());
-    // expect(wrapper.find('Box').length).toEqual(1);
-    const { getByText } = mount(<ChartItaly />);
-    expect(getByText('0')).toBeInTheDocument();
+    expect(wrapper.find('Styled(MuiBox)').length).toEqual(1);
   });
 });

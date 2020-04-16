@@ -7,5 +7,12 @@ exports[`ChartItaly renders properly 1`] = `
   justifyContent="center"
   m={1}
   p={1}
-/>
+>
+  0
+  <br />
+  0
+  <br />
+  0
+  wgnfoeurb
+</Styled(MuiBox)>
 `;
