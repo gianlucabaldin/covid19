@@ -13,9 +13,8 @@ describe('ChartItaly', () => {
   it('should have a Box', () => {
     wrapper = mount(<ChartItaly />);
     // console.log(wrapper.debug());
-    expect(
-      //   wrapper.find('WithStyles(ForwardRef(TableContainer))').length,
-      wrapper.find('Box').length,
-    ).toEqual(1);
+    // expect(wrapper.find('Box').length).toEqual(1);
+    const { getByText } = mount(<ChartItaly />);
+    expect(getByText('0')).toBeInTheDocument();
   });
 });

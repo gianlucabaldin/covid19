@@ -10,7 +10,11 @@ const ChartItaly = ({ data }) => {
       p={1}
       bgcolor="background.paper"
     >
-      {data}
+      {data.confirmed}
+      <br />
+      {data.recovered}
+      <br />
+      {data.deaths}
     </Box>
   );
 };
