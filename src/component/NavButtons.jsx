@@ -2,7 +2,9 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import { Box } from '@material-ui/core';
 
+// const NavButtons = (props) => {
 const NavButtons = () => {
+  // const getColor = ({ activeSection }) => {};
   return (
     <Box
       display="flex"
@@ -17,7 +19,7 @@ const NavButtons = () => {
         </Button>
       </Box>
       <Box m={1}>
-        <Button variant="outlined" color="primary">
+        <Button variant="contained" color="primary">
           Italy
         </Button>
       </Box>

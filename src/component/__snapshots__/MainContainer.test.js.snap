@@ -13,6 +13,8 @@ exports[`MainContainer renders properly 1`] = `
         "height": "100vh",
       }
     }
-  />
+  >
+    <Summary />
+  </WithStyles(ForwardRef(Typography))>
 </WithStyles(ForwardRef(Container))>
 `;

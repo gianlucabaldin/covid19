@@ -23,7 +23,7 @@ exports[`NavButtons renders properly 1`] = `
   >
     <WithStyles(ForwardRef(Button))
       color="primary"
-      variant="outlined"
+      variant="contained"
     >
       Italy
     </WithStyles(ForwardRef(Button))>

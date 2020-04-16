@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import MainContainer from './MainContainer';
 import NavButtons from './NavButtons';
+import Summary from './Summary';
 
 describe('MainContainer', () => {
   const wrapper = shallow(<MainContainer />);
@@ -12,6 +13,10 @@ describe('MainContainer', () => {
 
   it('contains NavButtons component', () => {
     expect(wrapper).toContainReact(<NavButtons />);
+  });
+
+  it('contains Summary component', () => {
+    expect(wrapper).toContainReact(<Summary />);
   });
   /*
   it('has a left-aligned `Covid 19` text', () => {
