@@ -2,7 +2,6 @@ import React from 'react';
 // import { render } from '@testing-library/react';
 import { shallow, mount } from 'enzyme';
 import App from './App';
-import NavButtons from './NavButtons';
 import Header from './Header';
 import MainContainer from './MainContainer';
 /*
@@ -32,10 +31,6 @@ describe('App', () => {
     // https://github.com/FormidableLabs/enzyme-matchers/blob/master/packages/jest-enzyme/README.md#tocontainreact
     it('contains an Header component', () => {
       expect(wrapper).toContainReact(<Header />);
-    });
-
-    it('contains NavButtons component', () => {
-      expect(wrapper).toContainReact(<NavButtons />);
     });
 
     it('contains MainContainer component', () => {

@@ -1,27 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NavButtons renders properly 1`] = `
-<div
-  className="makeStyles-root-1"
+<Styled(MuiBox)
+  bgcolor="background.paper"
+  display="flex"
+  justifyContent="center"
+  m={1}
+  p={1}
 >
-  <WithStyles(ForwardRef(Button))
-    color="primary"
-    variant="contained"
+  <Styled(MuiBox)
+    m={1}
   >
-    Worldwide
-  </WithStyles(ForwardRef(Button))>
-  <WithStyles(ForwardRef(Button))
-    color="primary"
-    variant="contained"
+    <WithStyles(ForwardRef(Button))
+      color="primary"
+      variant="outlined"
+    >
+      Worldwide
+    </WithStyles(ForwardRef(Button))>
+  </Styled(MuiBox)>
+  <Styled(MuiBox)
+    m={1}
   >
-    Italy
-  </WithStyles(ForwardRef(Button))>
-  <WithStyles(ForwardRef(Button))
-    color="primary"
-    disabled={true}
-    variant="contained"
+    <WithStyles(ForwardRef(Button))
+      color="primary"
+      variant="outlined"
+    >
+      Italy
+    </WithStyles(ForwardRef(Button))>
+  </Styled(MuiBox)>
+  <Styled(MuiBox)
+    m={1}
   >
-    Country List
-  </WithStyles(ForwardRef(Button))>
-</div>
+    <WithStyles(ForwardRef(Button))
+      color="primary"
+      disabled={true}
+      variant="outlined"
+    >
+      Country List
+    </WithStyles(ForwardRef(Button))>
+  </Styled(MuiBox)>
+</Styled(MuiBox)>
 `;

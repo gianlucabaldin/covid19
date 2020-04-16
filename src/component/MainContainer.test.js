@@ -1,12 +1,17 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import MainContainer from './MainContainer';
+import NavButtons from './NavButtons';
 
 describe('MainContainer', () => {
   const wrapper = shallow(<MainContainer />);
 
   it('renders properly', () => {
     expect(wrapper).toMatchSnapshot();
+  });
+
+  it('contains NavButtons component', () => {
+    expect(wrapper).toContainReact(<NavButtons />);
   });
   /*
   it('has a left-aligned `Covid 19` text', () => {

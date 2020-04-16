@@ -4,11 +4,12 @@ exports[`MainContainer renders properly 1`] = `
 <WithStyles(ForwardRef(Container))
   fixed={true}
 >
+  <NavButtons />
   <WithStyles(ForwardRef(Typography))
     component="div"
     style={
       Object {
-        "backgrouundColor": "#cfe8fc",
+        "backgroundColor": "#CFE8FC",
         "height": "100vh",
       }
     }

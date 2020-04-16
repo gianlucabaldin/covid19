@@ -1,13 +1,18 @@
 import React from 'react';
 // import { render } from '@testing-library/react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import NavButtons from './NavButtons';
 
 describe('NavButtons', () => {
-  const wrapper = shallow(<NavButtons />);
+  let wrapper = shallow(<NavButtons />);
 
   it('renders properly', () => {
     expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should have 3 buttons', () => {
+    wrapper = mount(<NavButtons />);
+    expect(wrapper.find('WithStyles(ForwardRef(Button))').length).toEqual(3);
   });
   /*
   it('has a left-aligned `Covid 19` text', () => {
