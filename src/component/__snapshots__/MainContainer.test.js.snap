@@ -15,6 +15,15 @@ exports[`MainContainer renders properly 1`] = `
     }
   >
     <Summary />
+    <ChartItaly
+      data={
+        Object {
+          "confirmed": 0,
+          "deaths": 0,
+          "recovered": 0,
+        }
+      }
+    />
   </WithStyles(ForwardRef(Typography))>
 </WithStyles(ForwardRef(Container))>
 `;

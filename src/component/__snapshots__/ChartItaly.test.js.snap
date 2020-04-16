@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChartItaly renders properly 1`] = `
+<Styled(MuiBox)
+  bgcolor="background.paper"
+  display="flex"
+  justifyContent="center"
+  m={1}
+  p={1}
+/>
+`;

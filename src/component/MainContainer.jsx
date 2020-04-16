@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import NavButtons from './NavButtons';
 import Summary from './Summary';
+import ChartItaly from './ChartItaly';
 
 export const SECTIONS = {
   WORLDWIDE: 0,
@@ -17,7 +18,21 @@ const initialStatus = {
 };
 
 const MainContainer = () => {
+  // const [data, setData] = useState({});
   const [activeSection, setActiveSection] = useState(SECTIONS.ITALY);
+  /*
+  async function fetchData() {
+    const res = await fetch('https://swapi.co/api/planets/4/');
+    res
+      .json()
+      .then((res) => setPlanets(res))
+      .catch((err) => setErrors(err));
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, [activeSection]);
+*/
   return (
     <Container fixed>
       <NavButtons />
@@ -26,6 +41,7 @@ const MainContainer = () => {
         style={{ backgroundColor: '#CFE8FC', height: '100vh' }}
       >
         <Summary />
+        <ChartItaly data={initialStatus} />
       </Typography>
     </Container>
   );
