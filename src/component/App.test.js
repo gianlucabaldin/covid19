@@ -4,6 +4,7 @@ import { shallow, mount } from 'enzyme';
 import App from './App';
 import NavButtons from './NavButtons';
 import Header from './Header';
+import MainContainer from './MainContainer';
 /*
 test('renders learn react link', () => {
   const { getByText } = render(<App />);
@@ -35,6 +36,10 @@ describe('App', () => {
 
     it('contains NavButtons component', () => {
       expect(wrapper).toContainReact(<NavButtons />);
+    });
+
+    it('contains MainContainer component', () => {
+      expect(wrapper).toContainReact(<MainContainer />);
     });
   });
 });

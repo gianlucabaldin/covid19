@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainContainer renders properly 1`] = `
+<WithStyles(ForwardRef(Container))
+  fixed={true}
+>
+  <WithStyles(ForwardRef(Typography))
+    component="div"
+    style={
+      Object {
+        "backgrouundColor": "#cfe8fc",
+        "height": "100vh",
+      }
+    }
+  />
+</WithStyles(ForwardRef(Container))>
+`;

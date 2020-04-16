@@ -4,5 +4,6 @@ exports[`App renders correctly 1`] = `
 <div>
   <Header />
   <NavButtons />
+  <MainContainer />
 </div>
 `;
