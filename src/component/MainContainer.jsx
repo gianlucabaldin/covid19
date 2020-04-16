@@ -8,7 +8,7 @@ const MainContainer = () => {
     <Container fixed>
       <Typography
         component="div"
-        style={{ backgrouundColor: '#cfe8fc', height: '100vh' }}
+        style={{ backgroundColor: '#CFE8FC', height: '100vh' }}
       />
     </Container>
   );
