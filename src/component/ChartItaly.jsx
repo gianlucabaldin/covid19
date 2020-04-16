@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box } from '@material-ui/core';
 
-const ChartItaly = ({ data }) => {
+const ChartItaly = ({ confirmed, recovered, deaths }) => {
   return (
     <Box
       display="flex"
@@ -10,11 +10,11 @@ const ChartItaly = ({ data }) => {
       p={1}
       bgcolor="background.paper"
     >
-      {data.confirmed}
+      {confirmed}
       <br />
-      {data.recovered}
+      {recovered}
       <br />
-      {data.deaths}
+      {deaths}
       wgnfoeurb
     </Box>
   );

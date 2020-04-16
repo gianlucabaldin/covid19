@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { shallow, mount, render } from 'enzyme';
 import ChartItaly from './ChartItaly';
@@ -16,13 +17,11 @@ describe('ChartItaly', () => {
 
   it('renders with props', () => {
     const mockData = {
-      data: {
-        confirmed: 10,
-        recovered: 20,
-        deaths: 30,
-      },
+      confirmed: 10,
+      recovered: 20,
+      deaths: 30,
     };
-    wrapper = mount(<ChartItaly data={mockData} />);
+    wrapper = mount(<ChartItaly {...mockData} />);
     expect(wrapper.find('Styled(MuiBox)').length).toEqual(1);
   });
 });

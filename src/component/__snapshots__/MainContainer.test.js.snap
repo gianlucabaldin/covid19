@@ -16,6 +16,7 @@ exports[`MainContainer renders properly 1`] = `
   >
     <Summary />
     <ChartItaly
+      confirmed={0}
       data={
         Object {
           "confirmed": 0,
@@ -23,6 +24,8 @@ exports[`MainContainer renders properly 1`] = `
           "recovered": 0,
         }
       }
+      deaths={0}
+      recovered={0}
     />
   </WithStyles(ForwardRef(Typography))>
 </WithStyles(ForwardRef(Container))>

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { useState, useEffect } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
@@ -41,7 +42,7 @@ const MainContainer = () => {
         style={{ backgroundColor: '#CFE8FC', height: '100vh' }}
       >
         <Summary />
-        <ChartItaly data={initialStatus} />
+        <ChartItaly {...initialStatus} />
       </Typography>
     </Container>
   );
