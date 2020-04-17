@@ -39,16 +39,16 @@ const Summary = ({ confirmed, recovered, deaths, error }) => {
       <Table className={classes.table} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow key="tr-status">
-            <TableCell>Confirmed</TableCell>
-            <TableCell>Recovered</TableCell>
-            <TableCell>Deaths</TableCell>
+            <TableCell align="center">Confirmed</TableCell>
+            <TableCell align="center">Recovered</TableCell>
+            <TableCell align="center">Deaths</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           <TableRow key="td-status">
-            <TableCell>{error ? '' : confirmed}</TableCell>
-            <TableCell>{error ? '' : recovered}</TableCell>
-            <TableCell>{error ? '' : deaths}</TableCell>
+            <TableCell align="center">{error ? '' : confirmed}</TableCell>
+            <TableCell align="center">{error ? '' : recovered}</TableCell>
+            <TableCell align="center">{error ? '' : deaths}</TableCell>
           </TableRow>
         </TableBody>
       </Table>
