@@ -4,18 +4,18 @@ import { Box } from '@material-ui/core';
 const ChartItaly = ({ confirmed, recovered, deaths }) => {
   return (
     <Box
+      data-id="data-summary"
       display="flex"
       justifyContent="center"
       m={1}
       p={1}
       bgcolor="background.paper"
     >
-      {confirmed}
+      Confirmed: {confirmed}
       <br />
-      {recovered}
+      Recovered: {recovered}
       <br />
-      {deaths}
-      wgnfoeurb
+      Deaths: {deaths}
     </Box>
   );
 };

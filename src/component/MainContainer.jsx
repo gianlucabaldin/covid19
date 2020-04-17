@@ -19,21 +19,42 @@ const initialStatus = {
 };
 
 const MainContainer = () => {
-  // const [data, setData] = useState({});
+  const [data, setData] = useState({ ...initialStatus });
   const [activeSection, setActiveSection] = useState(SECTIONS.ITALY);
-  /*
-  async function fetchData() {
-    const res = await fetch('https://swapi.co/api/planets/4/');
-    res
+
+  const fetchData = async () => {
+    const response = await fetch(
+      'https://api.covid19api.com/total/dayone/country/italy',
+    );
+    // console.log(`res = ${res}`);
+
+    response
       .json()
-      .then((res) => setPlanets(res))
-      .catch((err) => setErrors(err));
-  }
+      // .then((res) => {
+      //   console.log(`res in then() = ${res}`);
+      //   debugger;
+      //   console.log(`res.length = ${res.length}`);
+      // })
+      // .then((res) => {
+      //   console.log(res[res.length - 1]);
+      // })
+      .then((res) => {
+        const { Confirmed, Recovered, Deaths } = res[res.length - 1];
+        // setData(res[res.length - 1]);
+        setData({
+          confirmed: Confirmed,
+          recovered: Recovered,
+          deaths: Deaths,
+        });
+      });
+    // .catch((err) => setErrors(err));
+  };
 
   useEffect(() => {
     fetchData();
-  }, [activeSection]);
-*/
+    // }, [activeSection]);
+  }, []);
+
   return (
     <Container fixed>
       <NavButtons />
@@ -42,7 +63,8 @@ const MainContainer = () => {
         style={{ backgroundColor: '#CFE8FC', height: '100vh' }}
       >
         <Summary />
-        <ChartItaly {...initialStatus} />
+        <ChartItaly {...data} />
+        {/* <div>{data.confirme}</div> */}
       </Typography>
     </Container>
   );
