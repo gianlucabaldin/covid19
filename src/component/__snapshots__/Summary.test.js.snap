@@ -328,13 +328,19 @@ exports[`Summary renders properly 1`] = `
       <WithStyles(ForwardRef(TableRow))
         key="tr-status"
       >
-        <WithStyles(ForwardRef(TableCell))>
+        <WithStyles(ForwardRef(TableCell))
+          align="center"
+        >
           Confirmed
         </WithStyles(ForwardRef(TableCell))>
-        <WithStyles(ForwardRef(TableCell))>
+        <WithStyles(ForwardRef(TableCell))
+          align="center"
+        >
           Recovered
         </WithStyles(ForwardRef(TableCell))>
-        <WithStyles(ForwardRef(TableCell))>
+        <WithStyles(ForwardRef(TableCell))
+          align="center"
+        >
           Deaths
         </WithStyles(ForwardRef(TableCell))>
       </WithStyles(ForwardRef(TableRow))>
@@ -343,9 +349,15 @@ exports[`Summary renders properly 1`] = `
       <WithStyles(ForwardRef(TableRow))
         key="td-status"
       >
-        <WithStyles(ForwardRef(TableCell)) />
-        <WithStyles(ForwardRef(TableCell)) />
-        <WithStyles(ForwardRef(TableCell)) />
+        <WithStyles(ForwardRef(TableCell))
+          align="center"
+        />
+        <WithStyles(ForwardRef(TableCell))
+          align="center"
+        />
+        <WithStyles(ForwardRef(TableCell))
+          align="center"
+        />
       </WithStyles(ForwardRef(TableRow))>
     </WithStyles(ForwardRef(TableBody))>
   </WithStyles(ForwardRef(Table))>

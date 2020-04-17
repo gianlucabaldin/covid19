@@ -24,9 +24,7 @@ describe('MainContainer', () => {
     });
 
     it('contains ChartItaly component', () => {
-      expect(wrapper).toContainReact(
-        <ChartItaly confirmed={0} recovered={0} deaths={0} error={false} />,
-      );
+      expect(wrapper).toContainReact(<ChartItaly />);
     });
   });
 });

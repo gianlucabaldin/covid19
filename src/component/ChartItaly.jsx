@@ -7,22 +7,24 @@ const ChartItaly = (props) => {
     <>
       <Box
         data-id="data-summary"
-        display="flex"
-        justifyContent="center"
+        // display="flex"
+        // justifyContent="center"
+        // flexDirection={"column"}
         m={1}
         p={1}
         bgcolor="background.paper"
       >
-        prova
+        {data &&
+          data.length > 0 &&
+          data.map((entry) => (
+            <p id={entry.Data}>
+              date: {entry.Date}, confirmed: {entry.Confirmed}, recovered:{' '}
+              {entry.Recovered}, deaths: {entry.Deaths}
+            </p>
+          ))}
+
+        {error && <span>Data not available</span>}
       </Box>
-      {data &&
-        data.length > 0 &&
-        data.map((entry) => (
-          <p>
-            date: {entry.Date}, confirmed: {entry.Confirmed}, recovered:{' '}
-            {entry.Recovered}, deaths: {entry.deaths}
-          </p>
-        ))}
     </>
   );
 };

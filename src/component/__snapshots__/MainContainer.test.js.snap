@@ -29,18 +29,8 @@ exports[`MainContainer renders properly 1`] = `
       recovered={0}
     />
     <ChartItaly
-      confirmed={0}
-      data={
-        Object {
-          "confirmed": 0,
-          "deaths": 0,
-          "error": false,
-          "recovered": 0,
-        }
-      }
-      deaths={0}
+      data={Object {}}
       error={false}
-      recovered={0}
     />
   </WithStyles(ForwardRef(Typography))>
 </WithStyles(ForwardRef(Container))>
