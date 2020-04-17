@@ -1,5 +1,6 @@
 # TODO
 
+- memoization fetch call / component
 - navigazione con componente https://material-ui.com/components/bottom-navigation/
 - data last update time
 - mention data provider(s)
