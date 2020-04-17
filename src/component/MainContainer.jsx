@@ -19,37 +19,36 @@ const initialStatus = {
   error: false,
 };
 
+const initialChartStatus = {
+  data: {},
+  error: false,
+};
+
 const MainContainer = () => {
-  const [data, setData] = useState({ ...initialStatus });
-  const [activeSection, setActiveSection] = useState(SECTIONS.ITALY);
+  const [summaryData, setSummaryData] = useState({ ...initialStatus });
+  const [chartData, setChartData] = useState({ ...initialChartStatus });
+  // const [activeSection, setActiveSection] = useState(SECTIONS.ITALY);
 
   const fetchData = async () => {
     const response = await fetch(
       'https://api.covid19api.com/total/dayone/country/italy',
     );
-    // console.log(`res = ${res}`);
-
     response
       .json()
-      // .then((res) => {
-      //   console.log(`res in then() = ${res}`);
-      //   debugger;
-      //   console.log(`res.length = ${res.length}`);
-      // })
-      // .then((res) => {
-      //   console.log(res[res.length - 1]);
-      // })
       .then((res) => {
+        setChartData({ data: res });
         const { Confirmed, Recovered, Deaths } = res[res.length - 1];
-        // setData(res[res.length - 1]);
-        setData({
+        setSummaryData({
           confirmed: Confirmed,
           recovered: Recovered,
           deaths: Deaths,
           error: false,
         });
       })
-      .catch(() => setData({ error: true }));
+      .catch(() => {
+        setSummaryData({ error: true });
+        setChartData({ error: true });
+      });
   };
 
   useEffect(() => {
@@ -64,9 +63,8 @@ const MainContainer = () => {
         component="div"
         style={{ backgroundColor: '#CFE8FC', height: '100vh' }}
       >
-        <Summary {...data} />
-        <ChartItaly {...data} />
-        {/* <div>{data.confirme}</div> */}
+        <Summary {...summaryData} />
+        <ChartItaly {...chartData} />
       </Typography>
     </Container>
   );
