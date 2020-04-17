@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import { shallow, mount, render } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import ChartItaly from './ChartItaly';
 
 describe('ChartItaly', () => {
@@ -23,5 +23,8 @@ describe('ChartItaly', () => {
     };
     wrapper = mount(<ChartItaly {...mockData} />);
     expect(wrapper.find('Styled(MuiBox)').length).toEqual(1);
+    expect(wrapper).toIncludeText('Confirmed: 10');
+    expect(wrapper).toIncludeText('Recovered: 20');
+    expect(wrapper).toIncludeText('Deaths: 30');
   });
 });
