@@ -29,7 +29,7 @@ const useStyles = makeStyles({
 //   createData('Gingerbread', 356, 16.0, 49, 3.9),
 // ];
 
-const Summary = ({ confirmed, recovered, deaths }) => {
+const Summary = ({ confirmed, recovered, deaths, error }) => {
   //   const [status, setStatus] = useState(initialStatus);
 
   const classes = useStyles();
@@ -46,9 +46,9 @@ const Summary = ({ confirmed, recovered, deaths }) => {
         </TableHead>
         <TableBody>
           <TableRow key="td-status">
-            <TableCell>{confirmed || 0}</TableCell>
-            <TableCell>{recovered || 0}</TableCell>
-            <TableCell>{deaths || 0}</TableCell>
+            <TableCell>{error ? '' : confirmed}</TableCell>
+            <TableCell>{error ? '' : recovered}</TableCell>
+            <TableCell>{error ? '' : deaths}</TableCell>
           </TableRow>
         </TableBody>
       </Table>

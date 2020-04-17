@@ -19,13 +19,13 @@ describe('MainContainer', () => {
 
     it('contains Summary component', () => {
       expect(wrapper).toContainReact(
-        <Summary confirmed={0} recovered={0} deaths={0} />,
+        <Summary confirmed={0} recovered={0} deaths={0} error={false} />,
       );
     });
 
     it('contains ChartItaly component', () => {
       expect(wrapper).toContainReact(
-        <ChartItaly confirmed={0} recovered={0} deaths={0} />,
+        <ChartItaly confirmed={0} recovered={0} deaths={0} error={false} />,
       );
     });
   });

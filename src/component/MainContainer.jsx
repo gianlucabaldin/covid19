@@ -16,6 +16,7 @@ const initialStatus = {
   confirmed: 0,
   recovered: 0,
   deaths: 0,
+  error: false,
 };
 
 const MainContainer = () => {
@@ -45,9 +46,10 @@ const MainContainer = () => {
           confirmed: Confirmed,
           recovered: Recovered,
           deaths: Deaths,
+          error: false,
         });
-      });
-    // .catch((err) => setErrors(err));
+      })
+      .catch(() => setData({ error: true }));
   };
 
   useEffect(() => {

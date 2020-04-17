@@ -343,15 +343,9 @@ exports[`Summary renders properly 1`] = `
       <WithStyles(ForwardRef(TableRow))
         key="td-status"
       >
-        <WithStyles(ForwardRef(TableCell))>
-          0
-        </WithStyles(ForwardRef(TableCell))>
-        <WithStyles(ForwardRef(TableCell))>
-          0
-        </WithStyles(ForwardRef(TableCell))>
-        <WithStyles(ForwardRef(TableCell))>
-          0
-        </WithStyles(ForwardRef(TableCell))>
+        <WithStyles(ForwardRef(TableCell)) />
+        <WithStyles(ForwardRef(TableCell)) />
+        <WithStyles(ForwardRef(TableCell)) />
       </WithStyles(ForwardRef(TableRow))>
     </WithStyles(ForwardRef(TableBody))>
   </WithStyles(ForwardRef(Table))>

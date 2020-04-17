@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box } from '@material-ui/core';
 
-const ChartItaly = ({ confirmed, recovered, deaths }) => {
+const ChartItaly = ({ confirmed, recovered, deaths, error }) => {
   return (
     <Box
       data-id="data-summary"
@@ -11,11 +11,11 @@ const ChartItaly = ({ confirmed, recovered, deaths }) => {
       p={1}
       bgcolor="background.paper"
     >
-      Confirmed: {confirmed}
+      Confirmed: {error ? '' : confirmed}
       <br />
-      Recovered: {recovered}
+      Recovered: {error ? '' : recovered}
       <br />
-      Deaths: {deaths}
+      Deaths: {error ? '' : deaths}
     </Box>
   );
 };
@@ -25,6 +25,7 @@ ChartItaly.defaultProps = {
     confirmed: 0,
     recovered: 0,
     deaths: 0,
+    error: false,
   },
 };
 
