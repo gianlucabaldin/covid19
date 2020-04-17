@@ -15,16 +15,20 @@ const ChartItaly = (props) => {
         p={1}
         bgcolor="background.paper"
       >
-        {data &&
-          data.length > 0 &&
-          data.map((entry) => (
-            <p id={entry.Data}>
-              date: {entry.Date}, confirmed: {entry.Confirmed}, recovered:{' '}
-              {entry.Recovered}, deaths: {entry.Deaths}
-            </p>
-          ))}
+        {data && data.length > 0 && (
+          <>
+            {/* chart */}
+            {data && data.length > 0 && <ChartItalyDetail data={data} />}
 
-        {data && data.length > 0 && <ChartItalyDetail />}
+            {/* prova */}
+            {data.map((entry) => (
+              <p id={entry.Data}>
+                date: {entry.Date}, confirmed: {entry.Confirmed}, recovered:{' '}
+                {entry.Recovered}, deaths: {entry.Deaths}
+              </p>
+            ))}
+          </>
+        )}
 
         {error && <span>Data not available</span>}
       </Box>
