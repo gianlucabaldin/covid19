@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box } from '@material-ui/core';
+import ChartItalyDetail from './ChartItalyDetail';
 
 const ChartItaly = (props) => {
   const { data, error } = props;
@@ -22,6 +23,8 @@ const ChartItaly = (props) => {
               {entry.Recovered}, deaths: {entry.Deaths}
             </p>
           ))}
+
+        {data && data.length > 0 && <ChartItalyDetail />}
 
         {error && <span>Data not available</span>}
       </Box>
