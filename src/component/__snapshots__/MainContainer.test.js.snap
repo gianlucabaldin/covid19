@@ -14,7 +14,11 @@ exports[`MainContainer renders properly 1`] = `
       }
     }
   >
-    <Summary />
+    <Summary
+      confirmed={0}
+      deaths={0}
+      recovered={0}
+    />
     <ChartItaly
       confirmed={0}
       data={

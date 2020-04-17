@@ -16,4 +16,19 @@ describe('Summary', () => {
       wrapper.find('WithStyles(ForwardRef(TableContainer))').length,
     ).toEqual(1);
   });
+
+  describe('fetches (mock) data', () => {
+    wrapper = shallow(<Summary />);
+    it("fetchs Italy's summary data", () => {
+      const mockData = {
+        confirmed: 10,
+        recovered: 20,
+        deaths: 30,
+      };
+      wrapper = mount(<Summary {...mockData} />);
+      expect(wrapper).toIncludeText('10');
+      expect(wrapper).toIncludeText('20');
+      expect(wrapper).toIncludeText('30');
+    });
+  });
 });

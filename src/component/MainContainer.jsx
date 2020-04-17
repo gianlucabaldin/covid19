@@ -62,7 +62,7 @@ const MainContainer = () => {
         component="div"
         style={{ backgroundColor: '#CFE8FC', height: '100vh' }}
       >
-        <Summary />
+        <Summary {...data} />
         <ChartItaly {...data} />
         {/* <div>{data.confirme}</div> */}
       </Typography>

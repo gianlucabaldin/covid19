@@ -1,3 +1,4 @@
+/* eslint-disable prefer-template */
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-console */
 /* eslint-disable react/jsx-props-no-spreading */
@@ -21,7 +22,9 @@ describe('MainContainer', () => {
     });
 
     it('contains Summary component', () => {
-      expect(wrapper).toContainReact(<Summary />);
+      expect(wrapper).toContainReact(
+        <Summary confirmed={0} recovered={0} deaths={0} />,
+      );
     });
 
     it('contains ChartItaly component', () => {
@@ -35,7 +38,7 @@ describe('MainContainer', () => {
     });
   });
 
-  describe('fetches (mock)data', () => {
+  describe('fetches (mock) data', () => {
     it('fetchs Italy data', () => {
       const mockData = {
         confirmed: 10,
