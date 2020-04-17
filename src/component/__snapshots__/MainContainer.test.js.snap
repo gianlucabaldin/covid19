@@ -16,6 +16,14 @@ exports[`MainContainer renders properly 1`] = `
   >
     <Summary
       confirmed={0}
+      data={
+        Object {
+          "confirmed": 0,
+          "deaths": 0,
+          "error": false,
+          "recovered": 0,
+        }
+      }
       deaths={0}
       error={false}
       recovered={0}

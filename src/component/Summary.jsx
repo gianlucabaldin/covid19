@@ -56,4 +56,13 @@ const Summary = ({ confirmed, recovered, deaths, error }) => {
   );
 };
 
+Summary.defaultProps = {
+  data: {
+    confirmed: 0,
+    recovered: 0,
+    deaths: 0,
+    error: false,
+  },
+};
+
 export default Summary;
