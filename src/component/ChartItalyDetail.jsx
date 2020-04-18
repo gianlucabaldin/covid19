@@ -17,7 +17,7 @@ const ChartItalyDetail = ({ data }) => {
   const recoveredArray = [];
   const deathsArray = [];
 
-  reduceData(data).map((el, index) => {
+  reduceData(data).map((el) => {
     confirmedArray.push({
       x: new Date(el.Date).getTime(),
       y: el.Confirmed,
