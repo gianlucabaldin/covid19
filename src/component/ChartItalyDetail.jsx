@@ -9,19 +9,17 @@ import {
   HorizontalGridLines,
   LineMarkSeries,
 } from 'react-vis';
-
 import * as moment from 'moment';
+import { reduceData } from '../utils/chartUtils';
 
 const ChartItalyDetail = ({ data }) => {
   const confirmedArray = [];
   const recoveredArray = [];
   const deathsArray = [];
 
-  data.map((el) => {
+  reduceData(data).map((el, index) => {
     confirmedArray.push({
       x: new Date(el.Date).getTime(),
-      // x: el.Date,
-      // x: dateFormat(new Date(el.Date)),
       y: el.Confirmed,
     });
     recoveredArray.push({
@@ -36,11 +34,11 @@ const ChartItalyDetail = ({ data }) => {
 
   return (
     <>
-      <XYPlot height={300} width={800} margin={{ left: 60 }}>
+      <XYPlot height={300} width={800} margin={{ left: 60 }} xType="time">
         <VerticalGridLines />
         <HorizontalGridLines />
 
-        <LineSeries
+        {/* <LineSeries
           data={confirmedArray}
           lineStyle={{ stroke: 'green' }}
           markStyle={{ stroke: 'purple' }}
@@ -57,13 +55,20 @@ const ChartItalyDetail = ({ data }) => {
           lineStyle={{ stroke: 'green' }}
           markStyle={{ stroke: 'purple' }}
           curve="curveMonotoneX"
+        /> */}
+        <LineMarkSeries
+          curve="curveMonotoneX"
+          data={confirmedArray}
+          // tickTotal={1}
+          // lineStyle={{ stroke: 'red' }}
+          // markStyle={{ stroke: 'blue' }}
         />
-        {/* <LineMarkSeries curve="curveMonotoneX" data={confirmedArray} />
         <LineMarkSeries curve="curveMonotoneX" data={recoveredArray} />
-        <LineMarkSeries curve="curveMonotoneX" data={deathsArray} /> */}
+        <LineMarkSeries curve="curveMonotoneX" data={deathsArray} />
         <XAxis
           title="day"
-          tickFormat={(value) => moment(value).format('DD/MM')}
+          // tickFormat={(value) => moment(value).format('DD/MM')}
+          tickTotal={20}
         />
         <YAxis title="number" position="end" tickTotal={10} />
       </XYPlot>
