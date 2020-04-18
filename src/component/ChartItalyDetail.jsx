@@ -10,15 +10,18 @@ import {
   LineMarkSeries,
 } from 'react-vis';
 
+import * as moment from 'moment';
+
 const ChartItalyDetail = ({ data }) => {
-  // console.log(`initial data = ${JSON.stringify(data)}`);
   const confirmedArray = [];
   const recoveredArray = [];
   const deathsArray = [];
 
   data.map((el) => {
     confirmedArray.push({
-      x: new Date(el.Date),
+      x: new Date(el.Date).getTime(),
+      // x: el.Date,
+      // x: dateFormat(new Date(el.Date)),
       y: el.Confirmed,
     });
     recoveredArray.push({
@@ -31,29 +34,38 @@ const ChartItalyDetail = ({ data }) => {
     });
   });
 
-  // console.log(`confirmedArray ${JSON.stringify(confirmedArray[0])}`);
-
   return (
     <>
-      <XYPlot height={300} width={300} xType="time-utc">
+      <XYPlot height={300} width={800} margin={{ left: 60 }}>
         <VerticalGridLines />
         <HorizontalGridLines />
 
         <LineSeries
-          // data={[
-          //   { x: 1, y: 11 },
-          //   { x: 1.5, y: 29 },
-          //   { x: 3, y: 7 },
-          // ]}
           data={confirmedArray}
           lineStyle={{ stroke: 'green' }}
           markStyle={{ stroke: 'purple' }}
           curve="curveMonotoneX"
-          // xType="time-utc"
         />
-        {/* <LineMarkSeries curve="curveMonotoneX" data={confirmedArray} /> */}
-        <XAxis title="asse X" />
-        <YAxis title="asse y" position="end" />
+        <LineSeries
+          data={recoveredArray}
+          lineStyle={{ stroke: 'green' }}
+          markStyle={{ stroke: 'purple' }}
+          curve="curveMonotoneX"
+        />
+        <LineSeries
+          data={deathsArray}
+          lineStyle={{ stroke: 'green' }}
+          markStyle={{ stroke: 'purple' }}
+          curve="curveMonotoneX"
+        />
+        {/* <LineMarkSeries curve="curveMonotoneX" data={confirmedArray} />
+        <LineMarkSeries curve="curveMonotoneX" data={recoveredArray} />
+        <LineMarkSeries curve="curveMonotoneX" data={deathsArray} /> */}
+        <XAxis
+          title="day"
+          tickFormat={(value) => moment(value).format('DD/MM')}
+        />
+        <YAxis title="number" position="end" tickTotal={10} />
       </XYPlot>
     </>
   );

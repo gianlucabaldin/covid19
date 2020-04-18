@@ -5,6 +5,7 @@ import Container from '@material-ui/core/Container';
 import NavButtons from './NavButtons';
 import Summary from './Summary';
 import ChartItaly from './ChartItaly';
+import { mockResponseJson } from './mockResponse';
 
 export const SECTIONS = {
   WORLDWIDE: 0,
@@ -29,6 +30,8 @@ const MainContainer = () => {
   const [chartData, setChartData] = useState({ ...initialChartStatus });
   // const [activeSection, setActiveSection] = useState(SECTIONS.ITALY);
 
+  // WORKING -- UNCOMMENT WHEN FINISHED
+  /*
   const fetchData = async () => {
     const response = await fetch(
       'https://api.covid19api.com/total/dayone/country/italy',
@@ -45,16 +48,20 @@ const MainContainer = () => {
           error: false,
         });
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log(err);
+
         setSummaryData({ error: true });
         setChartData({ error: true });
       });
   };
-
   useEffect(() => {
     fetchData();
     // }, [activeSection]);
   }, []);
+*/
+
+  const mock = mockResponseJson;
 
   return (
     <Container fixed>
@@ -63,8 +70,9 @@ const MainContainer = () => {
         component="div"
         style={{ backgroundColor: '#CFE8FC', height: '100vh' }}
       >
-        <Summary {...summaryData} />
-        <ChartItaly {...chartData} />
+        {/* <Summary {...summaryData} /> */}
+        {/* <ChartItaly {...chartData} /> */}
+        <ChartItaly data={mock} />
       </Typography>
     </Container>
   );
