@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../../node_modules/react-vis/dist/style.css';
 import {
   XYPlot,
@@ -8,11 +8,14 @@ import {
   VerticalGridLines,
   HorizontalGridLines,
   LineMarkSeries,
+  Hint,
 } from 'react-vis';
-import * as moment from 'moment';
+// import * as moment from 'moment';
 import { reduceData } from '../utils/chartUtils';
 
 const ChartItalyDetail = ({ data }) => {
+  const [hintValue, setHintValue] = useState(false);
+  // const [hintValue, setHintValue] = useState(undefined);
   const confirmedArray = [];
   const recoveredArray = [];
   const deathsArray = [];
@@ -34,7 +37,13 @@ const ChartItalyDetail = ({ data }) => {
 
   return (
     <>
-      <XYPlot height={300} width={800} margin={{ left: 60 }} xType="time">
+      <XYPlot
+        height={300}
+        width={800}
+        margin={{ left: 60 }}
+        xType="time"
+        onMouseLeave={() => setHintValue(false)}
+      >
         <VerticalGridLines />
         <HorizontalGridLines />
 
@@ -62,6 +71,7 @@ const ChartItalyDetail = ({ data }) => {
           // tickTotal={1}
           // lineStyle={{ stroke: 'red' }}
           // markStyle={{ stroke: 'blue' }}
+          onNearestXY={(val) => setHintValue(val)}
         />
         <LineMarkSeries curve="curveMonotoneX" data={recoveredArray} />
         <LineMarkSeries curve="curveMonotoneX" data={deathsArray} />
@@ -71,6 +81,7 @@ const ChartItalyDetail = ({ data }) => {
           tickTotal={20}
         />
         <YAxis title="number" position="end" tickTotal={10} />
+        {hintValue ? <Hint value={hintValue} /> : null}
       </XYPlot>
     </>
   );

@@ -21,6 +21,7 @@
 
 #### Remove
 
+- Moment package ?
 - ReacVisCharts.jsx
 - React-vis package
 - VictoryCharts package
