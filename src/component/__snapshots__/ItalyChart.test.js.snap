@@ -1,0 +1,331 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ItalyChart renders properly with no data 1`] = `""`;
+
+exports[`ItalyChart renders with data 1`] = `
+<Fragment>
+  <XYPlot
+    className=""
+    data-id="chart-italy"
+    height={300}
+    margin={
+      Object {
+        "left": 60,
+      }
+    }
+    onMouseLeave={[Function]}
+    width={500}
+    xType="time"
+  >
+    <VerticalGridLines
+      attr="x"
+      direction="vertical"
+    />
+    <HorizontalGridLines
+      attr="y"
+      direction="horizontal"
+    />
+    <LineMarkSeries
+      className=""
+      curve="curveMonotoneX"
+      data={
+        Array [
+          Object {
+            "x": 2020-01-31T00:00:00.000Z,
+            "y": 2,
+          },
+          Object {
+            "x": 2020-02-04T00:00:00.000Z,
+            "y": 2,
+          },
+          Object {
+            "x": 2020-02-08T00:00:00.000Z,
+            "y": 3,
+          },
+          Object {
+            "x": 2020-02-12T00:00:00.000Z,
+            "y": 3,
+          },
+          Object {
+            "x": 2020-02-16T00:00:00.000Z,
+            "y": 3,
+          },
+          Object {
+            "x": 2020-02-20T00:00:00.000Z,
+            "y": 3,
+          },
+          Object {
+            "x": 2020-02-24T00:00:00.000Z,
+            "y": 229,
+          },
+          Object {
+            "x": 2020-02-28T00:00:00.000Z,
+            "y": 888,
+          },
+          Object {
+            "x": 2020-03-03T00:00:00.000Z,
+            "y": 2502,
+          },
+          Object {
+            "x": 2020-03-07T00:00:00.000Z,
+            "y": 5883,
+          },
+          Object {
+            "x": 2020-03-11T00:00:00.000Z,
+            "y": 12462,
+          },
+          Object {
+            "x": 2020-03-15T00:00:00.000Z,
+            "y": 24747,
+          },
+          Object {
+            "x": 2020-03-19T00:00:00.000Z,
+            "y": 41035,
+          },
+          Object {
+            "x": 2020-03-23T00:00:00.000Z,
+            "y": 63927,
+          },
+          Object {
+            "x": 2020-03-27T00:00:00.000Z,
+            "y": 86498,
+          },
+          Object {
+            "x": 2020-03-31T00:00:00.000Z,
+            "y": 105792,
+          },
+          Object {
+            "x": 2020-04-04T00:00:00.000Z,
+            "y": 124632,
+          },
+          Object {
+            "x": 2020-04-08T00:00:00.000Z,
+            "y": 139422,
+          },
+          Object {
+            "x": 2020-04-12T00:00:00.000Z,
+            "y": 156363,
+          },
+          Object {
+            "x": 2020-04-16T00:00:00.000Z,
+            "y": 168941,
+          },
+        ]
+      }
+      getNull={[Function]}
+      lineStyle={Object {}}
+      markStyle={Object {}}
+      onNearestXY={[Function]}
+      opacity={1}
+      stack={false}
+      strokeStyle="solid"
+      style={Object {}}
+    />
+    <LineMarkSeries
+      className=""
+      curve="curveMonotoneX"
+      data={
+        Array [
+          Object {
+            "x": 2020-01-31T00:00:00.000Z,
+            "y": 0,
+          },
+          Object {
+            "x": 2020-02-04T00:00:00.000Z,
+            "y": 0,
+          },
+          Object {
+            "x": 2020-02-08T00:00:00.000Z,
+            "y": 0,
+          },
+          Object {
+            "x": 2020-02-12T00:00:00.000Z,
+            "y": 0,
+          },
+          Object {
+            "x": 2020-02-16T00:00:00.000Z,
+            "y": 0,
+          },
+          Object {
+            "x": 2020-02-20T00:00:00.000Z,
+            "y": 0,
+          },
+          Object {
+            "x": 2020-02-24T00:00:00.000Z,
+            "y": 1,
+          },
+          Object {
+            "x": 2020-02-28T00:00:00.000Z,
+            "y": 46,
+          },
+          Object {
+            "x": 2020-03-03T00:00:00.000Z,
+            "y": 160,
+          },
+          Object {
+            "x": 2020-03-07T00:00:00.000Z,
+            "y": 589,
+          },
+          Object {
+            "x": 2020-03-11T00:00:00.000Z,
+            "y": 1045,
+          },
+          Object {
+            "x": 2020-03-15T00:00:00.000Z,
+            "y": 2335,
+          },
+          Object {
+            "x": 2020-03-19T00:00:00.000Z,
+            "y": 4440,
+          },
+          Object {
+            "x": 2020-03-23T00:00:00.000Z,
+            "y": 7024,
+          },
+          Object {
+            "x": 2020-03-27T00:00:00.000Z,
+            "y": 10950,
+          },
+          Object {
+            "x": 2020-03-31T00:00:00.000Z,
+            "y": 15729,
+          },
+          Object {
+            "x": 2020-04-04T00:00:00.000Z,
+            "y": 20996,
+          },
+          Object {
+            "x": 2020-04-08T00:00:00.000Z,
+            "y": 26491,
+          },
+          Object {
+            "x": 2020-04-12T00:00:00.000Z,
+            "y": 34211,
+          },
+          Object {
+            "x": 2020-04-16T00:00:00.000Z,
+            "y": 40164,
+          },
+        ]
+      }
+      getNull={[Function]}
+      lineStyle={Object {}}
+      markStyle={Object {}}
+      opacity={1}
+      stack={false}
+      strokeStyle="solid"
+      style={Object {}}
+    />
+    <LineMarkSeries
+      className=""
+      curve="curveMonotoneX"
+      data={
+        Array [
+          Object {
+            "x": 2020-01-31T00:00:00.000Z,
+            "y": 0,
+          },
+          Object {
+            "x": 2020-02-04T00:00:00.000Z,
+            "y": 0,
+          },
+          Object {
+            "x": 2020-02-08T00:00:00.000Z,
+            "y": 0,
+          },
+          Object {
+            "x": 2020-02-12T00:00:00.000Z,
+            "y": 0,
+          },
+          Object {
+            "x": 2020-02-16T00:00:00.000Z,
+            "y": 0,
+          },
+          Object {
+            "x": 2020-02-20T00:00:00.000Z,
+            "y": 0,
+          },
+          Object {
+            "x": 2020-02-24T00:00:00.000Z,
+            "y": 7,
+          },
+          Object {
+            "x": 2020-02-28T00:00:00.000Z,
+            "y": 21,
+          },
+          Object {
+            "x": 2020-03-03T00:00:00.000Z,
+            "y": 79,
+          },
+          Object {
+            "x": 2020-03-07T00:00:00.000Z,
+            "y": 233,
+          },
+          Object {
+            "x": 2020-03-11T00:00:00.000Z,
+            "y": 827,
+          },
+          Object {
+            "x": 2020-03-15T00:00:00.000Z,
+            "y": 1809,
+          },
+          Object {
+            "x": 2020-03-19T00:00:00.000Z,
+            "y": 3405,
+          },
+          Object {
+            "x": 2020-03-23T00:00:00.000Z,
+            "y": 6077,
+          },
+          Object {
+            "x": 2020-03-27T00:00:00.000Z,
+            "y": 9134,
+          },
+          Object {
+            "x": 2020-03-31T00:00:00.000Z,
+            "y": 12428,
+          },
+          Object {
+            "x": 2020-04-04T00:00:00.000Z,
+            "y": 15362,
+          },
+          Object {
+            "x": 2020-04-08T00:00:00.000Z,
+            "y": 17669,
+          },
+          Object {
+            "x": 2020-04-12T00:00:00.000Z,
+            "y": 19899,
+          },
+          Object {
+            "x": 2020-04-16T00:00:00.000Z,
+            "y": 22170,
+          },
+        ]
+      }
+      getNull={[Function]}
+      lineStyle={Object {}}
+      markStyle={Object {}}
+      opacity={1}
+      stack={false}
+      strokeStyle="solid"
+      style={Object {}}
+    />
+    <XAxis
+      attr="x"
+      attrAxis="y"
+      orientation="bottom"
+      tickTotal={20}
+      title="day"
+    />
+    <YAxis
+      attr="y"
+      attrAxis="x"
+      orientation="left"
+      position="end"
+      tickTotal={10}
+      title="number"
+    />
+  </XYPlot>
+</Fragment>
+`;

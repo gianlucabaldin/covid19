@@ -13,12 +13,18 @@ import {
 // import * as moment from 'moment';
 import { reduceData } from '../utils/chartUtils';
 
-const ItalyChart = ({ data, width }) => {
+const ItalyChart = ({ data, width = 500 }) => {
   const [hintValue, setHintValue] = useState(false);
   // const [hintValue, setHintValue] = useState(undefined);
   const confirmedArray = [];
   const recoveredArray = [];
   const deathsArray = [];
+
+  // debugger;
+  // console.log(JSON.stringify(data));
+  // console.log(data.length);
+
+  if (!data) return null;
 
   reduceData(data).map((el) => {
     confirmedArray.push({
