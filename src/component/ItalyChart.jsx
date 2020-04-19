@@ -20,11 +20,7 @@ const ItalyChart = ({ data, width = 500 }) => {
   const recoveredArray = [];
   const deathsArray = [];
 
-  // debugger;
-  // console.log(JSON.stringify(data));
-  // console.log(data.length);
-
-  if (!data) return null;
+  if (!data) return <div>Ops! An error occured.</div>;
 
   reduceData(data).map((el) => {
     confirmedArray.push({
