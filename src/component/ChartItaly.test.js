@@ -2,7 +2,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import ChartItaly from './ChartItaly';
-import { fetchLastDay } from '../utils/fetch';
+import { fetch } from '../utils/fetch';
 
 describe('ChartItaly', () => {
   let wrapper = shallow(<ChartItaly />);
