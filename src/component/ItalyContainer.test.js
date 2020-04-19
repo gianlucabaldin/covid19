@@ -3,6 +3,8 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import ItalyContainer from './ItalyContainer';
 import { fetch } from '../utils/fetch';
+import ItalyChart from './ItalyChart';
+import ItalyRegions from './ItalyRegions';
 
 describe('ItalyContainer', () => {
   let wrapper = shallow(<ItalyContainer />);
@@ -14,6 +16,16 @@ describe('ItalyContainer', () => {
   it('renders with default props', () => {
     wrapper = mount(<ItalyContainer />);
     expect(wrapper.find('Styled(MuiBox)').length).toEqual(1);
+  });
+
+  describe('contains', () => {
+    it('ItalyChart component', () => {
+      expect(wrapper.find(<ItalyChart />)).toBeDefined();
+    });
+
+    it('ItalyContainer component', () => {
+      expect(wrapper.find(<ItalyRegions />)).toBeDefined();
+    });
   });
 
   describe('fetches (mock) data', () => {
