@@ -19,6 +19,11 @@ const NavButtons = () => {
         </Button>
       </Box>
       <Box m={1}>
+        <Button variant="outlined" color="primary">
+          Europe
+        </Button>
+      </Box>
+      <Box m={1}>
         <Button variant="contained" color="primary">
           Italy
         </Button>
