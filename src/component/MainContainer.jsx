@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import Container from '@material-ui/core/Container';
 import NavButtons from './NavButtons';
 import Summary from './Summary';
-import ChartItaly from './ChartItaly';
+import ItalyContainer from './ItalyContainer';
 // import { mockResponseJson } from '../utils/mock/mockItalyHistoricalResponse';
 import { API_ITALY_HYSTORICAL, fetch } from '../utils/fetch';
 
@@ -81,7 +81,7 @@ const MainContainer = () => {
     <Container fixed ref={ref} style={{ backgroundColor: 'lightblue' }}>
       <NavButtons />
       <Summary {...summaryData} />
-      <ChartItaly {...chartData} width={width} />
+      <ItalyContainer {...chartData} width={width} />
     </Container>
   );
 };

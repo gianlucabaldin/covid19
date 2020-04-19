@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import MainContainer from './MainContainer';
 import NavButtons from './NavButtons';
 import Summary from './Summary';
-import ChartItaly from './ChartItaly';
+import ItalyContainer from './ItalyContainer';
 
 describe('MainContainer', () => {
   const wrapper = shallow(<MainContainer />);
@@ -21,8 +21,8 @@ describe('MainContainer', () => {
       expect(wrapper.find(<Summary />)).toBeDefined();
     });
 
-    it('contains ChartItaly component', () => {
-      expect(wrapper.find(<ChartItaly />)).toBeDefined();
+    it('contains ItalyContainer component', () => {
+      expect(wrapper.find(<ItalyContainer />)).toBeDefined();
     });
   });
 });

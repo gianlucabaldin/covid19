@@ -1,8 +1,8 @@
 import React from 'react';
 import { Box } from '@material-ui/core';
-import ChartItalyDetail from './ChartItalyDetail';
+import ItalyChart from './ItalyChart';
 
-const ChartItaly = (props) => {
+const ItalyContainer = (props) => {
   const { data, error, width } = props;
 
   return (
@@ -16,9 +16,7 @@ const ChartItaly = (props) => {
         p={1}
         bgcolor="background.paper"
       >
-        {data && data.length > 0 && (
-          <ChartItalyDetail data={data} width={width} />
-        )}
+        {data && data.length > 0 && <ItalyChart data={data} width={width} />}
 
         {error && <span>Data not available</span>}
       </Box>
@@ -26,9 +24,9 @@ const ChartItaly = (props) => {
   );
 };
 
-ChartItaly.defaultProps = {
+ItalyContainer.defaultProps = {
   data: {},
   error: false,
 };
 
-export default ChartItaly;
+export default ItalyContainer;

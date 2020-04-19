@@ -1,18 +1,18 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import ChartItaly from './ChartItaly';
+import ItalyContainer from './ItalyContainer';
 import { fetch } from '../utils/fetch';
 
-describe('ChartItaly', () => {
-  let wrapper = shallow(<ChartItaly />);
+describe('ItalyContainer', () => {
+  let wrapper = shallow(<ItalyContainer />);
 
   it('renders properly', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
   it('renders with default props', () => {
-    wrapper = mount(<ChartItaly />);
+    wrapper = mount(<ItalyContainer />);
     expect(wrapper.find('Styled(MuiBox)').length).toEqual(1);
   });
 
@@ -22,13 +22,13 @@ describe('ChartItaly', () => {
         data: fetch(true),
         error: false,
       };
-      wrapper = mount(<ChartItaly {...mockData} />);
+      wrapper = mount(<ItalyContainer {...mockData} />);
       expect(wrapper.find('Styled(MuiBox)').length).toEqual(1);
     });
 
     it('fetchs data wrongly', () => {
       const mockData = { error: true };
-      wrapper = mount(<ChartItaly {...mockData} />);
+      wrapper = mount(<ItalyContainer {...mockData} />);
       expect(wrapper).toIncludeText('Data not available');
     });
   });

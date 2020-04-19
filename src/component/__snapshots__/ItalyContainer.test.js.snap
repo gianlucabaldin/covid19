@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ChartItaly renders properly 1`] = `
+exports[`ItalyContainer renders properly 1`] = `
 <Fragment>
   <Styled(MuiBox)
     bgcolor="background.paper"

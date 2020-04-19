@@ -8,7 +8,7 @@ npm run test -t MainContainer
 
 ```
 it('should have a Box', () => {
-    wrapper = mount(<ChartItaly />);
+    wrapper = mount(<ItalyContainer />);
     console.log(wrapper.debug());
 })
 ```
