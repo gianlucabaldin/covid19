@@ -13,7 +13,7 @@ import {
 // import * as moment from 'moment';
 import { reduceData } from '../utils/chartUtils';
 
-const ChartItalyDetail = ({ data }) => {
+const ChartItalyDetail = ({ data, width }) => {
   const [hintValue, setHintValue] = useState(false);
   // const [hintValue, setHintValue] = useState(undefined);
   const confirmedArray = [];
@@ -39,7 +39,7 @@ const ChartItalyDetail = ({ data }) => {
     <>
       <XYPlot
         height={300}
-        width={800}
+        width={width || 800}
         margin={{ left: 60 }}
         xType="time"
         onMouseLeave={() => setHintValue(false)}

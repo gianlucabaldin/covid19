@@ -3,7 +3,8 @@ import { Box } from '@material-ui/core';
 import ChartItalyDetail from './ChartItalyDetail';
 
 const ChartItaly = (props) => {
-  const { data, error } = props;
+  const { data, error, width } = props;
+
   return (
     <>
       <Box
@@ -15,7 +16,9 @@ const ChartItaly = (props) => {
         p={1}
         bgcolor="background.paper"
       >
-        {data && data.length > 0 && <ChartItalyDetail data={data} />}
+        {data && data.length > 0 && (
+          <ChartItalyDetail data={data} width={width} />
+        )}
 
         {error && <span>Data not available</span>}
       </Box>

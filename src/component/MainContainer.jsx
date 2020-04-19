@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import NavButtons from './NavButtons';
@@ -28,6 +28,10 @@ const initialChartStatus = {
 const MainContainer = () => {
   const [summaryData, setSummaryData] = useState({ ...initialStatus });
   const [chartData, setChartData] = useState({ ...initialChartStatus });
+
+  // get Container width to be passed to chart dinamically
+  const [width, setWidth] = useState(0);
+
   // const [activeSection, setActiveSection] = useState(SECTIONS.ITALY);
 
   // WORKING -- UNCOMMENT WHEN FINISHED
@@ -63,8 +67,16 @@ const MainContainer = () => {
 
   const mock = mockResponseJson;
 
+  // get Container width to be passed to chart dinamically
+  const ref = React.createRef();
+  useEffect(() => {
+    if (ref && ref.current && ref.current.offsetWidth) {
+      setWidth(ref.current.offsetWidth);
+    }
+  }, [ref.current]);
+
   return (
-    <Container fixed>
+    <Container fixed ref={ref}>
       <NavButtons />
       {/* <Typography
         component="div"
@@ -72,7 +84,8 @@ const MainContainer = () => {
       > */}
       {/* <Summary {...summaryData} /> */}
       {/* <ChartItaly {...chartData} /> */}
-      <ChartItaly data={mock} />
+      {/* <ChartItaly data={mock} ref={ref} /> */}
+      <ChartItaly data={mock} width={width} />
       {/* </Typography> */}
     </Container>
   );
