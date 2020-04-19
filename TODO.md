@@ -22,6 +22,7 @@
 
 #### Remove
 
+- the mock var in fetch.js ( use process.env variable ?!!? )
 - Moment package ?
 - ReacVisCharts.jsx
 - React-vis package

@@ -1,11 +1,11 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
-import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import NavButtons from './NavButtons';
 import Summary from './Summary';
 import ChartItaly from './ChartItaly';
-import { mockResponseJson } from './mockResponse';
+// import { mockResponseJson } from '../utils/mock/mockItalyHistoricalResponse';
+import { API_ITALY_HYSTORICAL, fetch } from '../utils/fetch';
 
 export const SECTIONS = {
   WORLDWIDE: 0,
@@ -33,20 +33,14 @@ const getWidth = () =>
 const MainContainer = () => {
   const [summaryData, setSummaryData] = useState({ ...initialStatus });
   const [chartData, setChartData] = useState({ ...initialChartStatus });
-  // const [activeSection, setActiveSection] = useState(SECTIONS.ITALY);
+  const [activeSection, setActiveSection] = useState(SECTIONS.ITALY);
 
   // get Container width to be passed to chart dinamically
-  // const [width, setWidth] = useState(0);
   const [width, setWidth] = useState(getWidth());
 
-  // WORKING -- UNCOMMENT WHEN FINISHED
-  /*
+  // fetch data from public api or mock (see implementation)
   const fetchData = async () => {
-    const response = await fetch(
-      'https://api.covid19api.com/total/dayone/country/italy',
-    );
-    response
-      .json()
+    fetch(API_ITALY_HYSTORICAL)
       .then((res) => {
         setChartData({ data: res });
         const { Confirmed, Recovered, Deaths } = res[res.length - 1];
@@ -57,9 +51,7 @@ const MainContainer = () => {
           error: false,
         });
       })
-      .catch((err) => {
-        console.log(err);
-
+      .catch(() => {
         setSummaryData({ error: true });
         setChartData({ error: true });
       });
@@ -68,14 +60,6 @@ const MainContainer = () => {
     fetchData();
     // }, [activeSection]);
   }, []);
-*/
-
-  const lastDayMock = mockResponseJson[mockResponseJson.length - 1];
-  const summaryDataMock = {
-    confirmed: lastDayMock.Confirmed,
-    recovered: lastDayMock.Recovered,
-    deaths: lastDayMock.Deaths,
-  };
 
   // get Container width to be passed to chart dinamically
   const ref = useRef();
@@ -96,15 +80,8 @@ const MainContainer = () => {
   return (
     <Container fixed ref={ref} style={{ backgroundColor: 'lightblue' }}>
       <NavButtons />
-      {/* <Typography
-        component="div"
-        style={{ backgroundColor: '#CFE8FC', height: '100vh' }}
-      > */}
-      {/* <Summary {...summaryData} /> */}
-      <Summary {...summaryDataMock} />
-      {/* <ChartItaly {...chartData} /> */}
-      <ChartItaly data={mockResponseJson} width={width} />
-      {/* </Typography> */}
+      <Summary {...summaryData} />
+      <ChartItaly {...chartData} width={width} />
     </Container>
   );
 };
