@@ -1,6 +1,6 @@
 # TODO
 
-- Hint on series
+- ~~Hint on series~~
 - memoization fetch call / component
 - navigazione con componente https://material-ui.com/components/bottom-navigation/
 - data last update time

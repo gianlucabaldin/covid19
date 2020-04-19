@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import NavButtons from './NavButtons';
@@ -25,12 +25,18 @@ const initialChartStatus = {
   error: false,
 };
 
+const getWidth = () =>
+  window.innerWidth ||
+  document.documentElement.clientWidth ||
+  document.body.clientWidth;
+
 const MainContainer = () => {
   const [summaryData, setSummaryData] = useState({ ...initialStatus });
   const [chartData, setChartData] = useState({ ...initialChartStatus });
 
   // get Container width to be passed to chart dinamically
-  const [width, setWidth] = useState(0);
+  // const [width, setWidth] = useState(0);
+  const [width, setWidth] = useState(getWidth());
 
   // const [activeSection, setActiveSection] = useState(SECTIONS.ITALY);
 
@@ -68,15 +74,23 @@ const MainContainer = () => {
   const mock = mockResponseJson;
 
   // get Container width to be passed to chart dinamically
-  const ref = React.createRef();
+  const ref = useRef();
   useEffect(() => {
-    if (ref && ref.current && ref.current.offsetWidth) {
-      setWidth(ref.current.offsetWidth);
-    }
-  }, [ref.current]);
+    const containerSizeListener = () => {
+      if (ref && ref.current && ref.current.offsetWidth) {
+        setWidth(ref.current.offsetWidth * 0.9);
+      }
+    };
+    window.addEventListener('resize', containerSizeListener);
+    // the following line in necessary otherwise the method won't be called on component mount
+    containerSizeListener();
+    return () => {
+      window.removeEventListener('resize', containerSizeListener);
+    };
+  }, []);
 
   return (
-    <Container fixed ref={ref}>
+    <Container fixed ref={ref} style={{ backgroundColor: 'lightblue' }}>
       <NavButtons />
       {/* <Typography
         component="div"
