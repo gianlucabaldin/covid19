@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-export const mockResponseJson = [
+export const mockItalyHistoricalResponse = [
   {
     Country: 'Italy',
     CountryCode: '',

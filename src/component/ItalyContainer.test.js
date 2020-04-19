@@ -15,7 +15,7 @@ describe('ItalyContainer', () => {
 
   it('renders with default props', () => {
     wrapper = mount(<ItalyContainer />);
-    expect(wrapper.find('Styled(MuiBox)').length).toEqual(1);
+    expect(wrapper.find('Styled(MuiBox)')).toBeDefined();
   });
 
   describe('contains', () => {
@@ -35,7 +35,7 @@ describe('ItalyContainer', () => {
         error: false,
       };
       wrapper = mount(<ItalyContainer {...mockData} />);
-      expect(wrapper.find('Styled(MuiBox)').length).toEqual(1);
+      expect(wrapper.find('Styled(MuiBox)')).toBeDefined();
     });
 
     it('fetchs data wrongly', () => {

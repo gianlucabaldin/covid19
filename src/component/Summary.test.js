@@ -14,8 +14,8 @@ describe('Summary', () => {
   it('should have a Table', () => {
     wrapper = mount(<Summary />);
     expect(
-      wrapper.find('WithStyles(ForwardRef(TableContainer))').length,
-    ).toEqual(1);
+      wrapper.find('WithStyles(ForwardRef(TableContainer))'),
+    ).toBeDefined();
   });
 
   describe('fetches (mock) data', () => {
