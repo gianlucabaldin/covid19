@@ -35,9 +35,15 @@ const Summary = ({ confirmed, recovered, deaths, error }) => {
           </TableHead>
           <TableBody>
             <TableRow key="td-status">
-              <TableCell align="center">{error ? '' : confirmed}</TableCell>
-              <TableCell align="center">{error ? '' : recovered}</TableCell>
-              <TableCell align="center">{error ? '' : deaths}</TableCell>
+              <TableCell align="center" id="summary-confirmed">
+                {error ? '' : confirmed}
+              </TableCell>
+              <TableCell align="center" id="summary-recovered">
+                {error ? '' : recovered}
+              </TableCell>
+              <TableCell align="center" id="summary-deaths">
+                {error ? '' : deaths}
+              </TableCell>
             </TableRow>
           </TableBody>
         </Table>

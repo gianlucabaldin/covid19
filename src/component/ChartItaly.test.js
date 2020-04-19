@@ -2,6 +2,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import ChartItaly from './ChartItaly';
+import { fetchLastDay } from '../utils/fetch';
 
 describe('ChartItaly', () => {
   let wrapper = shallow(<ChartItaly />);
@@ -18,29 +19,11 @@ describe('ChartItaly', () => {
   describe('fetches (mock) data', () => {
     it('renders with props', () => {
       const mockData = {
-        data: [
-          {
-            Country: 'Italy',
-            CountryCode: '',
-            Province: '',
-            City: '',
-            CityCode: '',
-            Lat: '0',
-            Lon: '0',
-            Confirmed: 2,
-            Deaths: 0,
-            Recovered: 0,
-            Active: 0,
-            Date: '2020-01-31T00:00:00Z',
-          },
-        ],
+        data: fetch(true),
         error: false,
       };
       wrapper = mount(<ChartItaly {...mockData} />);
       expect(wrapper.find('Styled(MuiBox)').length).toEqual(1);
-      // expect(wrapper).toIncludeText(
-      //   'date: 2020-01-31T00:00:00Z, confirmed: 2, recovered: 0, deaths: 0',
-      // );
     });
 
     it('fetchs data wrongly', () => {

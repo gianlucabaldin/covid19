@@ -356,12 +356,15 @@ exports[`Summary renders properly 1`] = `
         >
           <WithStyles(ForwardRef(TableCell))
             align="center"
+            id="summary-confirmed"
           />
           <WithStyles(ForwardRef(TableCell))
             align="center"
+            id="summary-recovered"
           />
           <WithStyles(ForwardRef(TableCell))
             align="center"
+            id="summary-deaths"
           />
         </WithStyles(ForwardRef(TableRow))>
       </WithStyles(ForwardRef(TableBody))>

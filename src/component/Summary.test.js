@@ -2,6 +2,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Summary from './Summary';
+import { fetchLastDay } from '../utils/fetch';
 
 describe('Summary', () => {
   let wrapper = shallow(<Summary />);
@@ -19,21 +20,22 @@ describe('Summary', () => {
 
   describe('fetches (mock) data', () => {
     wrapper = shallow(<Summary />);
-    it('fetchs data correctly', () => {
+    it('fetchs data correctly', async () => {
+      const { Confirmed, Recovered, Deaths } = await fetchLastDay(true);
       const mockData = {
-        confirmed: 10,
-        recovered: 20,
-        deaths: 30,
+        confirmed: Confirmed,
+        recovered: Recovered,
+        deaths: Deaths,
       };
-      wrapper = mount(<Summary {...mockData} />);
-      expect(wrapper).toIncludeText('10');
-      expect(wrapper).toIncludeText('20');
-      expect(wrapper).toIncludeText('30');
+      wrapper = shallow(<Summary {...mockData} />);
+      expect(wrapper.find('#summary-confirmed').text()).toEqual('172434');
+      expect(wrapper.find('#summary-recovered').text()).toEqual('42727');
+      expect(wrapper.find('#summary-deaths').text()).toEqual('22745');
     });
 
     it('fetchs data wrongly', () => {
       const mockData = { error: true };
-      wrapper = mount(<Summary {...mockData} />);
+      wrapper = shallow(<Summary {...mockData} />);
       expect(wrapper).toIncludeText('ConfirmedRecoveredDeaths');
     });
   });

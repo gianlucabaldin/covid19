@@ -1,3 +1,9 @@
+### Test single file
+
+```
+npm run test -t MainContainer
+```
+
 ### Log html
 
 ```
