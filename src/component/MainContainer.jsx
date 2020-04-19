@@ -33,12 +33,11 @@ const getWidth = () =>
 const MainContainer = () => {
   const [summaryData, setSummaryData] = useState({ ...initialStatus });
   const [chartData, setChartData] = useState({ ...initialChartStatus });
+  // const [activeSection, setActiveSection] = useState(SECTIONS.ITALY);
 
   // get Container width to be passed to chart dinamically
   // const [width, setWidth] = useState(0);
   const [width, setWidth] = useState(getWidth());
-
-  // const [activeSection, setActiveSection] = useState(SECTIONS.ITALY);
 
   // WORKING -- UNCOMMENT WHEN FINISHED
   /*
@@ -71,7 +70,12 @@ const MainContainer = () => {
   }, []);
 */
 
-  const mock = mockResponseJson;
+  const lastDayMock = mockResponseJson[mockResponseJson.length - 1];
+  const summaryDataMock = {
+    confirmed: lastDayMock.Confirmed,
+    recovered: lastDayMock.Recovered,
+    deaths: lastDayMock.Deaths,
+  };
 
   // get Container width to be passed to chart dinamically
   const ref = useRef();
@@ -97,9 +101,9 @@ const MainContainer = () => {
         style={{ backgroundColor: '#CFE8FC', height: '100vh' }}
       > */}
       {/* <Summary {...summaryData} /> */}
+      <Summary {...summaryDataMock} />
       {/* <ChartItaly {...chartData} /> */}
-      {/* <ChartItaly data={mock} ref={ref} /> */}
-      <ChartItaly data={mock} width={width} />
+      <ChartItaly data={mockResponseJson} width={width} />
       {/* </Typography> */}
     </Container>
   );
