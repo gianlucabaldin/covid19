@@ -8,7 +8,7 @@ const ChartItaly = (props) => {
   return (
     <>
       <Box
-        data-id="data-summary"
+        // data-id="data-summary"
         // display="flex"
         // justifyContent="center"
         // flexDirection={"column"}

@@ -4,7 +4,6 @@ exports[`ChartItaly renders properly 1`] = `
 <Fragment>
   <Styled(MuiBox)
     bgcolor="background.paper"
-    data-id="data-summary"
     m={1}
     p={1}
   />

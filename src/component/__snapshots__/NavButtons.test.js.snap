@@ -23,6 +23,16 @@ exports[`NavButtons renders properly 1`] = `
   >
     <WithStyles(ForwardRef(Button))
       color="primary"
+      variant="outlined"
+    >
+      Europe
+    </WithStyles(ForwardRef(Button))>
+  </Styled(MuiBox)>
+  <Styled(MuiBox)
+    m={1}
+  >
+    <WithStyles(ForwardRef(Button))
+      color="primary"
       variant="contained"
     >
       Italy

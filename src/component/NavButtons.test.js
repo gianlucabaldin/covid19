@@ -10,8 +10,8 @@ describe('NavButtons', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should have 3 buttons', () => {
+  it('should have 4 buttons', () => {
     wrapper = mount(<NavButtons />);
-    expect(wrapper.find('WithStyles(ForwardRef(Button))').length).toEqual(3);
+    expect(wrapper.find('WithStyles(ForwardRef(Button))').length).toEqual(4);
   });
 });

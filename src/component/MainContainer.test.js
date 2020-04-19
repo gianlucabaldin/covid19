@@ -18,13 +18,11 @@ describe('MainContainer', () => {
     });
 
     it('contains Summary component', () => {
-      expect(wrapper).toContainReact(
-        <Summary confirmed={0} recovered={0} deaths={0} error={false} />,
-      );
+      expect(wrapper.find(<Summary />)).toBeDefined();
     });
 
     it('contains ChartItaly component', () => {
-      expect(wrapper).toContainReact(<ChartItaly />);
+      expect(wrapper.find(<ChartItaly />)).toBeDefined();
     });
   });
 });

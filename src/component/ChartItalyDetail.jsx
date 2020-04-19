@@ -43,6 +43,7 @@ const ChartItalyDetail = ({ data, width }) => {
         margin={{ left: 60 }}
         xType="time"
         onMouseLeave={() => setHintValue(false)}
+        data-id="chart-italy"
       >
         <VerticalGridLines />
         <HorizontalGridLines />

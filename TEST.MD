@@ -51,9 +51,36 @@ it('has a center-aligned project description - with Enzyme', () => {
 
 ### Look for React Component children (inside another)
 
+#### with toBeDefined()
+
+```
+it('contains Summary component', () => {
+    expect(wrapper.find(<Summary />)).toBeDefined();
+});
+```
+
+#### pointing to a particular inner className
+
+Attention: with MaterialUi a <Box className="myClassname"> outputs as
+
+```
+<Box className="myClassname" ...>
+    <div className="myClassname" ...>
+    ...
+```
+
+so if you "only" look for ".className" an check the lenght, it will be 2 (not 1) !!! Use stronger selector, like elementType+className (i.e. below 'div.summary)
+
+```
+it('contains Summary component', () => {
+    wrapper = mount(<MainContainer />);
+    expect(wrapper.find('div.summary').length).toEqual(1);
+});
+```
+
 ```
 it('should have 3 buttons', () => {
-    let wrapper = mount(<NavButtons />);
-    expect(wrapper.find('WithStyles(ForwardRef(Button))').length).toEqual(3);
+let wrapper = mount(<NavButtons />);
+expect(wrapper.find('WithStyles(ForwardRef(Button))').length).toEqual(3);
 });
 ```

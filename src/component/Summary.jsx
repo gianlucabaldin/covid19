@@ -19,7 +19,7 @@ const Summary = ({ confirmed, recovered, deaths, error }) => {
   const classes = useStyles();
 
   return (
-    <Box ml={1} mr={1}>
+    <Box ml={1} mr={1} className="summary">
       <TableContainer component={Paper}>
         <Table
           className={classes.table}
