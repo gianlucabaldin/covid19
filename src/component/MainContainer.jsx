@@ -66,14 +66,14 @@ const MainContainer = () => {
   return (
     <Container fixed>
       <NavButtons />
-      <Typography
+      {/* <Typography
         component="div"
         style={{ backgroundColor: '#CFE8FC', height: '100vh' }}
-      >
-        {/* <Summary {...summaryData} /> */}
-        {/* <ChartItaly {...chartData} /> */}
-        <ChartItaly data={mock} />
-      </Typography>
+      > */}
+      {/* <Summary {...summaryData} /> */}
+      {/* <ChartItaly {...chartData} /> */}
+      <ChartItaly data={mock} />
+      {/* </Typography> */}
     </Container>
   );
 };

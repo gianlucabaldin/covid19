@@ -22,7 +22,7 @@ const ChartItalyDetail = ({ data }) => {
 
   reduceData(data).map((el) => {
     confirmedArray.push({
-      x: new Date(el.Date).getTime(),
+      x: new Date(el.Date),
       y: el.Confirmed,
     });
     recoveredArray.push({
