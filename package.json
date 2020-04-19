@@ -17,8 +17,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test-watch": "react-scripts test --watch --verbose",
-    "test": "react-scripts test",
+    "test": "react-scripts test --watchAll=false",
+    "test-watch": "react-scripts test --watch",
     "test:coverage": "react-scripts test --verbose --coverage",
     "eject": "react-scripts eject",
     "lint": "./node_modules/.bin/eslint ."
