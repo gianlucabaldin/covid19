@@ -1,5 +1,4 @@
 import React from 'react';
-// import { render } from '@testing-library/react';
 import { shallow, mount } from 'enzyme';
 import NavButtons from './NavButtons';
 

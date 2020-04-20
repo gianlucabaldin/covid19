@@ -7,6 +7,20 @@ exports[`ItalyContainer renders properly 1`] = `
     m={1}
     p={1}
   >
+    <Summary
+      confirmed={0}
+      data={
+        Object {
+          "confirmed": 0,
+          "deaths": 0,
+          "error": false,
+          "recovered": 0,
+        }
+      }
+      deaths={0}
+      error={false}
+      recovered={0}
+    />
     <ItalyRegions />
   </Styled(MuiBox)>
 </Fragment>

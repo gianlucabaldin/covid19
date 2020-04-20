@@ -17,10 +17,6 @@ describe('MainContainer', () => {
       expect(wrapper).toContainReact(<NavButtons />);
     });
 
-    it('contains Summary component', () => {
-      expect(wrapper.find(<Summary />)).toBeDefined();
-    });
-
     it('contains ItalyContainer component', () => {
       expect(wrapper.find(<ItalyContainer />)).toBeDefined();
     });

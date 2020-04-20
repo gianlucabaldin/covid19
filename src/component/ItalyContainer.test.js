@@ -2,9 +2,10 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import ItalyContainer from './ItalyContainer';
-import { fetch } from '../utils/fetch';
+import { fetchItalyHistoricalAll } from '../utils/fetch';
 import ItalyChart from './ItalyChart';
 import ItalyRegions from './ItalyRegions';
+import Summary from './Summary';
 
 describe('ItalyContainer', () => {
   let wrapper = shallow(<ItalyContainer />);
@@ -23,25 +24,29 @@ describe('ItalyContainer', () => {
       expect(wrapper.find(<ItalyChart />)).toBeDefined();
     });
 
-    it('ItalyContainer component', () => {
+    it('ItalyRegions component', () => {
       expect(wrapper.find(<ItalyRegions />)).toBeDefined();
+    });
+
+    it('Summary component', () => {
+      expect(wrapper.find(<Summary />)).toBeDefined();
     });
   });
 
   describe('fetches (mock) data', () => {
     it('renders with props', () => {
-      const mockData = {
-        data: fetch(true),
+      const tableData = {
+        data: fetchItalyHistoricalAll(),
         error: false,
       };
-      wrapper = mount(<ItalyContainer {...mockData} />);
+      wrapper = mount(<ItalyContainer {...tableData} />);
       expect(wrapper.find('Styled(MuiBox)')).toBeDefined();
     });
 
-    it('fetchs data wrongly', () => {
-      const mockData = { error: true };
-      wrapper = mount(<ItalyContainer {...mockData} />);
-      expect(wrapper).toIncludeText('Data not available');
-    });
+    // it('fetchs data wrongly', () => {
+    //   const mockData = { error: true };
+    //   wrapper = mount(<ItalyContainer {...mockData} />);
+    //   expect(wrapper).toIncludeText('Ops! An error occured.');
+    // });
   });
 });

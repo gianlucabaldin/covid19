@@ -2,7 +2,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Summary from './Summary';
-import { fetchLastDay } from '../utils/fetch';
+import { fetchItalyHistoricalLastDay } from '../utils/fetch';
 
 describe('Summary', () => {
   let wrapper = shallow(<Summary />);
@@ -21,7 +21,11 @@ describe('Summary', () => {
   describe('fetches (mock) data', () => {
     wrapper = shallow(<Summary />);
     it('fetchs data correctly', async () => {
-      const { Confirmed, Recovered, Deaths } = await fetchLastDay(true);
+      const {
+        Confirmed,
+        Recovered,
+        Deaths,
+      } = await fetchItalyHistoricalLastDay(true);
       const mockData = {
         confirmed: Confirmed,
         recovered: Recovered,
