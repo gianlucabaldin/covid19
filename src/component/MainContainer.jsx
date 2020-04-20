@@ -2,26 +2,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Container from '@material-ui/core/Container';
 import NavButtons from './NavButtons';
-import Summary from './Summary';
 import ItalyContainer from './ItalyContainer';
-import { fetchItalyHistoricalAll } from '../utils/fetch';
 
 export const SECTIONS = {
   WORLDWIDE: 0,
   ITALY: 1,
   COUNTRY_LIST: 2,
-};
-
-const initialStatus = {
-  confirmed: 0,
-  recovered: 0,
-  deaths: 0,
-  error: false,
-};
-
-const initialChartStatus = {
-  data: {},
-  error: false,
 };
 
 const getWidth = () =>
@@ -30,35 +16,10 @@ const getWidth = () =>
   document.body.clientWidth;
 
 const MainContainer = () => {
-  const [summaryData, setSummaryData] = useState({ ...initialStatus });
-  const [chartData, setChartData] = useState({ ...initialChartStatus });
   const [activeSection, setActiveSection] = useState(SECTIONS.ITALY);
 
   // get Container width to be passed to chart dinamically
   const [width, setWidth] = useState(getWidth());
-
-  // fetch data from public api or mock (see implementation)
-  const fetchData = async () => {
-    fetchItalyHistoricalAll(false)
-      .then((res) => {
-        setChartData({ data: res });
-        const { Confirmed, Recovered, Deaths } = res[res.length - 1];
-        setSummaryData({
-          confirmed: Confirmed,
-          recovered: Recovered,
-          deaths: Deaths,
-          error: false,
-        });
-      })
-      .catch(() => {
-        setSummaryData({ error: true });
-        setChartData({ error: true });
-      });
-  };
-  useEffect(() => {
-    fetchData();
-    // }, [activeSection]);
-  }, []);
 
   // get Container width to be passed to chart dinamically
   const ref = useRef();
@@ -79,8 +40,7 @@ const MainContainer = () => {
   return (
     <Container fixed ref={ref} style={{ backgroundColor: 'lightblue' }}>
       <NavButtons />
-      <Summary {...summaryData} />
-      <ItalyContainer {...chartData} width={width} />
+      <ItalyContainer width={width} />
     </Container>
   );
 };

@@ -10,7 +10,6 @@ import {
   LineMarkSeries,
   Hint,
 } from 'react-vis';
-// import * as moment from 'moment';
 import { reduceData } from '../utils/chartUtils';
 
 const ItalyChart = ({ data, width = 500 }) => {

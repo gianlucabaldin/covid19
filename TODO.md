@@ -1,5 +1,6 @@
 # TODO
 
+- order region table
 - replicate rezise on italy region like charts
 - move logic from children to container
 - ~~Hint on series~~

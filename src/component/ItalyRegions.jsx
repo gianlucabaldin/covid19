@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -8,7 +8,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { Box } from '@material-ui/core';
-import { fetchItalyRegion } from '../utils/fetch';
 
 const useStyles = makeStyles({
   table: {
@@ -16,25 +15,8 @@ const useStyles = makeStyles({
   },
 });
 
-const ItalyRegions = () => {
+const ItalyRegions = ({ tableData, width }) => {
   const classes = useStyles();
-
-  const [tableData, setTableData] = useState(undefined);
-
-  // fetch data from public api or mock (see implementation)
-  const fetchData = () => {
-    fetchItalyRegion(false)
-      .then((res) => {
-        setTableData(res);
-      })
-      .catch((err) => {
-        // to fill
-        console.log('error', err);
-      });
-  };
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   /** Legend: 
     1- 'ricoverati con sintomi'       hospitalized with symptoms
@@ -54,7 +36,7 @@ const ItalyRegions = () => {
     return <div>Ops! An error occured.</div>;
 
   return (
-    <Box ml={1} mr={1} height={500} width={800}>
+    <Box ml={1} mr={1} height={500} width={width || 800}>
       <TableContainer component={Paper}>
         <Table
           className={classes.table}
