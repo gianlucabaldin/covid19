@@ -7,8 +7,9 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { Box, Hidden, withStyles } from '@material-ui/core';
+import { Box, Hidden, withStyles, TableFooter } from '@material-ui/core';
 import { grey } from '@material-ui/core/colors';
+import moment from 'moment';
 import Error from './Error';
 
 const useStyles = makeStyles({
@@ -46,8 +47,15 @@ const ItalyRegions = ({ tableData, width }) => {
 
   if (!tableData || tableData.length === 0) return <Error />;
 
+  // sort alphabetically by region
+  tableData.sort((a, b) => (a.regione > b.regione ? 1 : -1));
+
   return (
-    <Box maxHeight={350} width={width || 800} style={{ overflowY: 'scroll' }}>
+    <Box
+      maxHeight={350}
+      width={width || 800}
+      style={{ overflowY: 'scroll', paddingBottom: 10 }}
+    >
       <TableContainer component={Paper}>
         <Table
           className={classes.table}
@@ -132,6 +140,9 @@ const ItalyRegions = ({ tableData, width }) => {
                 </TableRow>
               ))}
           </TableBody>
+          <TableFooter>
+            {/* Last update available: {moment(tableData[0].data)} */}
+          </TableFooter>
         </Table>
       </TableContainer>
     </Box>

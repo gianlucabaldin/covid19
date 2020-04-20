@@ -27,7 +27,7 @@ const ItalyContainer = (props) => {
 
   // fetch data from public api or mock (see implementation)
   const fetchData = async () => {
-    fetchItalyHistoricalAll(false)
+    fetchItalyHistoricalAll()
       .then((res) => {
         setChartData(res);
         const { Confirmed, Recovered, Deaths } = res[res.length - 1];
@@ -43,7 +43,7 @@ const ItalyContainer = (props) => {
         setChartData({ error: true });
       });
 
-    fetchItalyRegion(false)
+    fetchItalyRegion()
       .then((res) => {
         setTableData(res);
       })

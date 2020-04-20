@@ -1,9 +1,8 @@
 # TODO
 
 - insert footer
-- remove background lightBlue from MainContainer
-- order region table
-- replicate rezise on italy region like charts~~
+- ~~sort region table~~
+- ~~replicate rezise on italy region like charts~~
 - ~~move logic from children to container~~
 - Hint on series
 - memoization fetch call / component
@@ -28,6 +27,7 @@
 #### Remove
 
 - the mock var in fetch.js ( use process.env variable ?!!? )
+- remove background lightBlue from MainContainer
 - Moment package ?
 - ReacVisCharts.jsx
 - React-vis package
