@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box } from '@material-ui/core';
 import ItalyChart from './ItalyChart';
+import ItalyRegions from './ItalyRegions';
 
 const ItalyContainer = (props) => {
   const { data, error, width } = props;
@@ -17,6 +18,8 @@ const ItalyContainer = (props) => {
         bgcolor="background.paper"
       >
         {data && data.length > 0 && <ItalyChart data={data} width={width} />}
+
+        {<ItalyRegions />}
 
         {error && <span>Data not available</span>}
       </Box>

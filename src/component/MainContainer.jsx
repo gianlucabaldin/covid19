@@ -1,11 +1,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Container from '@material-ui/core/Container';
 import NavButtons from './NavButtons';
 import Summary from './Summary';
 import ItalyContainer from './ItalyContainer';
-// import { mockResponseJson } from '../utils/mock/mockItalyHistoricalResponse';
-import { API_ITALY_HYSTORICAL, fetch } from '../utils/fetch';
+import { fetchItalyHistoricalAll } from '../utils/fetch';
 
 export const SECTIONS = {
   WORLDWIDE: 0,
@@ -40,7 +39,7 @@ const MainContainer = () => {
 
   // fetch data from public api or mock (see implementation)
   const fetchData = async () => {
-    fetch(API_ITALY_HYSTORICAL)
+    fetchItalyHistoricalAll(false)
       .then((res) => {
         setChartData({ data: res });
         const { Confirmed, Recovered, Deaths } = res[res.length - 1];

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -7,6 +7,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import { Box } from '@material-ui/core';
+import { fetchItalyRegion } from '../utils/fetch';
 
 const useStyles = makeStyles({
   table: {
@@ -14,48 +16,100 @@ const useStyles = makeStyles({
   },
 });
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
-
 const ItalyRegions = () => {
   const classes = useStyles();
 
+  const [tableData, setTableData] = useState(undefined);
+
+  // fetch data from public api or mock (see implementation)
+  const fetchData = () => {
+    fetchItalyRegion(false)
+      .then((res) => {
+        setTableData(res);
+      })
+      .catch((err) => {
+        // to fill
+        console.log('error', err);
+      });
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  /** Legend: 
+    1- 'ricoverati con sintomi'       hospitalized with symptoms
+    2- 'terapia intensiva'            intensive care
+    3- 'totale ospedalizzati'         total hospitalized          --> 1 + 2
+    4- 'isolamento domiciliare'       home isolation
+    5- 'totale positivi'              total positives             --> 3 + 4 
+    6- 'variazione totale positivi'   positives variation
+    7- 'nuovi positivi'               new positives
+    8- 'dimessi guariti'              discharged healed
+    9- deceduti                       deaths
+    10- 'totale casi'                 discharged healed           --> 5 + 8 + 9
+    11- tamponi                       swabs
+  */
+
+  if (!tableData || tableData.length === 0)
+    return <div>Ops! An error occured.</div>;
+
   return (
-    <TableContainer component={Paper}>
-      <Table className={classes.table} size="small" aria-label="a dense table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.name}>
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
+    <Box ml={1} mr={1} height={500} width={800}>
+      <TableContainer component={Paper}>
+        <Table
+          className={classes.table}
+          size="small"
+          aria-label="a dense table"
+        >
+          <TableHead>
+            <TableRow key="header">
+              <TableCell align="center">Region</TableCell>
+              <TableCell align="center">hospitalized with symptoms</TableCell>
+              <TableCell align="center">intensive care</TableCell>
+              <TableCell align="center">total hospitalized</TableCell>
+              <TableCell align="center">home isolation</TableCell>
+              <TableCell align="center">total positives</TableCell>
+              <TableCell align="center">positives variation</TableCell>
+              <TableCell align="center">new positives</TableCell>
+              <TableCell align="center">discharged healed</TableCell>
+              <TableCell align="center">deaths</TableCell>
+              <TableCell align="center">discharged healed</TableCell>
+              <TableCell align="center">swabs</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {tableData &&
+              tableData.length > 0 &&
+              tableData.map((row) => (
+                <TableRow key={row.regione}>
+                  <TableCell align="center">{row.regione}</TableCell>
+                  <TableCell align="center">
+                    {row['ricoverati con sintomi']}
+                  </TableCell>
+                  <TableCell align="center">
+                    {row['terapia intensiva']}
+                  </TableCell>
+                  <TableCell align="center">
+                    {row['totale ospedalizzati']}
+                  </TableCell>
+                  <TableCell align="center">
+                    {row['isolamento domiciliare']}
+                  </TableCell>
+                  <TableCell align="center">{row['totale positivi']}</TableCell>
+                  <TableCell align="center">
+                    {row['variazione totale positivi']}
+                  </TableCell>
+                  <TableCell align="center">{row['nuovi positivi']}</TableCell>
+                  <TableCell align="center">{row['dimessi guariti']}</TableCell>
+                  <TableCell align="center">{row.deceduti}</TableCell>
+                  <TableCell align="center">{row['totale casi']}</TableCell>
+                  <TableCell align="center">{row.tamponi}</TableCell>
+                </TableRow>
+              ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Box>
   );
 };
 export default ItalyRegions;

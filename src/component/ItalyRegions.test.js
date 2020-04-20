@@ -14,4 +14,8 @@ describe('ItalyRegions', () => {
       wrapper.find('WithStyles(ForwardRef(TableContainer))'),
     ).toBeDefined();
   });
+
+  it('fetches data and show them within the table', () => {
+    expect(wrapper).tocContainText('Piemonte');
+  });
 });

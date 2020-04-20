@@ -6,6 +6,8 @@ exports[`ItalyContainer renders properly 1`] = `
     bgcolor="background.paper"
     m={1}
     p={1}
-  />
+  >
+    <ItalyRegions />
+  </Styled(MuiBox)>
 </Fragment>
 `;

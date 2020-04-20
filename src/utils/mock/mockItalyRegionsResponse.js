@@ -1,5 +1,5 @@
+/* eslint-disable import/prefer-default-export */
 export const mockItalyRegionsResponse = [
-    [
   {
     data: '2020-04-19',
     stato: 'ITA',
