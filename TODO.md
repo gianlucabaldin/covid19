@@ -1,9 +1,11 @@
 # TODO
 
+- insert footer
+- remove background lightBlue from MainContainer
 - order region table
-- replicate rezise on italy region like charts
-- move logic from children to container
-- ~~Hint on series~~
+- replicate rezise on italy region like charts~~
+- ~~move logic from children to container~~
+- Hint on series
 - memoization fetch call / component
 - navigazione con componente https://material-ui.com/components/bottom-navigation/
 - data last update time

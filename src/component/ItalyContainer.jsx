@@ -60,10 +60,10 @@ const ItalyContainer = (props) => {
   return (
     <>
       <Box
-        // data-id="data-summary"
-        // display="flex"
-        // justifyContent="center"
-        // flexDirection={"column"}
+        display="flex"
+        justifyContent="center"
+        flexDirection="column"
+        alignItems="center"
         m={1}
         p={1}
         bgcolor="background.paper"

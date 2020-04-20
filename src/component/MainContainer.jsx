@@ -38,7 +38,7 @@ const MainContainer = () => {
   }, []);
 
   return (
-    <Container fixed ref={ref} style={{ backgroundColor: 'lightblue' }}>
+    <Container fluid ref={ref} style={{ backgroundColor: 'lightblue' }}>
       <NavButtons />
       <ItalyContainer width={width} />
     </Container>

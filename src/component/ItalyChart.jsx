@@ -10,6 +10,7 @@ import {
   LineMarkSeries,
   Hint,
 } from 'react-vis';
+import { Box } from '@material-ui/core';
 import Error from './Error';
 import { reduceData } from '../utils/chartUtils';
 
@@ -38,11 +39,11 @@ const ItalyChart = ({ data, width = 500 }) => {
   });
 
   return (
-    <>
+    <Box marginTop={1} marginBottom={3}>
       <XYPlot
         height={300}
         width={width || 800}
-        margin={{ left: 60 }}
+        margin={{ left: 60, right: 30 }}
         xType="time"
         onMouseLeave={() => setHintValue(false)}
         data-id="chart-italy"
@@ -86,7 +87,7 @@ const ItalyChart = ({ data, width = 500 }) => {
         <YAxis title="number" position="end" tickTotal={10} />
         {hintValue ? <Hint value={hintValue} /> : null}
       </XYPlot>
-    </>
+    </Box>
   );
 };
 

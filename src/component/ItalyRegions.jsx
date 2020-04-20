@@ -2,19 +2,30 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
+import MuiTableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { Box } from '@material-ui/core';
+import { Box, Hidden, withStyles } from '@material-ui/core';
+import { grey } from '@material-ui/core/colors';
 import Error from './Error';
 
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
   },
+  trHeader: {
+    backgroundColor: grey[200],
+  },
+  th: { fontWeight: 700, padding: 0 },
 });
+
+const TableCell = withStyles({
+  root: {
+    border: '1px solid grey',
+  },
+})(MuiTableCell);
 
 const ItalyRegions = ({ tableData, width }) => {
   const classes = useStyles();
@@ -36,7 +47,7 @@ const ItalyRegions = ({ tableData, width }) => {
   if (!tableData || tableData.length === 0) return <Error />;
 
   return (
-    <Box ml={1} mr={1} height={500} width={width || 800}>
+    <Box maxHeight={350} width={width || 800} style={{ overflowY: 'scroll' }}>
       <TableContainer component={Paper}>
         <Table
           className={classes.table}
@@ -44,48 +55,80 @@ const ItalyRegions = ({ tableData, width }) => {
           aria-label="a dense table"
         >
           <TableHead>
-            <TableRow key="header">
+            <TableRow key="header" className={classes.trHeader}>
               <TableCell align="center">Region</TableCell>
-              <TableCell align="center">hospitalized with symptoms</TableCell>
-              <TableCell align="center">intensive care</TableCell>
-              <TableCell align="center">total hospitalized</TableCell>
-              <TableCell align="center">home isolation</TableCell>
-              <TableCell align="center">total positives</TableCell>
-              <TableCell align="center">positives variation</TableCell>
-              <TableCell align="center">new positives</TableCell>
-              <TableCell align="center">discharged healed</TableCell>
-              <TableCell align="center">deaths</TableCell>
-              <TableCell align="center">discharged healed</TableCell>
-              <TableCell align="center">swabs</TableCell>
+              <Hidden lgDown>
+                <TableCell align="center">Hospitalized With Symptoms</TableCell>
+              </Hidden>
+              <TableCell align="center">Intensive Care</TableCell>
+              <Hidden lgDown>
+                <TableCell align="center">Total Hospitalized</TableCell>
+              </Hidden>
+              <Hidden mdDown>
+                <TableCell align="center">Home Isolation</TableCell>
+              </Hidden>
+              <TableCell align="center">Total Positives</TableCell>
+              <Hidden lgDown>
+                <TableCell align="center">Positives Variation</TableCell>
+              </Hidden>
+              <Hidden lgDown>
+                <TableCell align="center">New Positives</TableCell>
+              </Hidden>
+              <Hidden lgDown>
+                <TableCell align="center">Discharged Healed</TableCell>
+              </Hidden>
+              <TableCell align="center">Deaths</TableCell>
+              <TableCell align="center">Total Cases</TableCell>
+              <Hidden mdDown>
+                <TableCell align="center">Swabs</TableCell>
+              </Hidden>
             </TableRow>
           </TableHead>
           <TableBody>
             {tableData &&
               tableData.length > 0 &&
               tableData.map((row) => (
-                <TableRow key={row.regione}>
+                <TableRow key={row.regione} hover>
                   <TableCell align="center">{row.regione}</TableCell>
-                  <TableCell align="center">
-                    {row['ricoverati con sintomi']}
-                  </TableCell>
+                  <Hidden lgDown>
+                    <TableCell align="center">
+                      {row['ricoverati con sintomi']}
+                    </TableCell>
+                  </Hidden>
                   <TableCell align="center">
                     {row['terapia intensiva']}
                   </TableCell>
-                  <TableCell align="center">
-                    {row['totale ospedalizzati']}
-                  </TableCell>
-                  <TableCell align="center">
-                    {row['isolamento domiciliare']}
-                  </TableCell>
+                  <Hidden lgDown>
+                    <TableCell align="center">
+                      {row['totale ospedalizzati']}
+                    </TableCell>
+                  </Hidden>
+                  <Hidden mdDown>
+                    <TableCell align="center">
+                      {row['isolamento domiciliare']}
+                    </TableCell>
+                  </Hidden>
                   <TableCell align="center">{row['totale positivi']}</TableCell>
-                  <TableCell align="center">
-                    {row['variazione totale positivi']}
-                  </TableCell>
-                  <TableCell align="center">{row['nuovi positivi']}</TableCell>
-                  <TableCell align="center">{row['dimessi guariti']}</TableCell>
+                  <Hidden lgDown>
+                    <TableCell align="center">
+                      {row['variazione totale positivi']}
+                    </TableCell>
+                  </Hidden>
+                  <Hidden lgDown>
+                    <TableCell align="center">
+                      {row['nuovi positivi']}
+                    </TableCell>
+                  </Hidden>
+                  <Hidden lgDown>
+                    <TableCell align="center">
+                      {row['dimessi guariti']}
+                    </TableCell>
+                  </Hidden>
                   <TableCell align="center">{row.deceduti}</TableCell>
                   <TableCell align="center">{row['totale casi']}</TableCell>
-                  <TableCell align="center">{row.tamponi}</TableCell>
+                  <Hidden mdDown>
+                    <TableCell align="center">{row.tamponi}</TableCell>
+                  </Hidden>
                 </TableRow>
               ))}
           </TableBody>
