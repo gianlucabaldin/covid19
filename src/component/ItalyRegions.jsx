@@ -8,6 +8,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { Box } from '@material-ui/core';
+import Error from './Error';
 
 const useStyles = makeStyles({
   table: {
@@ -32,8 +33,7 @@ const ItalyRegions = ({ tableData, width }) => {
     11- tamponi                       swabs
   */
 
-  if (!tableData || tableData.length === 0)
-    return <div>Ops! An error occured.</div>;
+  if (!tableData || tableData.length === 0) return <Error />;
 
   return (
     <Box ml={1} mr={1} height={500} width={width || 800}>

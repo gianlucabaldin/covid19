@@ -10,6 +10,7 @@ import {
   LineMarkSeries,
   Hint,
 } from 'react-vis';
+import Error from './Error';
 import { reduceData } from '../utils/chartUtils';
 
 const ItalyChart = ({ data, width = 500 }) => {
@@ -19,7 +20,7 @@ const ItalyChart = ({ data, width = 500 }) => {
   const recoveredArray = [];
   const deathsArray = [];
 
-  if (!data) return <div>Ops! An error occured.</div>;
+  if (!data) return <Error />;
 
   reduceData(data).map((el) => {
     confirmedArray.push({
