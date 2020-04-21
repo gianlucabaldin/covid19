@@ -69,6 +69,7 @@ const ItalyContainer = (props) => {
         bgcolor="background.paper"
       >
         <Summary {...summaryData} />
+
         {chartData && chartData.length > 0 && (
           <ItalyChart data={chartData} width={width} />
         )}

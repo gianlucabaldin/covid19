@@ -1,10 +1,6 @@
 import { mockItalyHistoricalResponse } from './mock/mockItalyHistoricalResponse';
 import { mockItalyRegionsResponse } from './mock/mockItalyRegionsResponse';
-
-export const API_ITALY_HYSTORICAL =
-  'https://api.covid19api.com/total/dayone/country/italy';
-export const API_ITALY_REGION =
-  'https://openpuglia.org/api/?q=getdatapccovid-19';
+import { API_ITALY_HYSTORICAL, API_ITALY_REGION } from './consts';
 
 export const fetchItalyHistoricalAll = async (mock = true) => {
   if (mock) {

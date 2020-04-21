@@ -13,6 +13,8 @@ import {
 import { Box } from '@material-ui/core';
 import Error from './Error';
 import { reduceData } from '../utils/chartUtils';
+import LastUpdate from './LastUpdate';
+import { COVDID_19_API } from '../utils/consts';
 
 const ItalyChart = ({ data, width = 500 }) => {
   const [hintValue, setHintValue] = useState(false);
@@ -40,6 +42,9 @@ const ItalyChart = ({ data, width = 500 }) => {
 
   return (
     <Box marginTop={1} marginBottom={3}>
+      {data && data.length > 0 && (
+        <LastUpdate date={data[data.length - 1].Date} href={COVDID_19_API} />
+      )}
       <XYPlot
         height={300}
         width={width || 800}

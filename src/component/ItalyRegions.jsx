@@ -7,10 +7,19 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { Box, Hidden, withStyles, TableFooter } from '@material-ui/core';
+import {
+  Box,
+  Hidden,
+  withStyles,
+  TableFooter,
+  Link,
+  Typography,
+} from '@material-ui/core';
 import { grey } from '@material-ui/core/colors';
 import moment from 'moment';
 import Error from './Error';
+import { COVDID_19_API } from '../utils/consts';
+import LastUpdate from './LastUpdate';
 
 const useStyles = makeStyles({
   table: {
@@ -56,6 +65,7 @@ const ItalyRegions = ({ tableData, width }) => {
       width={width || 800}
       style={{ overflowY: 'scroll', paddingBottom: 10 }}
     >
+      <LastUpdate date={tableData[0].data} href={COVDID_19_API} />
       <TableContainer component={Paper}>
         <Table
           className={classes.table}
@@ -140,9 +150,6 @@ const ItalyRegions = ({ tableData, width }) => {
                 </TableRow>
               ))}
           </TableBody>
-          <TableFooter>
-            {/* Last update available: {moment(tableData[0].data)} */}
-          </TableFooter>
         </Table>
       </TableContainer>
     </Box>
