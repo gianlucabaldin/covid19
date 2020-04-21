@@ -1,7 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { TableContainer } from '@material-ui/core';
 import ItalyRegions from './ItalyRegions';
 import { fetchItalyRegion } from '../utils/fetch';
+import Error from './Error';
 
 describe('ItalyRegions', () => {
   let wrapper = shallow(<ItalyRegions />);
@@ -10,10 +12,13 @@ describe('ItalyRegions', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('contains a table', () => {
-    expect(
-      wrapper.find('WithStyles(ForwardRef(TableContainer))'),
-    ).toBeDefined();
+  it('renders an error if no data aare passed', () => {
+    expect(wrapper.find(Error).length).toEqual(1);
+  });
+
+  it('renders an error if empty data are passed and shows error', async () => {
+    wrapper = shallow(<ItalyRegions tableData={[]} />);
+    expect(wrapper.find('Error').length).toEqual(1);
   });
 
   describe('fetches', () => {
@@ -21,11 +26,6 @@ describe('ItalyRegions', () => {
       const tableData = await fetchItalyRegion();
       wrapper = shallow(<ItalyRegions tableData={tableData} />);
       expect(wrapper).toIncludeText('Piemonte');
-    });
-
-    it('fetches no data and show error', async () => {
-      wrapper = shallow(<ItalyRegions tableData={[]} />);
-      expect(wrapper).toIncludeText('Ops! An error occured.');
     });
   });
 });

@@ -1,7 +1,7 @@
 ### Test single file
 
 ```
-npm run test -t MainContainer
+npm run test -t MainContainer --verbose
 ```
 
 ### Log html
@@ -61,7 +61,7 @@ it('has a center-aligned project description - with Enzyme', () => {
 
 ```
 it('contains Summary component', () => {
-    expect(wrapper.find(<Summary />)).toBeDefined();
+    expect(wrapper.find(<Summary />).length).toEqual(1);
 });
 ```
 
@@ -84,9 +84,41 @@ it('contains Summary component', () => {
 });
 ```
 
+#### with Enzyme.find() + length.toEqual(num) --> BEST !
+
+##### look for a "Component" component after importing it, not the jsx "<Component>" string version
+
+```
+it('should have 3 buttons', () => {
+let wrapper = mount(<NavButtons />);
+expect(wrapper.find(Button).length).toEqual(3);
+});
+```
+
+or
+
+```
+it('should have 3 buttons', () => {
+let wrapper = mount(<NavButtons />);
+expect(wrapper.contains(Button)).toEqual(true);
+expect(wrapper.find(Button).length).toEqual(3);
+});
+```
+
+##### look for a "Component" component string-representation, not the jsx "<Component>" version
+
 ```
 it('should have 3 buttons', () => {
 let wrapper = mount(<NavButtons />);
 expect(wrapper.find('WithStyles(ForwardRef(Button))').length).toEqual(3);
+});
+```
+
+##### look for a component child by "data-id" attribute
+
+```
+it('should have 3 buttons', () => {
+const wrapper = shallow(<ItalyChart data={mockData} />);
+// expect(wrapper.find('[data-id="chart-italy"]').length).toEqual(1);
 });
 ```

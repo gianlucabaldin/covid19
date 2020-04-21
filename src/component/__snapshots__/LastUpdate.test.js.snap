@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Last Update component should renders properly 1`] = `
+<WithStyles(ForwardRef(Typography))
+  style={
+    Object {
+      "fontStyle": "italic",
+    }
+  }
+>
+  Data provided by 
+  <WithStyles(ForwardRef(Link)) />
+  , last update available:
+   
+  Invalid date
+</WithStyles(ForwardRef(Typography))>
+`;

@@ -1,19 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ItalyChart renders error message if empty data are passed 1`] = `
-<div>
-  Ops! An error occured.
-</div>
-`;
+exports[`ItalyChart renders en error message with no data 1`] = `<Error />`;
 
-exports[`ItalyChart renders properly with no data 1`] = `
-<div>
-  Ops! An error occured.
-</div>
-`;
+exports[`ItalyChart renders error message if empty data are passed 1`] = `<Error />`;
 
 exports[`ItalyChart renders with data with 3 series 1`] = `
-<Fragment>
+<Styled(MuiBox)
+  marginBottom={3}
+  marginTop={1}
+>
+  <LastUpdate
+    date="2020-04-17T00:00:00Z"
+    href="covid19api.com"
+  />
   <XYPlot
     className=""
     data-id="chart-italy"
@@ -21,6 +20,7 @@ exports[`ItalyChart renders with data with 3 series 1`] = `
     margin={
       Object {
         "left": 60,
+        "right": 30,
       }
     }
     onMouseLeave={[Function]}
@@ -337,5 +337,5 @@ exports[`ItalyChart renders with data with 3 series 1`] = `
       title="number"
     />
   </XYPlot>
-</Fragment>
+</Styled(MuiBox)>
 `;

@@ -41,7 +41,7 @@ const ItalyChart = ({ data, width = 500 }) => {
   });
 
   return (
-    <Box marginTop={1} marginBottom={3}>
+    <Box marginTop={1} marginBottom={3} data-id="italy-chart-box">
       {data && data.length > 0 && (
         <LastUpdate date={data[data.length - 1].Date} href={COVDID_19_API} />
       )}
@@ -51,7 +51,6 @@ const ItalyChart = ({ data, width = 500 }) => {
         margin={{ left: 60, right: 30 }}
         xType="time"
         onMouseLeave={() => setHintValue(false)}
-        data-id="chart-italy"
       >
         <VerticalGridLines />
         <HorizontalGridLines />

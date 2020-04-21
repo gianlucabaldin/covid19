@@ -7,14 +7,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import {
-  Box,
-  Hidden,
-  withStyles,
-  TableFooter,
-  Link,
-  Typography,
-} from '@material-ui/core';
+import { Box, Hidden, withStyles } from '@material-ui/core';
 import { grey } from '@material-ui/core/colors';
 import moment from 'moment';
 import Error from './Error';
@@ -64,6 +57,7 @@ const ItalyRegions = ({ tableData, width }) => {
       maxHeight={350}
       width={width || 800}
       style={{ overflowY: 'scroll', paddingBottom: 10 }}
+      data-id="italy-regions-box"
     >
       <LastUpdate date={tableData[0].data} href={COVDID_19_API} />
       <TableContainer component={Paper}>

@@ -3,8 +3,8 @@
 exports[`Summary renders properly 1`] = `
 <Styled(MuiBox)
   className="summary"
-  ml={1}
-  mr={1}
+  m={1}
+  margin="auto"
 >
   <WithStyles(ForwardRef(TableContainer))
     component={
@@ -331,38 +331,39 @@ exports[`Summary renders properly 1`] = `
     >
       <WithStyles(ForwardRef(TableHead))>
         <WithStyles(ForwardRef(TableRow))
+          className="makeStyles-trHeader-2"
           key="tr-status"
         >
-          <WithStyles(ForwardRef(TableCell))
+          <WithStyles(WithStyles(ForwardRef(TableCell)))
             align="center"
           >
             Confirmed
-          </WithStyles(ForwardRef(TableCell))>
-          <WithStyles(ForwardRef(TableCell))
+          </WithStyles(WithStyles(ForwardRef(TableCell)))>
+          <WithStyles(WithStyles(ForwardRef(TableCell)))
             align="center"
           >
             Recovered
-          </WithStyles(ForwardRef(TableCell))>
-          <WithStyles(ForwardRef(TableCell))
+          </WithStyles(WithStyles(ForwardRef(TableCell)))>
+          <WithStyles(WithStyles(ForwardRef(TableCell)))
             align="center"
           >
             Deaths
-          </WithStyles(ForwardRef(TableCell))>
+          </WithStyles(WithStyles(ForwardRef(TableCell)))>
         </WithStyles(ForwardRef(TableRow))>
       </WithStyles(ForwardRef(TableHead))>
       <WithStyles(ForwardRef(TableBody))>
         <WithStyles(ForwardRef(TableRow))
           key="td-status"
         >
-          <WithStyles(ForwardRef(TableCell))
+          <WithStyles(WithStyles(ForwardRef(TableCell)))
             align="center"
             id="summary-confirmed"
           />
-          <WithStyles(ForwardRef(TableCell))
+          <WithStyles(WithStyles(ForwardRef(TableCell)))
             align="center"
             id="summary-recovered"
           />
-          <WithStyles(ForwardRef(TableCell))
+          <WithStyles(WithStyles(ForwardRef(TableCell)))
             align="center"
             id="summary-deaths"
           />

@@ -2,7 +2,7 @@
 
 exports[`MainContainer renders properly 1`] = `
 <WithStyles(ForwardRef(Container))
-  fixed={true}
+  fluid={true}
   style={
     Object {
       "backgroundColor": "lightblue",

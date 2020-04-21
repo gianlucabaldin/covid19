@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { shallow, mount } from 'enzyme';
+import { TableContainer } from '@material-ui/core';
 import Summary from './Summary';
 import { fetchItalyHistoricalLastDay } from '../utils/fetch';
 
@@ -13,9 +14,7 @@ describe('Summary', () => {
 
   it('should have a Table', () => {
     wrapper = mount(<Summary />);
-    expect(
-      wrapper.find('WithStyles(ForwardRef(TableContainer))'),
-    ).toBeDefined();
+    expect(wrapper.find(TableContainer).length).toEqual(1);
   });
 
   describe('fetches (mock) data', () => {

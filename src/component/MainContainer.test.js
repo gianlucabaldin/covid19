@@ -2,7 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import MainContainer from './MainContainer';
 import NavButtons from './NavButtons';
-import Summary from './Summary';
 import ItalyContainer from './ItalyContainer';
 
 describe('MainContainer', () => {
@@ -18,7 +17,7 @@ describe('MainContainer', () => {
     });
 
     it('contains ItalyContainer component', () => {
-      expect(wrapper.find(<ItalyContainer />)).toBeDefined();
+      expect(wrapper.find(ItalyContainer).length).toEqual(1);
     });
   });
 });

@@ -13,11 +13,11 @@ describe('App', () => {
 
   describe('contains', () => {
     it('contains an Header component', () => {
-      expect(wrapper.find(<Header />)).toBeDefined();
+      expect(wrapper.find(Header).length).toEqual(1);
     });
 
     it('contains MainContainer component', () => {
-      expect(wrapper.find(<MainContainer />)).toBeDefined();
+      expect(wrapper.find(MainContainer).length).toEqual(1);
     });
   });
 });
