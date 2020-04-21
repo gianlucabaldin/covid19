@@ -9,6 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { Box, withStyles } from '@material-ui/core';
 import { grey } from '@material-ui/core/colors';
+import Error from './Error';
 
 const useStyles = makeStyles({
   table: {
@@ -25,11 +26,18 @@ const TableCell = withStyles({
   },
 })(MuiTableCell);
 
-const Summary = ({ confirmed, recovered, deaths, error }) => {
+const Summary = ({
+  confirmed = 0,
+  recovered = 0,
+  deaths = 0,
+  error = false,
+}) => {
   const classes = useStyles();
 
+  if (error) return <Error />;
+
   return (
-    <Box m={1} className="summary" margin="auto">
+    <Box m={1} data-id="summary-box" margin="auto">
       <TableContainer component={Paper}>
         <Table
           className={classes.table}

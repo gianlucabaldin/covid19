@@ -67,6 +67,7 @@ const ItalyContainer = (props) => {
         m={1}
         p={1}
         bgcolor="background.paper"
+        data-id="italy-container-box"
       >
         <Summary {...summaryData} />
 
@@ -75,8 +76,6 @@ const ItalyContainer = (props) => {
         )}
 
         {<ItalyRegions tableData={tableData} width={width} />}
-
-        {/* {error && <span>Data not available</span>} */}
       </Box>
     </>
   );

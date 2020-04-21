@@ -14,39 +14,37 @@ describe('ItalyContainer', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('renders with default props', () => {
-    wrapper = mount(<ItalyContainer />);
-    expect(wrapper.find('Styled(MuiBox)')).toBeDefined();
+  describe('not contains', () => {
+    it('ItalyChart component if no data are fetched/passed', () => {
+      expect(wrapper.find(ItalyChart).length).toEqual(0);
+    });
   });
 
   describe('contains', () => {
-    it('ItalyChart component', () => {
-      expect(wrapper.find(<ItalyChart />)).toBeDefined();
-    });
-
     it('ItalyRegions component', () => {
-      expect(wrapper.find(<ItalyRegions />)).toBeDefined();
+      expect(wrapper.find(ItalyRegions).length).toEqual(1);
     });
 
     it('Summary component', () => {
-      expect(wrapper.find(<Summary />)).toBeDefined();
+      expect(wrapper.find(Summary).length).toEqual(1);
     });
   });
 
   describe('fetches (mock) data', () => {
-    it('renders with props', () => {
-      const tableData = {
-        data: fetchItalyHistoricalAll(),
-        error: false,
-      };
-      wrapper = mount(<ItalyContainer {...tableData} />);
-      expect(wrapper.find('Styled(MuiBox)')).toBeDefined();
+    let chartData;
+    beforeAll(async () => {
+      chartData = await fetchItalyHistoricalAll();
     });
 
-    // it('fetchs data wrongly', () => {
-    //   const mockData = { error: true };
-    //   wrapper = mount(<ItalyContainer {...mockData} />);
-    //   expect(wrapper).toIncludeText('Ops! An error occured.');
-    // });
+    it('renders with its children ItalyChart', () => {
+      wrapper = shallow(
+        <ItalyContainer>
+          <ItalyChart data={chartData} />
+        </ItalyContainer>,
+      );
+      expect(wrapper.find('[data-id="italy-container-box"]').length).toEqual(1);
+    });
+
+    // TODO test ItalyRegion and SUmmary as well, too -> problems
   });
 });

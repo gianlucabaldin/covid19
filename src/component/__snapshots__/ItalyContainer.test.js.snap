@@ -3,7 +3,12 @@
 exports[`ItalyContainer renders properly 1`] = `
 <Fragment>
   <Styled(MuiBox)
+    alignItems="center"
     bgcolor="background.paper"
+    data-id="italy-container-box"
+    display="flex"
+    flexDirection="column"
+    justifyContent="center"
     m={1}
     p={1}
   >
