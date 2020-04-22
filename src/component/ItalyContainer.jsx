@@ -29,8 +29,10 @@ const ItalyContainer = (props) => {
   const fetchData = () => {
     fetchItalyHistoricalAll()
       .then((res) => {
+        // fill chart with fetched data
         setChartData(res);
         const { Confirmed, Recovered, Deaths } = res[res.length - 1];
+        // fill summary with last day-data extracted from previous fetch
         setSummaryData({
           confirmed: Confirmed,
           recovered: Recovered,
@@ -43,6 +45,7 @@ const ItalyContainer = (props) => {
         setChartData({ error: true });
       });
 
+    // fill table with fetched data
     fetchItalyRegion()
       .then((res) => {
         setTableData(res);

@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// the marks used as base
 const marks = [
   {
     value: 10,
@@ -25,7 +26,7 @@ const marks = [
   },
   {
     value: 30,
-    label: '37',
+    label: '30',
   },
   {
     value: 40,
@@ -41,8 +42,20 @@ function valuetext(value) {
   return `${value}°C`;
 }
 
-export default function AccuracySlider() {
+export default function AccuracySlider({ changeAccuracy }) {
   const classes = useStyles();
+
+  /**
+   * Called when its value has been changed, calls the parent method
+   * with the new value
+   * @param {text} e the event object contains the new value
+   */
+  const onChangeAccuracy = (e) =>
+    changeAccuracy(
+      e && e.target && e.target.ariaValueNow
+        ? parseInt(e.target.ariaValueNow, 10)
+        : 0,
+    );
 
   return (
     <div className={classes.root}>
@@ -57,6 +70,7 @@ export default function AccuracySlider() {
         marks={marks}
         min={10}
         max={50}
+        onChangeCommitted={onChangeAccuracy}
       />
     </div>
   );

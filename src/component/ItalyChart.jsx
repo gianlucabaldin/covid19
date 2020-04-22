@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../node_modules/react-vis/dist/style.css';
 import {
   XYPlot,
@@ -13,7 +13,7 @@ import { Container } from '@material-ui/core';
 import moment from 'moment';
 import AccuracySlider from './AccuracySlider';
 import Error from './Error';
-import { reduceData } from '../utils/chartUtils';
+import { prepareData } from '../utils/chartUtils';
 import LastUpdate from './LastUpdate';
 import { COVID_19_API, STATUS } from '../utils/consts';
 
@@ -25,26 +25,33 @@ const initialHintValue = {
 
 const ItalyChart = ({ data, width = 500 }) => {
   const [hint, setHint] = useState(initialHintValue);
-  const confirmedArray = [];
-  const recoveredArray = [];
-  const deathsArray = [];
+  const [confirmedValues, setConfirmedValues] = useState([]);
+  const [recoveredValues, setRecoveredValues] = useState([]);
+  const [deathsValues, setDeathsValues] = useState([]);
 
-  if (!data) return <Error />;
+  /**
+   * Filter and manipulate the whole data set, filtering in case data lenght > accuracy
+   * with accuracy default = 20
+   * @param {accuracyChanged} accuracyChanged the new accuracy value (optional)
+   */
+  const manipulateData = (accuracyChanged) => {
+    const { confirmedArray, recoveredArray, deathsArray } = prepareData(
+      data,
+      accuracyChanged,
+    );
+    setConfirmedValues(confirmedArray);
+    setRecoveredValues(recoveredArray);
+    setDeathsValues(deathsArray);
+  };
 
-  reduceData(data).forEach((el) => {
-    confirmedArray.push({
-      x: new Date(el.Date),
-      y: el.Confirmed,
-    });
-    recoveredArray.push({
-      x: new Date(el.Date),
-      y: el.Recovered,
-    });
-    deathsArray.push({
-      x: new Date(el.Date),
-      y: el.Deaths,
-    });
-  });
+  useEffect(() => {
+    manipulateData();
+  }, []);
+
+  // method passed to child component Accuracy, called when Accuracy changes
+  const changeAccuracy = (accuracyChanged) => {
+    manipulateData(accuracyChanged);
+  };
 
   const getHintSection = () => {
     return hint.over ? (
@@ -65,7 +72,7 @@ const ItalyChart = ({ data, width = 500 }) => {
     setHint({ data: datapoint, over: false, status: '' });
   };
 
-  return (
+  return data && data.length > 0 ? (
     <>
       <Container
         marginTop={1}
@@ -81,7 +88,7 @@ const ItalyChart = ({ data, width = 500 }) => {
           <LastUpdate date={data[data.length - 1].Date} href={COVID_19_API} />
         )}
 
-        <AccuracySlider />
+        <AccuracySlider changeAccuracy={changeAccuracy} />
       </Container>
 
       <Container>
@@ -94,39 +101,21 @@ const ItalyChart = ({ data, width = 500 }) => {
           <HorizontalGridLines />
           <VerticalGridLines />
 
-          {/* <LineSeries
-          data={confirmedArray}
-          lineStyle={{ stroke: 'green' }}
-          markStyle={{ stroke: 'purple' }}
-          curve="curveMonotoneX"
-        />
-        <LineSeries
-          data={recoveredArray}
-          lineStyle={{ stroke: 'green' }}
-          markStyle={{ stroke: 'purple' }}
-          curve="curveMonotoneX"
-        />
-        <LineSeries
-          data={deathsArray}
-          lineStyle={{ stroke: 'green' }}
-          markStyle={{ stroke: 'purple' }}
-          curve="curveMonotoneX"
-        /> */}
           <LineMarkSeries
             curve="curveMonotoneX"
-            data={confirmedArray}
+            data={confirmedValues}
             onValueMouseOver={(val) => mouseOver(val, STATUS.CONFIRMED)}
             onValueMouseOut={mouseOut}
           />
           <LineMarkSeries
             curve="curveMonotoneX"
-            data={recoveredArray}
+            data={recoveredValues}
             onValueMouseOver={(val) => mouseOver(val, STATUS.RECOVERED)}
             onValueMouseOut={mouseOut}
           />
           <LineMarkSeries
             curve="curveMonotoneX"
-            data={deathsArray}
+            data={deathsValues}
             onValueMouseOver={(val) => mouseOver(val, STATUS.DEATHS)}
             onValueMouseOut={mouseOut}
           />
@@ -136,10 +125,14 @@ const ItalyChart = ({ data, width = 500 }) => {
             tickTotal={20}
           />
           <YAxis title="number" position="end" tickTotal={10} />
+
+          {/* the hint popup shown when user point a mark with the mouse */}
           {getHintSection(hint.over)}
         </XYPlot>
       </Container>
     </>
+  ) : (
+    <Error />
   );
 };
 
