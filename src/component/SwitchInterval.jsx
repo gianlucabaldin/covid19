@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { withStyles, Switch, Typography, Grid } from '@material-ui/core';
 
 const AntSwitch = withStyles((theme) => ({
@@ -35,21 +35,31 @@ const AntSwitch = withStyles((theme) => ({
   checked: {},
 }))(Switch);
 
-const SwitchInterval = () => (
-  <Typography component="div">
-    <Grid component="label" container alignItems="center" spacing={1}>
-      <Grid item>Last week</Grid>
-      <Grid item>
-        <AntSwitch
-          // checked={state.checkedC}
-          checked
-          // onChange={handleChange}
-          name="checkedC"
-        />
+const SwitchInterval = ({ onToggleSwitch }) => {
+  const [checked, setChecked] = useState(true);
+
+  const onToggle = (e) => {
+    const newState = e.target.checked;
+    onToggleSwitch(newState);
+    setChecked(newState);
+  };
+
+  return (
+    <Typography component="div">
+      <Grid component="label" container alignItems="center" spacing={1}>
+        <Grid item>Last week</Grid>
+        <Grid item>
+          <AntSwitch
+            // checked={state.checkedC}
+            checked={checked}
+            onChange={onToggle}
+            name="checkedC"
+          />
+        </Grid>
+        <Grid item>Historical</Grid>
       </Grid>
-      <Grid item>Historical</Grid>
-    </Grid>
-  </Typography>
-);
+    </Typography>
+  );
+};
 
 export default SwitchInterval;

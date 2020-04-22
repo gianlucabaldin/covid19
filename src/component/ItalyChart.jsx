@@ -16,7 +16,7 @@ import AccuracySlider from './AccuracySlider';
 import Error from './Error';
 import { prepareData } from '../utils/chartUtils';
 import LastUpdate from './LastUpdate';
-import { COVID_19_API, STATUS } from '../utils/consts';
+import { COVID_19_API, STATUS, DEFAUL_MAX_DATA_SIZE } from '../utils/consts';
 import SwitchInterval from './SwitchInterval';
 
 const initialHintValue = {
@@ -30,13 +30,15 @@ const ItalyChart = ({ data, width = 500 }) => {
   const [confirmedValues, setConfirmedValues] = useState([]);
   const [recoveredValues, setRecoveredValues] = useState([]);
   const [deathsValues, setDeathsValues] = useState([]);
+  const [disableAccuracy, setDisableAccuracy] = useState(false);
+  const [accuracyValue, setAccuracyValue] = useState(DEFAUL_MAX_DATA_SIZE);
 
   /**
    * Filter and manipulate the whole data set, filtering in case data lenght > accuracy
    * with accuracy default = 20
    * @param {accuracyChanged} accuracyChanged the new accuracy value (optional)
    */
-  const manipulateData = (accuracyChanged) => {
+  const manipulateDataByAccuracy = (accuracyChanged) => {
     const { confirmedArray, recoveredArray, deathsArray } = prepareData(
       data,
       accuracyChanged,
@@ -47,12 +49,12 @@ const ItalyChart = ({ data, width = 500 }) => {
   };
 
   useEffect(() => {
-    manipulateData();
+    manipulateDataByAccuracy();
   }, []);
 
   // method passed to child component Accuracy, called when Accuracy changes
   const changeAccuracy = (accuracyChanged) => {
-    manipulateData(accuracyChanged);
+    manipulateDataByAccuracy(accuracyChanged);
   };
 
   const getHintSection = () => {
@@ -74,6 +76,16 @@ const ItalyChart = ({ data, width = 500 }) => {
     setHint({ data: datapoint, over: false, status: '' });
   };
 
+  const onToggleSwitch = (checked) => {
+    if (checked) {
+      manipulateDataByAccuracy();
+    } else {
+      manipulateDataByAccuracy(7);
+    }
+    setDisableAccuracy(!checked);
+    setAccuracyValue(accuracyValue);
+  };
+
   return data && data.length > 0 ? (
     <>
       <Container
@@ -91,9 +103,13 @@ const ItalyChart = ({ data, width = 500 }) => {
           <LastUpdate date={data[data.length - 1].Date} href={COVID_19_API} />
         )}
 
-        <SwitchInterval />
+        <SwitchInterval onToggleSwitch={(checked) => onToggleSwitch(checked)} />
 
-        <AccuracySlider changeAccuracy={changeAccuracy} />
+        <AccuracySlider
+          accuracyValue={accuracyValue}
+          changeAccuracy={(accuracy) => changeAccuracy(accuracy)}
+          disabled={disableAccuracy}
+        />
       </Container>
 
       <Container

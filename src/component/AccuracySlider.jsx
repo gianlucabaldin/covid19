@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
+import { DEFAUL_MAX_DATA_SIZE } from '../utils/consts';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,7 +43,11 @@ function valuetext(value) {
   return `${value}°C`;
 }
 
-export default function AccuracySlider({ changeAccuracy }) {
+export default function AccuracySlider({
+  accuracyValue,
+  disabled,
+  changeAccuracy,
+}) {
   const classes = useStyles();
 
   /**
@@ -59,11 +64,16 @@ export default function AccuracySlider({ changeAccuracy }) {
 
   return (
     <div className={classes.root}>
-      <Typography id="discrete-slider-custom" textAlign="center">
+      <Typography
+        id="discrete-slider-custom"
+        textAlign="center"
+        style={disabled ? { color: 'grey.500' } : {}}
+      >
         Accuracy
       </Typography>
       <Slider
-        defaultValue={20}
+        disabled={disabled}
+        defaultValue={accuracyValue || DEFAUL_MAX_DATA_SIZE}
         getAriaValueText={valuetext}
         aria-labelledby="discrete-slider-custom"
         step={10}
