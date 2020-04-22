@@ -17,6 +17,7 @@ import Error from './Error';
 import { prepareData } from '../utils/chartUtils';
 import LastUpdate from './LastUpdate';
 import { COVID_19_API, STATUS } from '../utils/consts';
+import SwitchInterval from './SwitchInterval';
 
 const initialHintValue = {
   data: {},
@@ -83,12 +84,14 @@ const ItalyChart = ({ data, width = 500 }) => {
           display: 'flex',
           justifyContent: 'space-between',
           flexDirection: 'row',
-          alignItems: 'flex-end',
+          alignItems: 'center',
         }}
       >
         {data && data.length > 0 && (
           <LastUpdate date={data[data.length - 1].Date} href={COVID_19_API} />
         )}
+
+        <SwitchInterval />
 
         <AccuracySlider changeAccuracy={changeAccuracy} />
       </Container>
@@ -108,6 +111,7 @@ const ItalyChart = ({ data, width = 500 }) => {
           ]}
           style={{ position: 'absolute', left: '40%' }}
         />
+
         <XYPlot
           height={300}
           width={width || 800}
