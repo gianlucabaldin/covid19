@@ -30,7 +30,7 @@ const ItalyChart = ({ data, width = 500 }) => {
 
   if (!data) return <Error />;
 
-  reduceData(data).map((el) => {
+  reduceData(data).forEach((el) => {
     confirmedArray.push({
       x: new Date(el.Date),
       y: el.Confirmed,
@@ -73,10 +73,10 @@ const ItalyChart = ({ data, width = 500 }) => {
         height={300}
         width={width || 800}
         margin={{ left: 60, right: 30 }}
-        xType="time"
+        xType="ordinal"
       >
-        <VerticalGridLines />
         <HorizontalGridLines />
+        <VerticalGridLines />
 
         {/* <LineSeries
           data={confirmedArray}
@@ -116,7 +116,7 @@ const ItalyChart = ({ data, width = 500 }) => {
         />
         <XAxis
           title="day"
-          // tickFormat={(value) => moment(value).format('DD/MM')}
+          tickFormat={(value) => moment(value).format('DD/M')}
           tickTotal={20}
         />
         <YAxis title="number" position="end" tickTotal={10} />
