@@ -14,7 +14,7 @@ import moment from 'moment';
 import Error from './Error';
 import { reduceData } from '../utils/chartUtils';
 import LastUpdate from './LastUpdate';
-import { COVDID_19_API } from '../utils/consts';
+import { COVID_19_API } from '../utils/consts';
 
 const ItalyChart = ({ data, width = 500 }) => {
   const [hintData, setHintData] = useState({});
@@ -65,7 +65,7 @@ const ItalyChart = ({ data, width = 500 }) => {
   return (
     <Box marginTop={1} marginBottom={3} data-id="italy-chart-box">
       {data && data.length > 0 && (
-        <LastUpdate date={data[data.length - 1].Date} href={COVDID_19_API} />
+        <LastUpdate date={data[data.length - 1].Date} href={COVID_19_API} />
       )}
       <XYPlot
         height={300}

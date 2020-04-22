@@ -9,9 +9,8 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { Box, Hidden, withStyles } from '@material-ui/core';
 import { grey } from '@material-ui/core/colors';
-import moment from 'moment';
 import Error from './Error';
-import { COVDID_19_API } from '../utils/consts';
+import { OPEN_PUGLIA_API } from '../utils/consts';
 import LastUpdate from './LastUpdate';
 
 const useStyles = makeStyles({
@@ -59,7 +58,7 @@ const ItalyRegions = ({ tableData, width }) => {
       style={{ overflowY: 'scroll', paddingBottom: 10 }}
       data-id="italy-regions-box"
     >
-      <LastUpdate date={tableData[0].data} href={COVDID_19_API} />
+      <LastUpdate date={tableData[0].data} href={OPEN_PUGLIA_API} />
       <TableContainer component={Paper}>
         <Table
           className={classes.table}

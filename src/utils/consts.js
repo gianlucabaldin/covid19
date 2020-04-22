@@ -6,4 +6,4 @@ export const API_ITALY_REGION =
   'https://openpuglia.org/api/?q=getdatapccovid-19';
 
 export const OPEN_PUGLIA_API = 'openpuglia.org';
-export const COVDID_19_API = 'covid19api.com';
+export const COVID_19_API = 'covid19api.com';
