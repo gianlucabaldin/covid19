@@ -9,8 +9,9 @@ import {
   LineMarkSeries,
   Hint,
 } from 'react-vis';
-import { Box } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 import moment from 'moment';
+import AccuracySlider from './AccuracySlider';
 import Error from './Error';
 import { reduceData } from '../utils/chartUtils';
 import LastUpdate from './LastUpdate';
@@ -65,20 +66,35 @@ const ItalyChart = ({ data, width = 500 }) => {
   };
 
   return (
-    <Box marginTop={1} marginBottom={3} data-id="italy-chart-box">
-      {data && data.length > 0 && (
-        <LastUpdate date={data[data.length - 1].Date} href={COVID_19_API} />
-      )}
-      <XYPlot
-        height={300}
-        width={width || 800}
-        margin={{ left: 60, right: 30 }}
-        xType="ordinal"
+    <>
+      <Container
+        marginTop={1}
+        marginBottom={3}
+        data-id="italy-chart-box"
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          flexDirection: 'row',
+        }}
       >
-        <HorizontalGridLines />
-        <VerticalGridLines />
+        {data && data.length > 0 && (
+          <LastUpdate date={data[data.length - 1].Date} href={COVID_19_API} />
+        )}
 
-        {/* <LineSeries
+        <AccuracySlider />
+      </Container>
+
+      <Container>
+        <XYPlot
+          height={300}
+          width={width || 800}
+          margin={{ left: 60, right: 30 }}
+          xType="ordinal"
+        >
+          <HorizontalGridLines />
+          <VerticalGridLines />
+
+          {/* <LineSeries
           data={confirmedArray}
           lineStyle={{ stroke: 'green' }}
           markStyle={{ stroke: 'purple' }}
@@ -96,33 +112,34 @@ const ItalyChart = ({ data, width = 500 }) => {
           markStyle={{ stroke: 'purple' }}
           curve="curveMonotoneX"
         /> */}
-        <LineMarkSeries
-          curve="curveMonotoneX"
-          data={confirmedArray}
-          onValueMouseOver={(val) => mouseOver(val, STATUS.CONFIRMED)}
-          onValueMouseOut={mouseOut}
-        />
-        <LineMarkSeries
-          curve="curveMonotoneX"
-          data={recoveredArray}
-          onValueMouseOver={(val) => mouseOver(val, STATUS.RECOVERED)}
-          onValueMouseOut={mouseOut}
-        />
-        <LineMarkSeries
-          curve="curveMonotoneX"
-          data={deathsArray}
-          onValueMouseOver={(val) => mouseOver(val, STATUS.DEATHS)}
-          onValueMouseOut={mouseOut}
-        />
-        <XAxis
-          title="day"
-          tickFormat={(value) => moment(value).format('DD/M')}
-          tickTotal={20}
-        />
-        <YAxis title="number" position="end" tickTotal={10} />
-        {getHintSection(hint.over)}
-      </XYPlot>
-    </Box>
+          <LineMarkSeries
+            curve="curveMonotoneX"
+            data={confirmedArray}
+            onValueMouseOver={(val) => mouseOver(val, STATUS.CONFIRMED)}
+            onValueMouseOut={mouseOut}
+          />
+          <LineMarkSeries
+            curve="curveMonotoneX"
+            data={recoveredArray}
+            onValueMouseOver={(val) => mouseOver(val, STATUS.RECOVERED)}
+            onValueMouseOut={mouseOut}
+          />
+          <LineMarkSeries
+            curve="curveMonotoneX"
+            data={deathsArray}
+            onValueMouseOver={(val) => mouseOver(val, STATUS.DEATHS)}
+            onValueMouseOut={mouseOut}
+          />
+          <XAxis
+            title="day"
+            tickFormat={(value) => moment(value).format('DD/M')}
+            tickTotal={20}
+          />
+          <YAxis title="number" position="end" tickTotal={10} />
+          {getHintSection(hint.over)}
+        </XYPlot>
+      </Container>
+    </>
   );
 };
 
