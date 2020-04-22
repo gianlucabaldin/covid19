@@ -7,3 +7,9 @@ export const API_ITALY_REGION =
 
 export const OPEN_PUGLIA_API = 'openpuglia.org';
 export const COVID_19_API = 'covid19api.com';
+
+export const STATUS = {
+  CONFIRMED: 'CONFIRMED',
+  RECOVERED: 'RECOVERED',
+  DEATHS: 'DEATHS',
+};

@@ -14,11 +14,12 @@ import moment from 'moment';
 import Error from './Error';
 import { reduceData } from '../utils/chartUtils';
 import LastUpdate from './LastUpdate';
-import { COVID_19_API } from '../utils/consts';
+import { COVID_19_API, STATUS } from '../utils/consts';
 
 const ItalyChart = ({ data, width = 500 }) => {
   const [hintData, setHintData] = useState({});
   const [hintHover, setHintOver] = useState(false);
+  const [hintStatus, setHintStatus] = useState(false);
   // const [hintValue, setHintValue] = useState(undefined);
   const confirmedArray = [];
   const recoveredArray = [];
@@ -46,15 +47,16 @@ const ItalyChart = ({ data, width = 500 }) => {
       <Hint value={hintData}>
         <div style={{ background: 'black', padding: 5 }}>
           Day: {moment(hintData.x).format('DD/MM')} <br />
-          Count: {hintData.y}
+          {hintStatus}: {hintData.y}
         </div>
       </Hint>
     ) : null;
   };
 
-  const mouseOver = (datapoint) => {
+  const mouseOver = (datapoint, status) => {
     setHintData(datapoint);
     setHintOver(true);
+    setHintStatus(status);
   };
 
   const mouseOut = (datapoint) => {
@@ -97,19 +99,19 @@ const ItalyChart = ({ data, width = 500 }) => {
         <LineMarkSeries
           curve="curveMonotoneX"
           data={confirmedArray}
-          onValueMouseOver={mouseOver}
+          onValueMouseOver={(val) => mouseOver(val, STATUS.CONFIRMED)}
           onValueMouseOut={mouseOut}
         />
         <LineMarkSeries
           curve="curveMonotoneX"
           data={recoveredArray}
-          onValueMouseOver={mouseOver}
+          onValueMouseOver={(val) => mouseOver(val, STATUS.RECOVERED)}
           onValueMouseOut={mouseOut}
         />
         <LineMarkSeries
           curve="curveMonotoneX"
           data={deathsArray}
-          onValueMouseOver={mouseOver}
+          onValueMouseOver={(val) => mouseOver(val, STATUS.DEATHS)}
           onValueMouseOut={mouseOut}
         />
         <XAxis
