@@ -26,7 +26,7 @@ const ItalyContainer = (props) => {
   const [tableData, setTableData] = useState(undefined);
 
   // fetch data from public api or mock (see implementation)
-  const fetchData = async () => {
+  const fetchData = () => {
     fetchItalyHistoricalAll()
       .then((res) => {
         setChartData(res);

@@ -4,20 +4,21 @@ import {
   XYPlot,
   XAxis,
   YAxis,
-  LineSeries,
   VerticalGridLines,
   HorizontalGridLines,
   LineMarkSeries,
   Hint,
 } from 'react-vis';
 import { Box } from '@material-ui/core';
+import moment from 'moment';
 import Error from './Error';
 import { reduceData } from '../utils/chartUtils';
 import LastUpdate from './LastUpdate';
 import { COVDID_19_API } from '../utils/consts';
 
 const ItalyChart = ({ data, width = 500 }) => {
-  const [hintValue, setHintValue] = useState(false);
+  const [hintData, setHintData] = useState({});
+  const [hintHover, setHintOver] = useState(false);
   // const [hintValue, setHintValue] = useState(undefined);
   const confirmedArray = [];
   const recoveredArray = [];
@@ -40,6 +41,27 @@ const ItalyChart = ({ data, width = 500 }) => {
     });
   });
 
+  const getHintSection = () => {
+    return hintHover ? (
+      <Hint value={hintData}>
+        <div style={{ background: 'black', padding: 5 }}>
+          Day: {moment(hintData.x).format('DD/MM')} <br />
+          Count: {hintData.y}
+        </div>
+      </Hint>
+    ) : null;
+  };
+
+  const mouseOver = (datapoint) => {
+    setHintData(datapoint);
+    setHintOver(true);
+  };
+
+  const mouseOut = (datapoint) => {
+    setHintData(datapoint);
+    setHintOver(false);
+  };
+
   return (
     <Box marginTop={1} marginBottom={3} data-id="italy-chart-box">
       {data && data.length > 0 && (
@@ -50,7 +72,6 @@ const ItalyChart = ({ data, width = 500 }) => {
         width={width || 800}
         margin={{ left: 60, right: 30 }}
         xType="time"
-        onMouseLeave={() => setHintValue(false)}
       >
         <VerticalGridLines />
         <HorizontalGridLines />
@@ -76,20 +97,28 @@ const ItalyChart = ({ data, width = 500 }) => {
         <LineMarkSeries
           curve="curveMonotoneX"
           data={confirmedArray}
-          // tickTotal={1}
-          // lineStyle={{ stroke: 'red' }}
-          // markStyle={{ stroke: 'blue' }}
-          onNearestXY={(val) => setHintValue(val)}
+          onValueMouseOver={mouseOver}
+          onValueMouseOut={mouseOut}
         />
-        <LineMarkSeries curve="curveMonotoneX" data={recoveredArray} />
-        <LineMarkSeries curve="curveMonotoneX" data={deathsArray} />
+        <LineMarkSeries
+          curve="curveMonotoneX"
+          data={recoveredArray}
+          onValueMouseOver={mouseOver}
+          onValueMouseOut={mouseOut}
+        />
+        <LineMarkSeries
+          curve="curveMonotoneX"
+          data={deathsArray}
+          onValueMouseOver={mouseOver}
+          onValueMouseOut={mouseOut}
+        />
         <XAxis
           title="day"
           // tickFormat={(value) => moment(value).format('DD/MM')}
           tickTotal={20}
         />
         <YAxis title="number" position="end" tickTotal={10} />
-        {hintValue ? <Hint value={hintValue} /> : null}
+        {getHintSection(hintHover)}
       </XYPlot>
     </Box>
   );
