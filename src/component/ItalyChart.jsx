@@ -16,11 +16,14 @@ import { reduceData } from '../utils/chartUtils';
 import LastUpdate from './LastUpdate';
 import { COVID_19_API, STATUS } from '../utils/consts';
 
+const initialHintValue = {
+  data: {},
+  over: false,
+  status: '',
+};
+
 const ItalyChart = ({ data, width = 500 }) => {
-  const [hintData, setHintData] = useState({});
-  const [hintHover, setHintOver] = useState(false);
-  const [hintStatus, setHintStatus] = useState(false);
-  // const [hintValue, setHintValue] = useState(undefined);
+  const [hint, setHint] = useState(initialHintValue);
   const confirmedArray = [];
   const recoveredArray = [];
   const deathsArray = [];
@@ -43,25 +46,22 @@ const ItalyChart = ({ data, width = 500 }) => {
   });
 
   const getHintSection = () => {
-    return hintHover ? (
-      <Hint value={hintData}>
+    return hint.over ? (
+      <Hint value={hint.data}>
         <div style={{ background: 'black', padding: 5 }}>
-          Day: {moment(hintData.x).format('DD/MM')} <br />
-          {hintStatus}: {hintData.y}
+          Day: {moment(hint.data.x).format('DD/MM')} <br />
+          {hint.status}: {hint.data.y}
         </div>
       </Hint>
     ) : null;
   };
 
   const mouseOver = (datapoint, status) => {
-    setHintData(datapoint);
-    setHintOver(true);
-    setHintStatus(status);
+    setHint({ data: datapoint, over: true, status });
   };
 
   const mouseOut = (datapoint) => {
-    setHintData(datapoint);
-    setHintOver(false);
+    setHint({ data: datapoint, over: false, status: '' });
   };
 
   return (
@@ -120,7 +120,7 @@ const ItalyChart = ({ data, width = 500 }) => {
           tickTotal={20}
         />
         <YAxis title="number" position="end" tickTotal={10} />
-        {getHintSection(hintHover)}
+        {getHintSection(hint.over)}
       </XYPlot>
     </Box>
   );
