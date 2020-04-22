@@ -1,5 +1,7 @@
 # TODO
 
+- change mehod calculate marks, starting from last array element and going to zero
+- review Accuracy css style
 - ~~insert footer~~
 - ~~sort region table~~
 - ~~replicate rezise on italy region like charts~~
