@@ -8,6 +8,7 @@ import {
   HorizontalGridLines,
   LineMarkSeries,
   Hint,
+  DiscreteColorLegend,
 } from 'react-vis';
 import { Container } from '@material-ui/core';
 import moment from 'moment';
@@ -82,6 +83,7 @@ const ItalyChart = ({ data, width = 500 }) => {
           display: 'flex',
           justifyContent: 'space-between',
           flexDirection: 'row',
+          alignItems: 'flex-end',
         }}
       >
         {data && data.length > 0 && (
@@ -91,7 +93,21 @@ const ItalyChart = ({ data, width = 500 }) => {
         <AccuracySlider changeAccuracy={changeAccuracy} />
       </Container>
 
-      <Container>
+      <Container
+        style={{
+          position: 'relative',
+        }}
+      >
+        <DiscreteColorLegend
+          strokeWidth={2}
+          orientation="horizontal"
+          items={[
+            { title: STATUS.CONFIRMED.toLowerCase() },
+            { title: STATUS.RECOVERED.toLowerCase() },
+            { title: STATUS.DEATHS.toLowerCase() },
+          ]}
+          style={{ position: 'absolute', left: '40%' }}
+        />
         <XYPlot
           height={300}
           width={width || 800}
