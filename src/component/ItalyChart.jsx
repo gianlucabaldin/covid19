@@ -28,7 +28,7 @@ const ItalyChart = ({
   data,
   error,
   loading,
-  switchChecked,
+  checked,
   onToggleSwitch,
   accuracy,
   onChangeAccuracy,
@@ -98,10 +98,7 @@ const ItalyChart = ({
       >
         <LastUpdate date={getLastUpdate()} href={COVID_19_API} />
 
-        <SwitchInterval
-          onToggleSwitch={onToggleSwitch}
-          checked={switchChecked}
-        />
+        <SwitchInterval onToggleSwitch={onToggleSwitch} checked={checked} />
 
         <AccuracySlider
           accuracy={accuracy}

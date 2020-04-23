@@ -25,6 +25,7 @@ const chartInitialStatus = {
   loading: false,
   switchChecked: true,
   accuracy: DEFAUL_MAX_DATA_SIZE,
+  checked: true,
 };
 
 const ItalyContainer = (props) => {
@@ -89,6 +90,7 @@ const ItalyContainer = (props) => {
     setChartData({
       ...chartData,
       data: { confirmed, recovered, deaths },
+      checked,
     });
   };
 
