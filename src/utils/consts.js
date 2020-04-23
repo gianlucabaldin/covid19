@@ -1,4 +1,4 @@
-export const DEFAUL_MAX_DATA_SIZE = 20;
+export const DEFAUL_MAX_DATA_SIZE = 30;
 
 export const API_ITALY_HYSTORICAL =
   'https://api.covid19api.com/total/dayone/country/italy';

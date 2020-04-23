@@ -1,6 +1,7 @@
 # TODO
 
-- change mehod calculate marks, starting from last array element and going to zero
+- change mehod calculate marks, starting from last array element and going to zero -> make sure it works with "last week" filter too
+- ~~if checked and re-checked, accuracy value is fine but is not accordingly to chart~~
 - review Accuracy css style
 - insert 1 label on every mark series (3 total)
 - ~~insert footer~~

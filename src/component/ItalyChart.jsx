@@ -55,6 +55,7 @@ const ItalyChart = ({ data, width = 500 }) => {
   // method passed to child component Accuracy, called when Accuracy changes
   const changeAccuracy = (accuracyChanged) => {
     manipulateDataByAccuracy(accuracyChanged);
+    setAccuracyValue(accuracyChanged);
   };
 
   const getHintSection = () => {
@@ -78,12 +79,11 @@ const ItalyChart = ({ data, width = 500 }) => {
 
   const onToggleSwitch = (checked) => {
     if (checked) {
-      manipulateDataByAccuracy();
+      manipulateDataByAccuracy(accuracyValue);
     } else {
       manipulateDataByAccuracy(7);
     }
     setDisableAccuracy(!checked);
-    setAccuracyValue(accuracyValue);
   };
 
   return data && data.length > 0 ? (
@@ -160,7 +160,7 @@ const ItalyChart = ({ data, width = 500 }) => {
             tickFormat={(value) => moment(value).format('DD/M')}
             tickTotal={20}
           />
-          <YAxis title="number" position="end" tickTotal={10} />
+          <YAxis title="number" position="end" />
 
           {/* the hint popup shown when user point a mark with the mouse */}
           {getHintSection(hint.over)}
