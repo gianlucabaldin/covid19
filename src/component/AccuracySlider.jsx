@@ -44,9 +44,9 @@ function valuetext(value) {
 }
 
 export default function AccuracySlider({
-  accuracyValue,
   disabled,
-  changeAccuracy,
+  accuracy,
+  onChangeAccuracy,
 }) {
   const classes = useStyles();
 
@@ -55,11 +55,11 @@ export default function AccuracySlider({
    * with the new value
    * @param {text} e the event object contains the new value
    */
-  const onChangeAccuracy = (e) =>
-    changeAccuracy(
+  const changeAccuracy = (e) =>
+    onChangeAccuracy(
       e && e.target && e.target.ariaValueNow
         ? parseInt(e.target.ariaValueNow, 10)
-        : 0,
+        : DEFAUL_MAX_DATA_SIZE, // fallback
     );
 
   return (
@@ -73,14 +73,14 @@ export default function AccuracySlider({
       </Typography>
       <Slider
         disabled={disabled}
-        defaultValue={accuracyValue || DEFAUL_MAX_DATA_SIZE}
+        defaultValue={accuracy}
         getAriaValueText={valuetext}
         aria-labelledby="discrete-slider-custom"
         step={10}
         marks={marks}
         min={10}
         max={50}
-        onChangeCommitted={onChangeAccuracy}
+        onChangeCommitted={changeAccuracy}
       />
     </div>
   );

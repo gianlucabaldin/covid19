@@ -5,6 +5,8 @@ import ItalyChart from './ItalyChart';
 import ItalyRegions from './ItalyRegions';
 import { fetchItalyHistoricalAll, fetchItalyRegion } from '../utils/fetch';
 import Summary from './Summary';
+import { processData } from '../utils/chartUtils';
+import { DEFAUL_MAX_DATA_SIZE } from '../utils/consts';
 
 const summaryInitialStatus = {
   confirmed: 0,
@@ -14,8 +16,15 @@ const summaryInitialStatus = {
 };
 
 const chartInitialStatus = {
-  data: {},
+  data: {
+    confirmed: [],
+    recovered: [],
+    deaths: [],
+  },
   error: false,
+  loading: false,
+  switchChecked: true,
+  accuracy: DEFAUL_MAX_DATA_SIZE,
 };
 
 const ItalyContainer = (props) => {
@@ -24,13 +33,21 @@ const ItalyContainer = (props) => {
   const [summaryData, setSummaryData] = useState({ ...summaryInitialStatus });
   const [chartData, setChartData] = useState({ ...chartInitialStatus });
   const [tableData, setTableData] = useState(undefined);
+  const [fetchedDataAll, setFetchedDataAll] = useState();
 
   // fetch data from public api or mock (see implementation)
   const fetchData = () => {
-    fetchItalyHistoricalAll()
+    fetchItalyHistoricalAll(true)
       .then((res) => {
-        // fill chart with fetched data
-        setChartData(res);
+        const { confirmed, recovered, deaths } = processData(res);
+        setChartData({
+          ...chartInitialStatus,
+          data: {
+            confirmed,
+            recovered,
+            deaths,
+          },
+        });
         const { Confirmed, Recovered, Deaths } = res[res.length - 1];
         // fill summary with last day-data extracted from previous fetch
         setSummaryData({
@@ -39,6 +56,10 @@ const ItalyContainer = (props) => {
           deaths: Deaths,
           error: false,
         });
+        return res;
+      })
+      .then((res) => {
+        setFetchedDataAll(res);
       })
       .catch(() => {
         setSummaryData({ error: true });
@@ -46,7 +67,7 @@ const ItalyContainer = (props) => {
       });
 
     // fill table with fetched data
-    fetchItalyRegion()
+    fetchItalyRegion(true)
       .then((res) => {
         setTableData(res);
       })
@@ -59,6 +80,29 @@ const ItalyContainer = (props) => {
     fetchData();
     // }, [activeSection]);
   }, []);
+
+  const onToggleSwitch = (checked) => {
+    const { confirmed, recovered, deaths } = processData(
+      fetchedDataAll,
+      checked ? undefined : 7,
+    );
+    setChartData({
+      ...chartData,
+      data: { confirmed, recovered, deaths },
+    });
+  };
+
+  const onChangeAccuracy = (accuracy) => {
+    const { confirmed, recovered, deaths } = processData(
+      fetchedDataAll,
+      accuracy,
+    );
+    setChartData({
+      ...chartData,
+      data: { confirmed, recovered, deaths },
+      accuracy,
+    });
+  };
 
   return (
     <>
@@ -74,11 +118,14 @@ const ItalyContainer = (props) => {
       >
         <Summary {...summaryData} />
 
-        {chartData && chartData.length > 0 && (
-          <ItalyChart data={chartData} width={width} />
-        )}
+        <ItalyChart
+          {...chartData}
+          width={width}
+          onToggleSwitch={onToggleSwitch}
+          onChangeAccuracy={onChangeAccuracy}
+        />
 
-        {<ItalyRegions tableData={tableData} width={width} />}
+        <ItalyRegions tableData={tableData} width={width} />
       </Box>
     </>
   );

@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { TableContainer } from '@material-ui/core';
 import ItalyRegions from './ItalyRegions';
 import { fetchItalyRegion } from '../utils/fetch';
 import Error from './Error';
@@ -23,7 +22,7 @@ describe('ItalyRegions', () => {
 
   describe('fetches', () => {
     it('fetches data and show them within the table', async () => {
-      const tableData = await fetchItalyRegion();
+      const tableData = await fetchItalyRegion(true);
       wrapper = shallow(<ItalyRegions tableData={tableData} />);
       expect(wrapper).toIncludeText('Piemonte');
     });

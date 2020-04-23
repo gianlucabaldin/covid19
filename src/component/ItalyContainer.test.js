@@ -33,7 +33,7 @@ describe('ItalyContainer', () => {
   describe('fetches (mock) data', () => {
     let chartData;
     beforeAll(async () => {
-      chartData = await fetchItalyHistoricalAll();
+      chartData = await fetchItalyHistoricalAll(true);
     });
 
     it('renders with its children ItalyChart', () => {

@@ -7,7 +7,7 @@ import Error from './Error';
 
 describe('ItalyChart', () => {
   it('renders with data with 3 series', async () => {
-    const mockData = await fetchItalyHistoricalAll();
+    const mockData = await fetchItalyHistoricalAll(true);
     const wrapper = shallow(<ItalyChart data={mockData} />);
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(XYPlot).length).toEqual(1);
