@@ -35,19 +35,16 @@ const ItalyChart = ({
   width = 500,
 }) => {
   const [hint, setHint] = useState(initialHintValue);
-  // const [confirmedValues, setConfirmedValues] = useState([]);
-  // const [recoveredValues, setRecoveredValues] = useState([]);
-  // const [deathsValues, setDeathsValues] = useState([]);
-  // const [disableAccuracy, setDisableAccuracy] = useState(false);
-  // const [accuracyValue, setAccuracyValue] = useState(DEFAUL_MAX_DATA_SIZE);
 
   let confirmed = [];
   let recovered = [];
   let deaths = [];
+  let actives = [];
   if (data && data.confirmed && data.recovered && data.deaths) {
     confirmed = data.confirmed;
     recovered = data.recovered;
     deaths = data.deaths;
+    actives = data.actives;
   }
   /**
    * Filter and manipulate the whole data set, filtering in case data lenght > accuracy
@@ -118,6 +115,7 @@ const ItalyChart = ({
             { title: STATUS.CONFIRMED.toLowerCase() },
             { title: STATUS.RECOVERED.toLowerCase() },
             { title: STATUS.DEATHS.toLowerCase() },
+            { title: STATUS.ACTIVES.toLowerCase() },
           ]}
           style={{ position: 'absolute', left: '40%' }}
         />
@@ -151,6 +149,14 @@ const ItalyChart = ({
               curve="curveMonotoneX"
               data={deaths || []}
               onValueMouseOver={(val) => mouseOver(val, STATUS.DEATHS)}
+              onValueMouseOut={mouseOut}
+            />
+          )}
+          {actives && actives.length > 0 && (
+            <LineMarkSeries
+              curve="curveMonotoneX"
+              data={actives || []}
+              onValueMouseOver={(val) => mouseOver(val, STATUS.ACTIVES)}
               onValueMouseOut={mouseOut}
             />
           )}

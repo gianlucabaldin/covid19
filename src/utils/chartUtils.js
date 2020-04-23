@@ -26,6 +26,7 @@ export const processData = (data, accuracy) => {
   const confirmed = [];
   const recovered = [];
   const deaths = [];
+  const actives = [];
 
   reduceData(data, accuracy).forEach((el) => {
     confirmed.push({
@@ -40,7 +41,11 @@ export const processData = (data, accuracy) => {
       x: new Date(el.Date),
       y: el.Deaths,
     });
+    actives.push({
+      x: new Date(el.Date),
+      y: el.Active,
+    });
   });
 
-  return { confirmed, recovered, deaths };
+  return { confirmed, recovered, deaths, actives };
 };

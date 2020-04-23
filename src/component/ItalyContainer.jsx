@@ -12,6 +12,7 @@ const summaryInitialStatus = {
   confirmed: 0,
   recovered: 0,
   deaths: 0,
+  actives: 0,
   error: false,
 };
 
@@ -20,6 +21,7 @@ const chartInitialStatus = {
     confirmed: [],
     recovered: [],
     deaths: [],
+    actives: [],
   },
   error: false,
   loading: false,
@@ -40,21 +42,23 @@ const ItalyContainer = (props) => {
   const fetchData = () => {
     fetchItalyHistoricalAll(true)
       .then((res) => {
-        const { confirmed, recovered, deaths } = processData(res);
+        const { confirmed, recovered, deaths, actives } = processData(res);
         setChartData({
           ...chartInitialStatus,
           data: {
             confirmed,
             recovered,
             deaths,
+            actives,
           },
         });
-        const { Confirmed, Recovered, Deaths } = res[res.length - 1];
+        const { Confirmed, Recovered, Deaths, Actives } = res[res.length - 1];
         // fill summary with last day-data extracted from previous fetch
         setSummaryData({
           confirmed: Confirmed,
           recovered: Recovered,
           deaths: Deaths,
+          actives: Actives,
           error: false,
         });
         return res;
@@ -83,25 +87,25 @@ const ItalyContainer = (props) => {
   }, []);
 
   const onToggleSwitch = (checked) => {
-    const { confirmed, recovered, deaths } = processData(
+    const { confirmed, recovered, deaths, actives } = processData(
       fetchedDataAll,
       checked ? undefined : 7,
     );
     setChartData({
       ...chartData,
-      data: { confirmed, recovered, deaths },
+      data: { confirmed, recovered, deaths, actives },
       checked,
     });
   };
 
   const onChangeAccuracy = (accuracy) => {
-    const { confirmed, recovered, deaths } = processData(
+    const { confirmed, recovered, deaths, actives } = processData(
       fetchedDataAll,
       accuracy,
     );
     setChartData({
       ...chartData,
-      data: { confirmed, recovered, deaths },
+      data: { confirmed, recovered, deaths, actives },
       accuracy,
     });
   };
