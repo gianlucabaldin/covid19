@@ -44,7 +44,7 @@ const SwitchInterval = ({ onToggleSwitch, checked }) => {
   return (
     <Typography component="div">
       <Grid component="label" container alignItems="center" spacing={1}>
-        <Grid item>Last week</Grid>
+        <Grid item>Last 10 days</Grid>
         <Grid item>
           <AntSwitch checked={checked} onChange={onToggle} name="checkedC" />
         </Grid>

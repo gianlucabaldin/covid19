@@ -27,9 +27,12 @@ const TableCell = withStyles({
 })(MuiTableCell);
 
 const Summary = ({
-  confirmed = 0,
-  recovered = 0,
-  deaths = 0,
+  // confirmed = 0,
+  // recovered = 0,
+  // deaths = 0,
+  totalCases = 0,
+  deceased = 0,
+  tamponi = 0,
   error = false,
 }) => {
   const classes = useStyles();
@@ -46,14 +49,25 @@ const Summary = ({
         >
           <TableHead>
             <TableRow key="tr-status" className={classes.trHeader}>
-              <TableCell align="center">Confirmed</TableCell>
-              <TableCell align="center">Recovered</TableCell>
-              <TableCell align="center">Deaths</TableCell>
+              {/* <TableCell align="center">Confirmed</TableCell>
+              <TableCell align="center">Recovered</TableCell> */}
+              <TableCell align="center">Swabs</TableCell>
+              <TableCell align="center">Total Cases</TableCell>
+              <TableCell align="center">Deceased</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             <TableRow key="td-status">
-              <TableCell align="center" id="summary-confirmed">
+              <TableCell align="center" id="summary-swabs">
+                {error ? '' : tamponi}
+              </TableCell>
+              <TableCell align="center" id="summary-totalCases">
+                {error ? '' : totalCases}
+              </TableCell>
+              <TableCell align="center" id="summary-deceased">
+                {error ? '' : deceased}
+              </TableCell>
+              {/* <TableCell align="center" id="summary-confirmed">
                 {error ? '' : confirmed}
               </TableCell>
               <TableCell align="center" id="summary-recovered">
@@ -61,7 +75,7 @@ const Summary = ({
               </TableCell>
               <TableCell align="center" id="summary-deaths">
                 {error ? '' : deaths}
-              </TableCell>
+              </TableCell> */}
             </TableRow>
           </TableBody>
         </Table>
@@ -72,9 +86,12 @@ const Summary = ({
 
 Summary.defaultProps = {
   data: {
-    confirmed: 0,
-    recovered: 0,
-    deaths: 0,
+    totalCases: 0,
+    deceased: 0,
+    tamponi: 0,
+    // confirmed: 0,
+    // recovered: 0,
+    // deaths: 0,
     error: false,
   },
 };

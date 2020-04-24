@@ -1,51 +1,79 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable import/prefer-default-export */
-import { DEFAUL_MAX_DATA_SIZE } from './consts';
-
-// In order to have a "readable" chart, reduce if too much values
-const reduceData = (data, maxSize = DEFAUL_MAX_DATA_SIZE) => {
-  if (data && data.length) {
-    maxSize -= 1; // the last array value is always added
-    const { length } = data;
-    const lastVal = data[data.length - 1];
-    if (length > maxSize) {
-      const y = Math.round(length / maxSize);
-      data = data.filter((el, i) => Math.round(i % y) === 0);
-    }
-    return data.concat(lastVal);
-  }
-  return []; // fallback
-};
 
 /**
  * Prepare 3 arrays with reduced data
  * @param {array} data the fetched data
  * @param {number} accuracy the accuracy (20 as default)
  */
-export const processData = (data, accuracy) => {
-  const confirmed = [];
-  const recovered = [];
-  const deaths = [];
-  const actives = [];
+export const processData = (data, historical = true) => {
+  const intensiveTherapy = [];
+  const totalHospitalized = [];
+  let totalPositive = [];
+  let newDailyPositive = [];
+  let dailyDeceased = [];
+  let dailySwabs = [];
 
-  reduceData(data, accuracy).forEach((el) => {
-    confirmed.push({
-      x: new Date(el.Date),
-      y: el.Confirmed,
+  data.forEach((el, i, array) => {
+    const date = new Date(el.lastUpdatedAtSource);
+
+    intensiveTherapy.push({
+      x: date,
+      y: el.intensiveTherapy,
     });
-    recovered.push({
-      x: new Date(el.Date),
-      y: el.Recovered,
+    totalHospitalized.push({
+      x: date,
+      y: el.totalHospitalized,
     });
-    deaths.push({
-      x: new Date(el.Date),
-      y: el.Deaths,
+    totalPositive.push({
+      x: date,
+      y: el.totalPositive || el.totalCurrentlyPositive, // data change within the response itself!
     });
-    actives.push({
-      x: new Date(el.Date),
-      y: el.Active,
+    newDailyPositive.push({
+      x: date,
+      y: el.newPositive || el.newCurrentlyPositive, // data change within the response itself!
     });
+    if (i > 0) {
+      dailyDeceased.push({
+        x: date,
+        y: array[i].deceased - array[i - 1].deceased,
+      });
+      dailySwabs.push({
+        x: date,
+        y: array[i].tamponi - array[i - 1].tamponi,
+      });
+    }
   });
 
-  return { confirmed, recovered, deaths, actives };
+  // remove partial / error / inconsistent values mislead within the chart
+  totalPositive = totalPositive.filter((el) => el.y !== undefined);
+  newDailyPositive = newDailyPositive.filter(
+    (el) => el.y !== undefined && el.y !== 0,
+  );
+  dailyDeceased = dailyDeceased.filter((el) => el.y !== 0);
+  dailySwabs = dailySwabs.filter((el) => el.y !== 0);
+
+  // in case of not historical (= last ten days), then filter result with the
+  // array latest ones
+  if (!historical) {
+    [
+      intensiveTherapy,
+      totalHospitalized,
+      totalPositive,
+      newDailyPositive,
+      dailyDeceased,
+      dailySwabs,
+    ].forEach((array) => {
+      array.splice(0, array.length - 10); // removes from i=0 to i=lenght-10
+    });
+  }
+
+  return {
+    intensiveTherapy,
+    totalHospitalized,
+    totalPositive,
+    newDailyPositive,
+    dailyDeceased,
+    dailySwabs,
+  };
 };

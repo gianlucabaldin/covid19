@@ -30,6 +30,8 @@
   - confirmed
   - revored
   - deaths
+  - UNIT TEST components --> https://www.youtube.com/watch?time_continue=1037&v=fz1ohNqkLmM&feature=emb_title
+  - E2E Cypress
 
 #### Remove
 
@@ -49,6 +51,7 @@
 - i18n
 - SCSS
 - Redux
+- Typescript
 
 #### Review - necessary ?
 

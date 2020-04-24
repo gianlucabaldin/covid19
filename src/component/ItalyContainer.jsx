@@ -1,27 +1,32 @@
+/* eslint-disable camelcase */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect, useState } from 'react';
 import { Box } from '@material-ui/core';
 import ItalyChart from './ItalyChart';
 import ItalyRegions from './ItalyRegions';
-import { fetchItalyHistoricalAll, fetchItalyRegion } from '../utils/fetch';
+import { fetchItalyRegion, fetchItalyHistoricalAllApify } from '../utils/fetch';
 import Summary from './Summary';
 import { processData } from '../utils/chartUtils';
 import { DEFAUL_MAX_DATA_SIZE } from '../utils/consts';
 
 const summaryInitialStatus = {
-  confirmed: 0,
-  recovered: 0,
-  deaths: 0,
-  actives: 0,
+  // intensiveTherapy: 0,
+  // totalHospitalized: 0,
+  // totalPositive: 0,
+  tamponi: 0,
+  totalCases: 0,
+  deceased: 0,
   error: false,
 };
 
 const chartInitialStatus = {
   data: {
-    confirmed: [],
-    recovered: [],
-    deaths: [],
-    actives: [],
+    intensiveTherapy: [],
+    totalHospitalized: [],
+    totalPositive: [],
+    newDailyPositive: [],
+    dailyDeceased: [],
+    dailySwabs: [],
   },
   error: false,
   loading: false,
@@ -40,25 +45,32 @@ const ItalyContainer = (props) => {
 
   // fetch data from public api or mock (see implementation)
   const fetchData = () => {
-    fetchItalyHistoricalAll(true)
+    fetchItalyHistoricalAllApify(true)
       .then((res) => {
-        const { confirmed, recovered, deaths, actives } = processData(res);
+        const {
+          intensiveTherapy,
+          totalHospitalized,
+          totalPositive,
+          newDailyPositive,
+          dailyDeceased,
+          dailySwabs,
+        } = processData(res);
         setChartData({
           ...chartInitialStatus,
           data: {
-            confirmed,
-            recovered,
-            deaths,
-            actives,
+            intensiveTherapy,
+            totalHospitalized,
+            totalPositive,
+            newDailyPositive,
+            dailyDeceased,
+            dailySwabs,
           },
         });
-        const { Confirmed, Recovered, Deaths, Actives } = res[res.length - 1];
         // fill summary with last day-data extracted from previous fetch
         setSummaryData({
-          confirmed: Confirmed,
-          recovered: Recovered,
-          deaths: Deaths,
-          actives: Actives,
+          tamponi: res[res.length - 1].tamponi,
+          totalCases: res[res.length - 1].totalCases,
+          deceased: res[res.length - 1].deceased,
           error: false,
         });
         return res;
@@ -87,26 +99,25 @@ const ItalyContainer = (props) => {
   }, []);
 
   const onToggleSwitch = (checked) => {
-    const { confirmed, recovered, deaths, actives } = processData(
-      fetchedDataAll,
-      checked ? undefined : 7,
-    );
+    const {
+      intensiveTherapy,
+      totalHospitalized,
+      totalPositive,
+      newDailyPositive,
+      dailyDeceased,
+      dailySwabs,
+    } = processData(fetchedDataAll, checked);
     setChartData({
-      ...chartData,
-      data: { confirmed, recovered, deaths, actives },
+      ...chartInitialStatus,
+      data: {
+        intensiveTherapy,
+        totalHospitalized,
+        totalPositive,
+        newDailyPositive,
+        dailyDeceased,
+        dailySwabs,
+      },
       checked,
-    });
-  };
-
-  const onChangeAccuracy = (accuracy) => {
-    const { confirmed, recovered, deaths, actives } = processData(
-      fetchedDataAll,
-      accuracy,
-    );
-    setChartData({
-      ...chartData,
-      data: { confirmed, recovered, deaths, actives },
-      accuracy,
     });
   };
 
@@ -128,7 +139,6 @@ const ItalyContainer = (props) => {
           {...chartData}
           width={width}
           onToggleSwitch={onToggleSwitch}
-          onChangeAccuracy={onChangeAccuracy}
         />
 
         <ItalyRegions tableData={tableData} width={width} />

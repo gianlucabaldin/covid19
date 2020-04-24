@@ -1,28 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../../node_modules/react-vis/dist/style.css';
-import {
-  XYPlot,
-  XAxis,
-  YAxis,
-  VerticalGridLines,
-  HorizontalGridLines,
-  LineMarkSeries,
-  Hint,
-  DiscreteColorLegend,
-} from 'react-vis';
-import { Container } from '@material-ui/core';
+import { Container, Box } from '@material-ui/core';
 import moment from 'moment';
-import AccuracySlider from './AccuracySlider';
+import SwitchInterval from './SwitchInterval';
 import Error from './Error';
 import LastUpdate from './LastUpdate';
-import { COVID_19_API, STATUS } from '../utils/consts';
-import SwitchInterval from './SwitchInterval';
-
-const initialHintValue = {
-  data: {},
-  over: false,
-  status: '',
-};
+import { STATUS, API_ITALY_HYSTORICAL_APIFY_SHORT_URL } from '../utils/consts';
+// import SwitchInterval from './SwitchInterval';
+import Chart from './Chart';
 
 const ItalyChart = ({
   data,
@@ -30,59 +15,30 @@ const ItalyChart = ({
   loading,
   checked,
   onToggleSwitch,
-  accuracy,
-  onChangeAccuracy,
   width = 500,
 }) => {
-  const [hint, setHint] = useState(initialHintValue);
-
-  let confirmed = [];
-  let recovered = [];
-  let deaths = [];
-  let actives = [];
-  if (data && data.confirmed && data.recovered && data.deaths) {
-    confirmed = data.confirmed;
-    recovered = data.recovered;
-    deaths = data.deaths;
-    actives = data.actives;
-  }
-  /**
-   * Filter and manipulate the whole data set, filtering in case data lenght > accuracy
-   * with accuracy default = 20
-   * @param {accuracyChanged} accuracyChanged the new accuracy value (optional)
-   */
-
-  const getHintSection = () => {
-    return hint.over ? (
-      <Hint value={hint.data}>
-        <div style={{ background: 'black', padding: 5 }}>
-          Day: {moment(hint.data.x).format('DD/MM')} <br />
-          {hint.status}: {hint.data.y}
-        </div>
-      </Hint>
-    ) : null;
-  };
-
-  const mouseOver = (datapoint, status) => {
-    setHint({ data: datapoint, over: true, status });
-  };
-
-  const mouseOut = (datapoint) => {
-    setHint({ data: datapoint, over: false, status: '' });
-  };
-
+  const {
+    intensiveTherapy,
+    totalHospitalized,
+    totalPositive,
+    newDailyPositive,
+    dailyDeceased,
+    dailySwabs,
+  } = data;
   const getLastUpdate = () => {
-    return confirmed &&
-      confirmed.length &&
-      confirmed.length > 0 &&
-      confirmed[confirmed.length - 1].x // "x" represents the date property
-      ? moment(confirmed[confirmed.length - 1].x).format('DD/MM/YYYY')
+    return intensiveTherapy &&
+      intensiveTherapy.length &&
+      intensiveTherapy.length > 0 &&
+      intensiveTherapy[intensiveTherapy.length - 1].x // "x" represents the date property
+      ? moment(intensiveTherapy[intensiveTherapy.length - 1].x).format(
+          'DD/MM/YYYY',
+        )
       : 'Not available';
   };
 
   return (
     <>
-      <Container
+      <Box
         marginTop={1}
         marginBottom={3}
         data-id="italy-chart-box"
@@ -93,84 +49,59 @@ const ItalyChart = ({
           alignItems: 'center',
         }}
       >
-        <LastUpdate date={getLastUpdate()} href={COVID_19_API} />
+        <LastUpdate
+          date={getLastUpdate()}
+          href={API_ITALY_HYSTORICAL_APIFY_SHORT_URL}
+        />
 
         <SwitchInterval onToggleSwitch={onToggleSwitch} checked={checked} />
+      </Box>
 
-        <AccuracySlider
-          accuracy={accuracy}
-          onChangeAccuracy={onChangeAccuracy}
-        />
-      </Container>
-
-      <Container
+      <Box
         style={{
-          position: 'relative',
+          display: 'flex',
+          // justifyContent: '',
+          flexDirection: 'row',
+          flexWrap: 'wrap',
         }}
       >
-        <DiscreteColorLegend
-          strokeWidth={2}
-          orientation="horizontal"
-          items={[
-            { title: STATUS.CONFIRMED.toLowerCase() },
-            { title: STATUS.RECOVERED.toLowerCase() },
-            { title: STATUS.DEATHS.toLowerCase() },
-            { title: STATUS.ACTIVES.toLowerCase() },
-          ]}
-          style={{ position: 'absolute', left: '40%' }}
-        />
-
-        <XYPlot
+        <Chart
           height={300}
-          width={width || 800}
-          margin={{ left: 60, right: 30 }}
-          xType="ordinal"
-        >
-          <HorizontalGridLines />
-          <VerticalGridLines />
-          {confirmed && confirmed.length > 0 && (
-            <LineMarkSeries
-              curve="curveMonotoneX"
-              data={confirmed || []}
-              onValueMouseOver={(val) => mouseOver(val, STATUS.CONFIRMED)}
-              onValueMouseOut={mouseOut}
-            />
-          )}
-          {recovered && recovered.length > 0 && (
-            <LineMarkSeries
-              curve="curveMonotoneX"
-              data={recovered || []}
-              onValueMouseOver={(val) => mouseOver(val, STATUS.RECOVERED)}
-              onValueMouseOut={mouseOut}
-            />
-          )}
-          {deaths && deaths.length > 0 && (
-            <LineMarkSeries
-              curve="curveMonotoneX"
-              data={deaths || []}
-              onValueMouseOver={(val) => mouseOver(val, STATUS.DEATHS)}
-              onValueMouseOut={mouseOut}
-            />
-          )}
-          {actives && actives.length > 0 && (
-            <LineMarkSeries
-              curve="curveMonotoneX"
-              data={actives || []}
-              onValueMouseOver={(val) => mouseOver(val, STATUS.ACTIVES)}
-              onValueMouseOut={mouseOut}
-            />
-          )}
-          <XAxis
-            title="day"
-            tickFormat={(value) => moment(value).format('DD/M')}
-            tickTotal={20}
-          />
-          <YAxis title="number" position="end" />
-
-          {/* the hint popup shown when user point a mark with the mouse */}
-          {getHintSection(hint.over)}
-        </XYPlot>
-      </Container>
+          width={600}
+          series={[intensiveTherapy]}
+          status={[STATUS.INTENSIVE_THERAPY]}
+        />
+        <Chart
+          height={300}
+          width={600}
+          series={[totalHospitalized]}
+          status={[STATUS.TOTAL_HOSPITALIZED]}
+        />
+        <Chart
+          height={300}
+          width={600}
+          series={[totalPositive]}
+          status={[STATUS.TOTAL_POSITIVE]}
+        />
+        <Chart
+          height={300}
+          width={600}
+          series={[newDailyPositive]}
+          status={[STATUS.NEW_DAILY_POSITIVE]}
+        />
+        <Chart
+          height={300}
+          width={600}
+          series={[dailyDeceased]}
+          status={[STATUS.DAILY_DECEASED]}
+        />
+        <Chart
+          height={300}
+          width={600}
+          series={[dailySwabs]}
+          status={[STATUS.DAILY_SWABS]}
+        />
+      </Box>
     </>
   );
 };
