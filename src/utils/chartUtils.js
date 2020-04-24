@@ -27,11 +27,11 @@ export const processData = (data, historical = true) => {
     });
     totalPositive.push({
       x: date,
-      y: el.totalPositive || el.totalCurrentlyPositive, // data change within the response itself!
+      y: el.totalPositive || el.totalCurrentlyPositive || undefined, // data change within the response itself!
     });
     newDailyPositive.push({
       x: date,
-      y: el.newPositive || el.newCurrentlyPositive, // data change within the response itself!
+      y: el.newPositive || el.newCurrentlyPositive || undefined, // data change within the response itself!
     });
     if (i > 0) {
       dailyDeceased.push({

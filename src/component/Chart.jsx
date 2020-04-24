@@ -69,10 +69,17 @@ const Chart = ({ height, width, series, status }) => {
           series.map((serie, i) => (
             <LineMarkSeries
               getNull={(d) => d.y !== undefined} // data hole / attribute changes
-              curve="curveMonotoneX"
+              // curve="curveMonotoneX"
               data={serie || []}
               onValueMouseOver={(val) => mouseOver(val, status[i])}
               onValueMouseOut={mouseOut}
+              style={{
+                strokeWidth: '3px',
+              }}
+              lineStyle={{ stroke: 'red' }}
+              markStyle={{ stroke: 'blue' }}
+              size={3} // mark size, default=5
+              fill="red" // the color inside the mark
             />
           ))}
         <XAxis
