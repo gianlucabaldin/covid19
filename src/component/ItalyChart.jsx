@@ -1,7 +1,6 @@
 import React from 'react';
 import '../../node_modules/react-vis/dist/style.css';
-import { Container, Box } from '@material-ui/core';
-import moment from 'moment';
+import { Container, Box, Grid } from '@material-ui/core';
 import SwitchInterval from './SwitchInterval';
 import Error from './Error';
 import DataProvided from './DataProvided';
@@ -27,67 +26,49 @@ const ItalyChart = ({
   } = data;
   return (
     <>
-      <Box
-        marginTop={1}
-        marginBottom={3}
-        data-id="italy-chart-box"
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          flexDirection: 'row',
-          alignItems: 'center',
-        }}
+      <Grid container spacing={2} data-id="swith-interval-container">
+        <Grid item>
+          <SwitchInterval onToggleSwitch={onToggleSwitch} checked={checked} />
+        </Grid>
+      </Grid>
+
+      <Grid
+        container
+        style={{ paddingLeft: '24', paddingRight: '24' }}
+        spacing={2}
       >
+        <Grid item xs={4}>
+          <Chart
+            series={[intensiveTherapy]}
+            status={[STATUS.INTENSIVE_THERAPY]}
+          />
+        </Grid>
+        <Grid item xs={4}>
+          <Chart
+            style={{ width: 'inherit', padding: '24px' }}
+            series={[totalHospitalized]}
+            status={[STATUS.TOTAL_HOSPITALIZED]}
+          />
+        </Grid>
+        <Grid item xs={4}>
+          <Chart series={[totalPositive]} status={[STATUS.TOTAL_POSITIVE]} />
+        </Grid>
+        <Grid item xs={4}>
+          <Chart
+            series={[newDailyPositive]}
+            status={[STATUS.NEW_DAILY_POSITIVE]}
+          />
+        </Grid>
+        <Grid item xs={4}>
+          <Chart series={[dailyDeceased]} status={[STATUS.DAILY_DECEASED]} />
+        </Grid>
+        <Grid item xs={4}>
+          <Chart series={[dailySwabs]} status={[STATUS.DAILY_SWABS]} />
+        </Grid>
+      </Grid>
+      <Grid container spacing={2}>
         <DataProvided href={API_ITALY_HYSTORICAL_APIFY_SHORT_URL} />
-
-        <SwitchInterval onToggleSwitch={onToggleSwitch} checked={checked} />
-      </Box>
-
-      <Box
-        style={{
-          display: 'flex',
-          // justifyContent: '',
-          flexDirection: 'row',
-          flexWrap: 'wrap',
-        }}
-      >
-        <Chart
-          height={300}
-          width={600}
-          series={[intensiveTherapy]}
-          status={[STATUS.INTENSIVE_THERAPY]}
-        />
-        <Chart
-          height={300}
-          width={600}
-          series={[totalHospitalized]}
-          status={[STATUS.TOTAL_HOSPITALIZED]}
-        />
-        <Chart
-          height={300}
-          width={600}
-          series={[totalPositive]}
-          status={[STATUS.TOTAL_POSITIVE]}
-        />
-        <Chart
-          height={300}
-          width={600}
-          series={[newDailyPositive]}
-          status={[STATUS.NEW_DAILY_POSITIVE]}
-        />
-        <Chart
-          height={300}
-          width={600}
-          series={[dailyDeceased]}
-          status={[STATUS.DAILY_DECEASED]}
-        />
-        <Chart
-          height={300}
-          width={600}
-          series={[dailySwabs]}
-          status={[STATUS.DAILY_SWABS]}
-        />
-      </Box>
+      </Grid>
     </>
   );
 };

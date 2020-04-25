@@ -58,7 +58,6 @@ const ItalyRegions = ({ tableData, width }) => {
       style={{ overflowY: 'scroll', paddingBottom: 10 }}
       data-id="italy-regions-box"
     >
-      <DataProvided href={OPEN_PUGLIA_API} />
       <TableContainer component={Paper}>
         <Table
           className={classes.table}
@@ -145,6 +144,8 @@ const ItalyRegions = ({ tableData, width }) => {
           </TableBody>
         </Table>
       </TableContainer>
+
+      <DataProvided date={tableData[0].data} href={OPEN_PUGLIA_API} />
     </Box>
   );
 };

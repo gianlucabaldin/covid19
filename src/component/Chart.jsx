@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import moment from 'moment';
 import {
   Hint,
-  XYPlot,
   VerticalGridLines,
   HorizontalGridLines,
   LineMarkSeries,
@@ -10,6 +9,7 @@ import {
   XAxis,
   YAxis,
 } from 'react-vis/dist';
+import { FlexibleWidthXYPlot } from 'react-vis/dist/make-vis-flexible';
 
 const Chart = ({ height, width, series, status }) => {
   const initialHintValue = {
@@ -48,19 +48,15 @@ const Chart = ({ height, width, series, status }) => {
     return array;
   };
   return (
-    <div style={{ position: 'relative' }}>
-      <DiscreteColorLegend
-        strokeWidth={2}
-        orientation="horizontal"
-        items={getLegend()}
-        style={{ position: 'absolute', left: '15%' }}
-      />
-      <XYPlot
-        height={height || 300}
-        width={width || 800}
-        margin={{ left: 60, right: 30 }}
-        xType="time"
-      >
+    <div style={{ height: '300px' }}>
+      <FlexibleWidthXYPlot height={300} xType="time">
+        <DiscreteColorLegend
+          strokeWidth={2}
+          orientation="horizontal"
+          items={getLegend()}
+          style={{ position: 'absolute', left: '15%' }}
+        />
+
         <HorizontalGridLines />
         <VerticalGridLines />
 
@@ -91,7 +87,7 @@ const Chart = ({ height, width, series, status }) => {
 
         {/* the hint popup shown when user point a mark with the mouse */}
         {getHintSection(hint.over)}
-      </XYPlot>
+      </FlexibleWidthXYPlot>
     </div>
   );
 };
