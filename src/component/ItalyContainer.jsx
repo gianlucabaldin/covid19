@@ -2,6 +2,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect, useState } from 'react';
 import { Grid } from '@material-ui/core';
+import moment from 'moment';
 import ItalyChart from './ItalyChart';
 import ItalyRegions from './ItalyRegions';
 import { fetchItalyRegion, fetchItalyHistoricalAllApify } from '../utils/fetch';
@@ -16,6 +17,7 @@ const summaryInitialStatus = {
   tamponi: 0,
   totalCases: 0,
   deceased: 0,
+  lastUpdate: '',
   error: false,
 };
 
@@ -71,6 +73,10 @@ const ItalyContainer = (props) => {
           tamponi: res[res.length - 1].tamponi,
           totalCases: res[res.length - 1].totalCases,
           deceased: res[res.length - 1].deceased,
+          lastUpdate: moment(
+            intensiveTherapy[intensiveTherapy.length - 1].x,
+            // ).format('DD / MM / YYYY'),
+          ).format('LLL'),
           error: false,
         });
         return res;

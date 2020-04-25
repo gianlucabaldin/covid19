@@ -7,7 +7,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { Box, withStyles, Grid } from '@material-ui/core';
+import { withStyles, Grid } from '@material-ui/core';
 import { grey } from '@material-ui/core/colors';
 import Error from './Error';
 
@@ -24,9 +24,10 @@ const TableCell = withStyles({
 })(MuiTableCell);
 
 const Summary = ({
-  totalCases = 0,
-  deceased = 0,
-  tamponi = 0,
+  totalCases,
+  deceased,
+  tamponi,
+  lastUpdate,
   error = false,
 }) => {
   const classes = useStyles();
@@ -65,7 +66,7 @@ const Summary = ({
                 {error ? '' : deceased}
               </TableCell>
               <TableCell align="center" id="summary-deceased">
-                efwegfw
+                {error ? '' : lastUpdate}
               </TableCell>
             </TableRow>
           </TableBody>

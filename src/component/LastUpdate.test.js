@@ -1,17 +1,15 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import LastUpdate from './LastUpdate';
+import DataProvided from './DataProvided';
 
-describe('Last Update component', () => {
-  let wrapper = shallow(<LastUpdate />);
+describe('DataProvided component', () => {
+  let wrapper = shallow(<DataProvided />);
   it('should renders properly', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render date and ref', () => {
-    wrapper = shallow(<LastUpdate date="2020-04-20" href="www.google.com" />);
-    expect(wrapper).toIncludeText(
-      'Data provided by www.google.com, last update available: 20/04/2020',
-    );
+    wrapper = shallow(<DataProvided href="www.google.com" />);
+    expect(wrapper).toIncludeText('Data provided by www.google.com');
   });
 });

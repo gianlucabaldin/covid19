@@ -4,7 +4,7 @@ import { Container, Box } from '@material-ui/core';
 import moment from 'moment';
 import SwitchInterval from './SwitchInterval';
 import Error from './Error';
-import LastUpdate from './LastUpdate';
+import DataProvided from './DataProvided';
 import { STATUS, API_ITALY_HYSTORICAL_APIFY_SHORT_URL } from '../utils/consts';
 // import SwitchInterval from './SwitchInterval';
 import Chart from './Chart';
@@ -25,17 +25,6 @@ const ItalyChart = ({
     dailyDeceased,
     dailySwabs,
   } = data;
-  const getLastUpdate = () => {
-    return intensiveTherapy &&
-      intensiveTherapy.length &&
-      intensiveTherapy.length > 0 &&
-      intensiveTherapy[intensiveTherapy.length - 1].x // "x" represents the date property
-      ? moment(intensiveTherapy[intensiveTherapy.length - 1].x).format(
-          'DD/MM/YYYY',
-        )
-      : 'Not available';
-  };
-
   return (
     <>
       <Box
@@ -49,10 +38,7 @@ const ItalyChart = ({
           alignItems: 'center',
         }}
       >
-        <LastUpdate
-          date={getLastUpdate()}
-          href={API_ITALY_HYSTORICAL_APIFY_SHORT_URL}
-        />
+        <DataProvided href={API_ITALY_HYSTORICAL_APIFY_SHORT_URL} />
 
         <SwitchInterval onToggleSwitch={onToggleSwitch} checked={checked} />
       </Box>

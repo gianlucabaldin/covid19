@@ -11,7 +11,7 @@ import { Box, Hidden, withStyles } from '@material-ui/core';
 import { grey } from '@material-ui/core/colors';
 import Error from './Error';
 import { OPEN_PUGLIA_API } from '../utils/consts';
-import LastUpdate from './LastUpdate';
+import DataProvided from './DataProvided';
 
 const useStyles = makeStyles({
   table: {
@@ -58,7 +58,7 @@ const ItalyRegions = ({ tableData, width }) => {
       style={{ overflowY: 'scroll', paddingBottom: 10 }}
       data-id="italy-regions-box"
     >
-      <LastUpdate date={tableData[0].data} href={OPEN_PUGLIA_API} />
+      <DataProvided href={OPEN_PUGLIA_API} />
       <TableContainer component={Paper}>
         <Table
           className={classes.table}
