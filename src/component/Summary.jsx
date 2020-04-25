@@ -7,14 +7,11 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { Box, withStyles } from '@material-ui/core';
+import { Box, withStyles, Grid } from '@material-ui/core';
 import { grey } from '@material-ui/core/colors';
 import Error from './Error';
 
 const useStyles = makeStyles({
-  table: {
-    maxWidth: 750,
-  },
   trHeader: {
     backgroundColor: grey[200],
   },
@@ -22,14 +19,11 @@ const useStyles = makeStyles({
 
 const TableCell = withStyles({
   root: {
-    border: '1px solid grey',
+    border: '1px solid lightgrey',
   },
 })(MuiTableCell);
 
 const Summary = ({
-  // confirmed = 0,
-  // recovered = 0,
-  // deaths = 0,
   totalCases = 0,
   deceased = 0,
   tamponi = 0,
@@ -40,17 +34,19 @@ const Summary = ({
   if (error) return <Error />;
 
   return (
-    <Box m={1} data-id="summary-box" margin="auto">
+    <Grid item>
       <TableContainer component={Paper}>
         <Table
           className={classes.table}
           size="small"
           aria-label="a dense table"
+          style={{
+            marginTop: '8',
+            marginBottom: '8',
+          }}
         >
           <TableHead>
             <TableRow key="tr-status" className={classes.trHeader}>
-              {/* <TableCell align="center">Confirmed</TableCell>
-              <TableCell align="center">Recovered</TableCell> */}
               <TableCell align="center">Swabs</TableCell>
               <TableCell align="center">Total Cases</TableCell>
               <TableCell align="center">Deceased</TableCell>
@@ -67,20 +63,11 @@ const Summary = ({
               <TableCell align="center" id="summary-deceased">
                 {error ? '' : deceased}
               </TableCell>
-              {/* <TableCell align="center" id="summary-confirmed">
-                {error ? '' : confirmed}
-              </TableCell>
-              <TableCell align="center" id="summary-recovered">
-                {error ? '' : recovered}
-              </TableCell>
-              <TableCell align="center" id="summary-deaths">
-                {error ? '' : deaths}
-              </TableCell> */}
             </TableRow>
           </TableBody>
         </Table>
       </TableContainer>
-    </Box>
+    </Grid>
   );
 };
 
@@ -89,9 +76,6 @@ Summary.defaultProps = {
     totalCases: 0,
     deceased: 0,
     tamponi: 0,
-    // confirmed: 0,
-    // recovered: 0,
-    // deaths: 0,
     error: false,
   },
 };
