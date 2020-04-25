@@ -47,9 +47,10 @@ const Summary = ({
         >
           <TableHead>
             <TableRow key="tr-status" className={classes.trHeader}>
-              <TableCell align="center">Swabs</TableCell>
+              <TableCell align="center">Total Swabs</TableCell>
               <TableCell align="center">Total Cases</TableCell>
-              <TableCell align="center">Deceased</TableCell>
+              <TableCell align="center">Total Deceased</TableCell>
+              <TableCell align="center">Last update available</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -62,6 +63,9 @@ const Summary = ({
               </TableCell>
               <TableCell align="center" id="summary-deceased">
                 {error ? '' : deceased}
+              </TableCell>
+              <TableCell align="center" id="summary-deceased">
+                efwegfw
               </TableCell>
             </TableRow>
           </TableBody>
