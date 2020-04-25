@@ -6,13 +6,12 @@ import { Box } from '@material-ui/core';
 const NavButtons = () => {
   // const getColor = ({ activeSection }) => {};
   return (
-    <Box
-      display="flex"
-      justifyContent="center"
-      m={1}
-      p={1}
-      bgcolor="background.paper"
-    >
+    <Box display="flex" justifyContent="center" m={1} p={1}>
+      <Box m={1}>
+        <Button variant="outlined" color="primary" disabled>
+          Country List
+        </Button>
+      </Box>
       <Box m={1}>
         <Button variant="outlined" color="primary">
           Worldwide
@@ -28,14 +27,6 @@ const NavButtons = () => {
           Italy
         </Button>
       </Box>
-      <Box m={1}>
-        <Button variant="outlined" color="primary" disabled>
-          Country List
-        </Button>
-      </Box>
-      {/* <Button variant="contained" color="primary" href="#contained-buttons">
-        Link
-      </Button> */}
     </Box>
   );
 };

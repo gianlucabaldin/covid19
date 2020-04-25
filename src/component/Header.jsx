@@ -4,16 +4,11 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import NavButtons from './NavButtons';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
+const useStyles = makeStyles(() => ({
+  toolbar: {
+    justifyContent: 'space-between',
   },
 }));
 
@@ -21,19 +16,24 @@ const Header = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h4" className={classes.title}>
+    <AppBar position="static" data-id="appbar" color="transparent">
+      <Toolbar className={classes.toolbar}>
+        <div>
+          <Typography variant="h4" color="primary">
             Covid 19
           </Typography>
-          <Typography variant="h6" className={classes.title}>
-            Latest updates & historical data
+          <Typography variant="p" color="primary">
+            Latest & historical data
           </Typography>
-          <Button color="inherit">Login</Button>
-        </Toolbar>
-      </AppBar>
-    </div>
+        </div>
+        <div>
+          <NavButtons />
+        </div>
+        <div>
+          <Button color="inherit">Github</Button>
+        </div>
+      </Toolbar>
+    </AppBar>
   );
 };
 

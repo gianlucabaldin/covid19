@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState, useEffect, useRef } from 'react';
 import Container from '@material-ui/core/Container';
-import NavButtons from './NavButtons';
 import ItalyContainer from './ItalyContainer';
 
 export const SECTIONS = {
@@ -40,7 +39,6 @@ const MainContainer = () => {
   return (
     <>
       {/* <Container fluid ref={ref} style={{ backgroundColor: 'lightblue' }}> */}
-      <NavButtons />
       <ItalyContainer width={width} />
       {/* </Container> */}
     </>
