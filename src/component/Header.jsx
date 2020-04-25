@@ -17,7 +17,12 @@ const Header = () => {
   const classes = useStyles();
 
   return (
-    <AppBar position="static" data-id="appbar" color="transparent">
+    <AppBar
+      position="static"
+      data-id="appbar"
+      color="transparent"
+      style={{ boxShadow: 'none' }}
+    >
       <Toolbar className={classes.toolbar}>
         <Box width={200}>
           <Typography variant="h4" color="primary">

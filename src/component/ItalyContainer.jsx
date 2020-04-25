@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect, useState } from 'react';
-import { Box } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import ItalyChart from './ItalyChart';
 import ItalyRegions from './ItalyRegions';
 import { fetchItalyRegion, fetchItalyHistoricalAllApify } from '../utils/fetch';
@@ -123,26 +123,21 @@ const ItalyContainer = (props) => {
 
   return (
     <>
-      <Box
-        display="flex"
-        justifyContent="center"
-        flexDirection="column"
-        alignItems="center"
-        m={1}
-        p={1}
-        bgcolor="background.paper"
-        data-id="italy-container-box"
-      >
+      <Grid container justify="center">
         <Summary {...summaryData} />
-
-        <ItalyChart
-          {...chartData}
-          width={width}
-          onToggleSwitch={onToggleSwitch}
-        />
-
-        <ItalyRegions tableData={tableData} width={width} />
-      </Box>
+      </Grid>
+      <Grid container spacing={2}>
+        <Grid item>
+          <ItalyChart
+            {...chartData}
+            width={width}
+            onToggleSwitch={onToggleSwitch}
+          />
+        </Grid>
+        <Grid item>
+          <ItalyRegions tableData={tableData} width={width} />
+        </Grid>
+      </Grid>
     </>
   );
 };
