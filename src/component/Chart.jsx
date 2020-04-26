@@ -42,7 +42,11 @@ const Chart = ({ height, width, series, status }) => {
     const array = [];
     if (status && status.length > 0) {
       status.forEach((el) => {
-        array.push(el.toString().toLowerCase());
+        array.push(
+          <span style={{ fontWeight: 'bold' }}>
+            {el.toString().replace('_', ' ').toUpperCase()}
+          </span>,
+        );
       });
     }
     return array;
