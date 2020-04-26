@@ -5,8 +5,8 @@
 - ~~change mehod calculate marks, starting from last array element and going to zero -> make sure it works with "last week" filter too~~
 - ~~if checked and re-checked, accuracy value is fine but is not accordingly to chart~~
 - ~~change "last week" with "last 10 days" and use {{baseUrl}}/live/country/{{country}}~~
-- review Accuracy css style
-- insert 1 label on every mark series (3 total)
+- ~~review Accuracy css style~~
+- ~~insert 1 label on every mark series (3 total)~~
 - ~~insert footer~~
 - ~~sort region table~~
 - ~~replicate rezise on italy region like charts~~
