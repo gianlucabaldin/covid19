@@ -8,7 +8,6 @@ import ItalyRegions from './ItalyRegions';
 import { fetchItalyRegion, fetchItalyHistoricalAllApify } from '../utils/fetch';
 import Summary from './Summary';
 import { processData } from '../utils/chartUtils';
-import { DEFAUL_MAX_DATA_SIZE } from '../utils/consts';
 
 const summaryInitialStatus = {
   tamponi: 0,
@@ -29,8 +28,6 @@ const chartInitialStatus = {
   },
   error: false,
   loading: false,
-  switchChecked: true,
-  accuracy: DEFAUL_MAX_DATA_SIZE,
   checked: false,
 };
 

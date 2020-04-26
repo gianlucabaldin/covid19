@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../node_modules/react-vis/dist/style.css';
-import { Container, Box, Grid } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import SwitchInterval from './SwitchInterval';
 import Error from './Error';
 import DataProvided from './DataProvided';

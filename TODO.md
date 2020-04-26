@@ -1,10 +1,10 @@
 # TODO
 
 - Loading with react-loader-spinner ?
-- enhance/split italycontainer management methods
-- change mehod calculate marks, starting from last array element and going to zero -> make sure it works with "last week" filter too
+- ~~enhance/split italycontainer management methods~~
+- ~~change mehod calculate marks, starting from last array element and going to zero -> make sure it works with "last week" filter too~~
 - ~~if checked and re-checked, accuracy value is fine but is not accordingly to chart~~
-- change "last week" with "last 10 days" and use {{baseUrl}}/live/country/{{country}}
+- ~~change "last week" with "last 10 days" and use {{baseUrl}}/live/country/{{country}}~~
 - review Accuracy css style
 - insert 1 label on every mark series (3 total)
 - ~~insert footer~~
@@ -16,7 +16,7 @@
 - navigazione con componente https://material-ui.com/components/bottom-navigation/
 - ~~data last update time~~
 - ~~mention data provider(s)~~
-- github author page
+- ~~github author page~~
 - heroku link
 - filter table by state/region
 - filter data by time
@@ -39,10 +39,11 @@
 - remove background lightBlue from MainContainer
 - Moment package ?
 - ~~ReacVisCharts.jsx~~
-- React-vis package
+- React-vis package ?
 - VictoryCharts package
 - ~~App_old.js~~
-- logo
+- CRA logo and css
+- Accuracy
 
 ##### Review if to use
 

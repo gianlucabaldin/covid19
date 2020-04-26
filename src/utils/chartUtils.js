@@ -4,7 +4,7 @@
 /**
  * Prepare 3 arrays with reduced data
  * @param {array} data the fetched data
- * @param {number} accuracy the accuracy (20 as default)
+ * @param {boolean} historical if to extract data
  */
 export const processData = (data, historical = false) => {
   const intensiveTherapy = [];
