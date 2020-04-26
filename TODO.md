@@ -44,6 +44,7 @@
 - ~~App_old.js~~
 - CRA logo and css
 - Accuracy
+- App.css
 
 ##### Review if to use
 
