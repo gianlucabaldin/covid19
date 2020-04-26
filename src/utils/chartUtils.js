@@ -6,7 +6,7 @@
  * @param {array} data the fetched data
  * @param {number} accuracy the accuracy (20 as default)
  */
-export const processData = (data, historical = true) => {
+export const processData = (data, historical = false) => {
   const intensiveTherapy = [];
   const totalHospitalized = [];
   let totalPositive = [];

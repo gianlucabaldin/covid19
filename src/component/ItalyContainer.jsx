@@ -11,9 +11,6 @@ import { processData } from '../utils/chartUtils';
 import { DEFAUL_MAX_DATA_SIZE } from '../utils/consts';
 
 const summaryInitialStatus = {
-  // intensiveTherapy: 0,
-  // totalHospitalized: 0,
-  // totalPositive: 0,
   tamponi: 0,
   totalCases: 0,
   deceased: 0,
@@ -34,7 +31,7 @@ const chartInitialStatus = {
   loading: false,
   switchChecked: true,
   accuracy: DEFAUL_MAX_DATA_SIZE,
-  checked: true,
+  checked: false,
 };
 
 const ItalyContainer = (props) => {
@@ -45,41 +42,44 @@ const ItalyContainer = (props) => {
   const [tableData, setTableData] = useState(undefined);
   const [fetchedDataAll, setFetchedDataAll] = useState();
 
+  const extractData = (res) => {
+    const {
+      intensiveTherapy,
+      totalHospitalized,
+      totalPositive,
+      newDailyPositive,
+      dailyDeceased,
+      dailySwabs,
+    } = processData(res);
+    setChartData({
+      ...chartInitialStatus,
+      data: {
+        intensiveTherapy,
+        totalHospitalized,
+        totalPositive,
+        newDailyPositive,
+        dailyDeceased,
+        dailySwabs,
+      },
+    });
+    // fill summary with last day-data extracted from previous fetch
+    setSummaryData({
+      tamponi: res[res.length - 1].tamponi,
+      totalCases: res[res.length - 1].totalCases,
+      deceased: res[res.length - 1].deceased,
+      lastUpdate: moment(
+        intensiveTherapy[intensiveTherapy.length - 1].x,
+        // ).format('DD / MM / YYYY'),
+      ).format('LLL'),
+      error: false,
+    });
+    return res;
+  };
   // fetch data from public api or mock (see implementation)
   const fetchData = () => {
     fetchItalyHistoricalAllApify(true)
       .then((res) => {
-        const {
-          intensiveTherapy,
-          totalHospitalized,
-          totalPositive,
-          newDailyPositive,
-          dailyDeceased,
-          dailySwabs,
-        } = processData(res);
-        setChartData({
-          ...chartInitialStatus,
-          data: {
-            intensiveTherapy,
-            totalHospitalized,
-            totalPositive,
-            newDailyPositive,
-            dailyDeceased,
-            dailySwabs,
-          },
-        });
-        // fill summary with last day-data extracted from previous fetch
-        setSummaryData({
-          tamponi: res[res.length - 1].tamponi,
-          totalCases: res[res.length - 1].totalCases,
-          deceased: res[res.length - 1].deceased,
-          lastUpdate: moment(
-            intensiveTherapy[intensiveTherapy.length - 1].x,
-            // ).format('DD / MM / YYYY'),
-          ).format('LLL'),
-          error: false,
-        });
-        return res;
+        extractData(res);
       })
       .then((res) => {
         setFetchedDataAll(res);
