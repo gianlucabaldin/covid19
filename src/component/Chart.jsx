@@ -30,9 +30,21 @@ const Chart = ({ height, width, series, status }) => {
   const getHintSection = () => {
     return hint.over ? (
       <Hint value={hint.data}>
-        <div style={{ background: 'black', padding: 5 }}>
-          Day: {moment(hint.data.x).format('DD/MM')} <br />
-          {hint.status}: {hint.data.y}
+        <div
+          style={{
+            background: 'white',
+            padding: 5,
+            border: '1px solid black',
+            borderRadius: 10,
+            color: '#303f9f',
+          }}
+        >
+          <span style={{ fontWeight: 'bold' }}>Day: </span>{' '}
+          {moment(hint.data.x).format('DD/MM')} <br />
+          <span style={{ fontWeight: 'bold' }}>
+            {hint.status.toString().replace('_', ' ').toUpperCase()}:
+          </span>{' '}
+          {hint.data.y}
         </div>
       </Hint>
     ) : null;
