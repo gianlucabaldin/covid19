@@ -76,7 +76,7 @@ const ItalyContainer = (props) => {
   const fetchData = () => {
     fetchItalyHistoricalAllApify(true)
       .then((res) => {
-        extractData(res);
+        return extractData(res);
       })
       .then((res) => {
         setFetchedDataAll(res);
