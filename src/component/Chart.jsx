@@ -64,14 +64,14 @@ const Chart = ({ height, width, series, status }) => {
     return array;
   };
   return (
-    <div style={{ height: '300px' }}>
+    <div>
       <DiscreteColorLegend
         strokeWidth={2}
         orientation="vertical"
         items={getLegend()}
         style={{ marginLeft: '40%', padding: 0 }}
       />
-      <FlexibleWidthXYPlot height={300} xType="time">
+      <FlexibleWidthXYPlot height={250} xType="time">
         <HorizontalGridLines />
         <VerticalGridLines />
 
