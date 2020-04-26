@@ -28,7 +28,7 @@ const chartInitialStatus = {
   },
   error: false,
   loading: false,
-  checked: false,
+  checked: true,
 };
 
 const ItalyContainer = (props) => {

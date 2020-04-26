@@ -4,9 +4,9 @@
 /**
  * Prepare 3 arrays with reduced data
  * @param {array} data the fetched data
- * @param {boolean} historical if to extract data
+ * @param {boolean} lastTenDays if to extract data recent or historical
  */
-export const processData = (data, historical = false) => {
+export const processData = (data, lastTenDays = true) => {
   const intensiveTherapy = [];
   const totalHospitalized = [];
   let totalPositive = [];
@@ -55,7 +55,7 @@ export const processData = (data, historical = false) => {
 
   // in case of not historical (= last ten days), then filter result with the
   // array latest ones
-  if (!historical) {
+  if (lastTenDays) {
     [
       intensiveTherapy,
       totalHospitalized,
