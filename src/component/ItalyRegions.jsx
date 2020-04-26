@@ -52,12 +52,13 @@ const ItalyRegions = ({ tableData, width }) => {
   tableData.sort((a, b) => (a.regione > b.regione ? 1 : -1));
 
   return (
-    <Box
-      maxHeight={350}
-      width={width || 800}
-      style={{ overflowY: 'scroll', paddingBottom: 10 }}
-      data-id="italy-regions-box"
-    >
+    <>
+      {/* <Box
+       maxHeight={350}
+       // width={width || 800}
+       style={{ overflowY: 'scroll', paddingBottom: 10 }}
+       data-id="italy-regions-box"
+     > */}
       <TableContainer component={Paper}>
         <Table
           className={classes.table}
@@ -146,7 +147,8 @@ const ItalyRegions = ({ tableData, width }) => {
       </TableContainer>
 
       <DataProvided date={tableData[0].data} href={OPEN_PUGLIA_API} />
-    </Box>
+      {/* </Box> */}
+    </>
   );
 };
 export default ItalyRegions;

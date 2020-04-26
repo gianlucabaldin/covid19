@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect, useState } from 'react';
-import { Grid } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import moment from 'moment';
 import ItalyChart from './ItalyChart';
 import ItalyRegions from './ItalyRegions';
@@ -129,7 +129,11 @@ const ItalyContainer = (props) => {
       <Grid container justify="center">
         <Summary {...summaryData} />
       </Grid>
-      <Grid container style={{ paddingLeft: 16, paddingRight: 16 }}>
+      <Grid
+        container
+        style={{ paddingLeft: 16, paddingRight: 16 }}
+        justify="center"
+      >
         <Grid item>
           <ItalyChart
             {...chartData}
@@ -137,7 +141,22 @@ const ItalyContainer = (props) => {
             onToggleSwitch={onToggleSwitch}
           />
         </Grid>
-        <Grid item>
+      </Grid>
+      <Grid
+        container
+        style={{ paddingLeft: 16, paddingRight: 16 }}
+        justify="center"
+      >
+        <Grid item style={{ marginTop: 10 }}>
+          <Typography variant="h5">Region Details</Typography>
+        </Grid>
+      </Grid>
+      <Grid
+        container
+        style={{ paddingLeft: 16, paddingRight: 16 }}
+        justify="center"
+      >
+        <Grid item style={{ marginTop: 10 }}>
           <ItalyRegions tableData={tableData} width={width} />
         </Grid>
       </Grid>
