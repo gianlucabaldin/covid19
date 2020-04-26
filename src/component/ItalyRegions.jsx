@@ -12,6 +12,7 @@ import { grey } from '@material-ui/core/colors';
 import Error from './Error';
 import { OPEN_PUGLIA_API } from '../utils/consts';
 import DataProvided from './DataProvided';
+import Loading from './Loading';
 
 const useStyles = makeStyles({
   table: {
@@ -29,7 +30,7 @@ const TableCell = withStyles({
   },
 })(MuiTableCell);
 
-const ItalyRegions = ({ tableData, width }) => {
+const ItalyRegions = ({ data, loading = true }) => {
   const classes = useStyles();
 
   /** Legend: 
@@ -46,19 +47,18 @@ const ItalyRegions = ({ tableData, width }) => {
     11- tamponi                       swabs
   */
 
-  if (!tableData || tableData.length === 0) return <Error />;
+  if (!data || data.length === 0) return <Error />;
 
   // sort alphabetically by region
-  tableData.sort((a, b) => (a.regione > b.regione ? 1 : -1));
+  const getdata = () => {
+    if (data && data.length > 0) {
+      return data.sort((a, b) => (a.regione > b.regione ? 1 : -1));
+    }
+    return [];
+  };
 
   return (
     <>
-      {/* <Box
-       maxHeight={350}
-       // width={width || 800}
-       style={{ overflowY: 'scroll', paddingBottom: 10 }}
-       data-id="italy-regions-box"
-     > */}
       <TableContainer component={Paper}>
         <Table
           className={classes.table}
@@ -95,10 +95,17 @@ const ItalyRegions = ({ tableData, width }) => {
               </Hidden>
             </TableRow>
           </TableHead>
-          <TableBody>
-            {tableData &&
-              tableData.length > 0 &&
-              tableData.map((row) => (
+          {loading ? (
+            <TableBody>
+              <TableRow>
+                <TableCell colSpan={12} style={{ textAlign: 'center' }}>
+                  <Loading loading={loading} />
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          ) : (
+            <TableBody>
+              {getdata().map((row) => (
                 <TableRow key={row.regione} hover>
                   <TableCell align="center">{row.regione}</TableCell>
                   <Hidden lgDown>
@@ -142,12 +149,14 @@ const ItalyRegions = ({ tableData, width }) => {
                   </Hidden>
                 </TableRow>
               ))}
-          </TableBody>
+            </TableBody>
+          )}
         </Table>
       </TableContainer>
 
-      <DataProvided date={tableData[0].data} href={OPEN_PUGLIA_API} />
-      {/* </Box> */}
+      {data && data.length > 0 && (
+        <DataProvided date={data[0].data} href={OPEN_PUGLIA_API} />
+      )}
     </>
   );
 };

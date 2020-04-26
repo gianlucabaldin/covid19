@@ -27,8 +27,13 @@ const chartInitialStatus = {
     dailySwabs: [],
   },
   error: false,
-  loading: false,
+  loading: true,
   checked: true,
+};
+
+const tableInitialStatud = {
+  data: {},
+  loading: true,
 };
 
 const ItalyContainer = (props) => {
@@ -36,7 +41,7 @@ const ItalyContainer = (props) => {
 
   const [summaryData, setSummaryData] = useState({ ...summaryInitialStatus });
   const [chartData, setChartData] = useState({ ...chartInitialStatus });
-  const [tableData, setTableData] = useState(undefined);
+  const [tableData, setTableData] = useState(tableInitialStatud);
   const [fetchedDataAll, setFetchedDataAll] = useState();
 
   const extractData = (res) => {
@@ -58,6 +63,7 @@ const ItalyContainer = (props) => {
         dailyDeceased,
         dailySwabs,
       },
+      loading: false,
     });
     // fill summary with last day-data extracted from previous fetch
     setSummaryData({
@@ -89,7 +95,7 @@ const ItalyContainer = (props) => {
     // fill table with fetched data
     fetchItalyRegion(true)
       .then((res) => {
-        setTableData(res);
+        setTableData({ data: res, loading: false });
       })
       .catch((err) => {
         // to fill
@@ -157,7 +163,8 @@ const ItalyContainer = (props) => {
         justify="center"
       >
         <Grid item style={{ marginTop: 10 }}>
-          <ItalyRegions tableData={tableData} width={width} />
+          {/* <ItalyRegions tableData={tableData} loading={tableData.loading} /> */}
+          <ItalyRegions {...tableData} />
         </Grid>
       </Grid>
     </>
