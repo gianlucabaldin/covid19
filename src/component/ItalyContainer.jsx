@@ -129,7 +129,7 @@ const ItalyContainer = (props) => {
       <Grid container justify="center">
         <Summary {...summaryData} />
       </Grid>
-      <Grid container spacing={2}>
+      <Grid container style={{ paddingLeft: 16, paddingRight: 16 }}>
         <Grid item>
           <ItalyChart
             {...chartData}

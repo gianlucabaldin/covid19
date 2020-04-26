@@ -32,11 +32,7 @@ const ItalyChart = ({
         </Grid>
       </Grid>
 
-      <Grid
-        container
-        style={{ paddingLeft: '24', paddingRight: '24' }}
-        spacing={2}
-      >
+      <Grid container>
         <Grid item xs={12} md={6} lg={4}>
           <Chart
             series={[intensiveTherapy]}
@@ -45,7 +41,7 @@ const ItalyChart = ({
         </Grid>
         <Grid item xs={12} md={6} lg={4}>
           <Chart
-            style={{ width: 'inherit', padding: '24px' }}
+            // style={{ width: 'inherit', padding: '24px' }}
             series={[totalHospitalized]}
             status={[STATUS.TOTAL_HOSPITALIZED]}
           />
