@@ -35,30 +35,45 @@ const ItalyChart = ({
       <Grid container>
         <Grid item xs={12} md={6} lg={4} style={{ padding: 16 }}>
           <Chart
+            loading={loading}
             series={[intensiveTherapy]}
             status={[STATUS.INTENSIVE_THERAPY]}
           />
         </Grid>
         <Grid item xs={12} md={6} lg={4} style={{ padding: 16 }}>
           <Chart
+            loading={loading}
             series={[totalHospitalized]}
             status={[STATUS.TOTAL_HOSPITALIZED]}
           />
         </Grid>
         <Grid item xs={12} md={6} lg={4} style={{ padding: 16 }}>
-          <Chart series={[totalPositive]} status={[STATUS.TOTAL_POSITIVE]} />
+          <Chart
+            loading={loading}
+            series={[totalPositive]}
+            status={[STATUS.TOTAL_POSITIVE]}
+          />
         </Grid>
         <Grid item xs={12} md={6} lg={4} style={{ padding: 16 }}>
           <Chart
+            loading={loading}
             series={[newDailyPositive]}
             status={[STATUS.NEW_DAILY_POSITIVE]}
           />
         </Grid>
         <Grid item xs={12} md={6} lg={4} style={{ padding: 16 }}>
-          <Chart series={[dailyDeceased]} status={[STATUS.DAILY_DECEASED]} />
+          <Chart
+            loading={loading}
+            series={[dailyDeceased]}
+            status={[STATUS.DAILY_DECEASED]}
+          />
         </Grid>
         <Grid item xs={12} md={6} lg={4} style={{ padding: 16 }}>
-          <Chart series={[dailySwabs]} status={[STATUS.DAILY_SWABS]} />
+          <Chart
+            loading={loading}
+            series={[dailySwabs]}
+            status={[STATUS.DAILY_SWABS]}
+          />
         </Grid>
       </Grid>
       <Grid container spacing={2}>

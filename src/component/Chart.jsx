@@ -10,8 +10,9 @@ import {
   YAxis,
 } from 'react-vis/dist';
 import { FlexibleWidthXYPlot } from 'react-vis/dist/make-vis-flexible';
+import Loading from './Loading';
 
-const Chart = ({ height, width, series, status }) => {
+const Chart = ({ height, width, series, status, loading = true }) => {
   const initialHintValue = {
     data: {},
     over: false,
@@ -63,7 +64,11 @@ const Chart = ({ height, width, series, status }) => {
     }
     return array;
   };
-  return (
+  return loading ? (
+    <div style={{ width: '100%' }}>
+      <Loading />
+    </div>
+  ) : (
     <div>
       <DiscreteColorLegend
         strokeWidth={2}
@@ -99,7 +104,6 @@ const Chart = ({ height, width, series, status }) => {
           tickTotal={10}
         />
         <YAxis title="number" position="end" />
-
         {/* the hint popup shown when user point a mark with the mouse */}
         {getHintSection(hint.over)}
       </FlexibleWidthXYPlot>
