@@ -127,6 +127,7 @@ const ItalyContainer = (props) => {
         dailySwabs,
       },
       checked,
+      loading: false,
     });
   };
 
@@ -163,7 +164,6 @@ const ItalyContainer = (props) => {
         justify="center"
       >
         <Grid item style={{ marginTop: 10 }}>
-          {/* <ItalyRegions tableData={tableData} loading={tableData.loading} /> */}
           <ItalyRegions {...tableData} />
         </Grid>
       </Grid>
