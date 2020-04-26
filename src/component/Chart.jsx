@@ -49,14 +49,13 @@ const Chart = ({ height, width, series, status }) => {
   };
   return (
     <div style={{ height: '300px' }}>
+      <DiscreteColorLegend
+        strokeWidth={2}
+        orientation="vertical"
+        items={getLegend()}
+        style={{ marginLeft: '40%', padding: 0 }}
+      />
       <FlexibleWidthXYPlot height={300} xType="time">
-        <DiscreteColorLegend
-          strokeWidth={2}
-          orientation="horizontal"
-          items={getLegend()}
-          style={{ position: 'absolute', left: '15%' }}
-        />
-
         <HorizontalGridLines />
         <VerticalGridLines />
 

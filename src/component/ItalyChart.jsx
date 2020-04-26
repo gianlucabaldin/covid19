@@ -33,32 +33,67 @@ const ItalyChart = ({
       </Grid>
 
       <Grid container>
-        <Grid item xs={12} md={6} lg={4}>
+        <Grid
+          item
+          xs={12}
+          md={6}
+          lg={4}
+          style={{ padding: 16, marginBottom: 32 }}
+        >
           <Chart
             series={[intensiveTherapy]}
             status={[STATUS.INTENSIVE_THERAPY]}
           />
         </Grid>
-        <Grid item xs={12} md={6} lg={4}>
+        <Grid
+          item
+          xs={12}
+          md={6}
+          lg={4}
+          style={{ padding: 16, marginBottom: 32 }}
+        >
           <Chart
-            // style={{ width: 'inherit', padding: '24px' }}
             series={[totalHospitalized]}
             status={[STATUS.TOTAL_HOSPITALIZED]}
           />
         </Grid>
-        <Grid item xs={12} md={6} lg={4}>
+        <Grid
+          item
+          xs={12}
+          md={6}
+          lg={4}
+          style={{ padding: 16, marginBottom: 32 }}
+        >
           <Chart series={[totalPositive]} status={[STATUS.TOTAL_POSITIVE]} />
         </Grid>
-        <Grid item xs={12} md={6} lg={4}>
+        <Grid
+          item
+          xs={12}
+          md={6}
+          lg={4}
+          style={{ padding: 16, marginBottom: 32 }}
+        >
           <Chart
             series={[newDailyPositive]}
             status={[STATUS.NEW_DAILY_POSITIVE]}
           />
         </Grid>
-        <Grid item xs={12} md={6} lg={4}>
+        <Grid
+          item
+          xs={12}
+          md={6}
+          lg={4}
+          style={{ padding: 16, marginBottom: 32 }}
+        >
           <Chart series={[dailyDeceased]} status={[STATUS.DAILY_DECEASED]} />
         </Grid>
-        <Grid item xs={12} md={6} lg={4}>
+        <Grid
+          item
+          xs={12}
+          md={6}
+          lg={4}
+          style={{ padding: 16, marginBottom: 32 }}
+        >
           <Chart series={[dailySwabs]} status={[STATUS.DAILY_SWABS]} />
         </Grid>
       </Grid>
