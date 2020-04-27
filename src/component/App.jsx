@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './Header';
-import MainContainer from './MainContainer';
+import ItalyContainer from './ItalyContainer';
+
+export const SECTIONS = {
+  WORLDWIDE: 'WORLDWIDE',
+  ITALY: 'ITALY',
+  COUNTRY_LIST: 'COUNTRY_LIST',
+  EUROPE: 'EUROPE',
+};
 
 const App = () => {
+  const [activeSection, setActiveSection] = useState(SECTIONS.ITALY);
   return (
     <div>
       <Header />
-      <MainContainer />
+      {activeSection === SECTIONS.ITALY && <ItalyContainer />}
     </div>
   );
 };
