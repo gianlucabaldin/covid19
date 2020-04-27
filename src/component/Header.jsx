@@ -39,6 +39,7 @@ const Header = () => {
           <GitHubIcon
             href="https://github.com/gianlucabaldin"
             fontSize="large"
+            cursor="pointer"
           />
         </Box>
       </Toolbar>
