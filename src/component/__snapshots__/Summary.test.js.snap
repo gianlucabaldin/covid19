@@ -1,10 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Summary renders properly 1`] = `
-<Styled(MuiBox)
-  className="summary"
-  m={1}
-  margin="auto"
+<WithStyles(ForwardRef(Grid))
+  item={true}
 >
   <WithStyles(ForwardRef(TableContainer))
     component={
@@ -326,28 +324,38 @@ exports[`Summary renders properly 1`] = `
   >
     <WithStyles(ForwardRef(Table))
       aria-label="a dense table"
-      className="makeStyles-table-1"
       size="small"
+      style={
+        Object {
+          "marginBottom": "8",
+          "marginTop": "8",
+        }
+      }
     >
       <WithStyles(ForwardRef(TableHead))>
         <WithStyles(ForwardRef(TableRow))
-          className="makeStyles-trHeader-2"
+          className="makeStyles-trHeader-1"
           key="tr-status"
         >
           <WithStyles(WithStyles(ForwardRef(TableCell)))
             align="center"
           >
-            Confirmed
+            Total Swabs
           </WithStyles(WithStyles(ForwardRef(TableCell)))>
           <WithStyles(WithStyles(ForwardRef(TableCell)))
             align="center"
           >
-            Recovered
+            Total Cases
           </WithStyles(WithStyles(ForwardRef(TableCell)))>
           <WithStyles(WithStyles(ForwardRef(TableCell)))
             align="center"
           >
-            Deaths
+            Total Deceased
+          </WithStyles(WithStyles(ForwardRef(TableCell)))>
+          <WithStyles(WithStyles(ForwardRef(TableCell)))
+            align="center"
+          >
+            Last update available
           </WithStyles(WithStyles(ForwardRef(TableCell)))>
         </WithStyles(ForwardRef(TableRow))>
       </WithStyles(ForwardRef(TableHead))>
@@ -357,19 +365,23 @@ exports[`Summary renders properly 1`] = `
         >
           <WithStyles(WithStyles(ForwardRef(TableCell)))
             align="center"
-            id="summary-confirmed"
+            id="summary-swabs"
           />
           <WithStyles(WithStyles(ForwardRef(TableCell)))
             align="center"
-            id="summary-recovered"
+            id="summary-totalCases"
           />
           <WithStyles(WithStyles(ForwardRef(TableCell)))
             align="center"
-            id="summary-deaths"
+            id="summary-deceased"
+          />
+          <WithStyles(WithStyles(ForwardRef(TableCell)))
+            align="center"
+            id="summary-lastupdate"
           />
         </WithStyles(ForwardRef(TableRow))>
       </WithStyles(ForwardRef(TableBody))>
     </WithStyles(ForwardRef(Table))>
   </WithStyles(ForwardRef(TableContainer))>
-</Styled(MuiBox)>
+</WithStyles(ForwardRef(Grid))>
 `;

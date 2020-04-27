@@ -2,9 +2,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import { Box } from '@material-ui/core';
 
-// const NavButtons = (props) => {
 const NavButtons = () => {
-  // const getColor = ({ activeSection }) => {};
   return (
     <Box display="flex" justifyContent="center" m={1} p={1}>
       <Box m={1}>

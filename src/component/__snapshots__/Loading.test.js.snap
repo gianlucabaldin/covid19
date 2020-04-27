@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading component should renders properly 1`] = `
+<Loader
+  color="#303f9f"
+  css=""
+  data-id="loading-spinner"
+  loading={true}
+  size={40}
+/>
+`;

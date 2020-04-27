@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AccuracySlider should renders properly 1`] = `
+<div
+  className="makeStyles-root-1"
+>
+  <WithStyles(ForwardRef(Typography))
+    id="discrete-slider-custom"
+    style={Object {}}
+    textAlign="center"
+  >
+    Accuracy
+  </WithStyles(ForwardRef(Typography))>
+  <WithStyles(ForwardRef(Slider))
+    aria-labelledby="discrete-slider-custom"
+    getAriaValueText={[Function]}
+    marks={
+      Array [
+        Object {
+          "label": "10",
+          "value": 10,
+        },
+        Object {
+          "label": "20",
+          "value": 20,
+        },
+        Object {
+          "label": "30",
+          "value": 30,
+        },
+        Object {
+          "label": "40",
+          "value": 40,
+        },
+        Object {
+          "label": "50",
+          "value": 50,
+        },
+      ]
+    }
+    max={50}
+    min={10}
+    onChangeCommitted={[Function]}
+    step={10}
+  />
+</div>
+`;

@@ -2,31 +2,106 @@
 
 exports[`ItalyContainer renders properly 1`] = `
 <Fragment>
-  <Styled(MuiBox)
-    alignItems="center"
-    bgcolor="background.paper"
-    data-id="italy-container-box"
-    display="flex"
-    flexDirection="column"
-    justifyContent="center"
-    m={1}
-    p={1}
+  <WithStyles(ForwardRef(Grid))
+    container={true}
+    justify="center"
   >
     <Summary
-      confirmed={0}
       data={
         Object {
-          "confirmed": 0,
-          "deaths": 0,
+          "deceased": 0,
           "error": false,
-          "recovered": 0,
+          "tamponi": 0,
+          "totalCases": 0,
         }
       }
-      deaths={0}
+      deceased={0}
       error={false}
-      recovered={0}
+      lastUpdate=""
+      tamponi={0}
+      totalCases={0}
     />
-    <ItalyRegions />
-  </Styled(MuiBox)>
+  </WithStyles(ForwardRef(Grid))>
+  <WithStyles(ForwardRef(Grid))
+    container={true}
+    justify="center"
+    style={
+      Object {
+        "paddingLeft": 16,
+        "paddingRight": 16,
+      }
+    }
+  >
+    <WithStyles(ForwardRef(Grid))
+      item={true}
+    >
+      <ItalyChart
+        checked={true}
+        data={
+          Object {
+            "dailyDeceased": Array [],
+            "dailySwabs": Array [],
+            "intensiveTherapy": Array [],
+            "newDailyPositive": Array [],
+            "totalHospitalized": Array [],
+            "totalPositive": Array [],
+          }
+        }
+        data-id="italy-container-chart-box"
+        error={false}
+        loading={true}
+        onToggleSwitch={[Function]}
+      />
+    </WithStyles(ForwardRef(Grid))>
+  </WithStyles(ForwardRef(Grid))>
+  <WithStyles(ForwardRef(Grid))
+    container={true}
+    justify="center"
+    style={
+      Object {
+        "paddingLeft": 16,
+        "paddingRight": 16,
+      }
+    }
+  >
+    <WithStyles(ForwardRef(Grid))
+      item={true}
+      style={
+        Object {
+          "marginTop": 10,
+        }
+      }
+    >
+      <WithStyles(ForwardRef(Typography))
+        variant="h5"
+      >
+        Region Details
+      </WithStyles(ForwardRef(Typography))>
+    </WithStyles(ForwardRef(Grid))>
+  </WithStyles(ForwardRef(Grid))>
+  <WithStyles(ForwardRef(Grid))
+    container={true}
+    justify="center"
+    style={
+      Object {
+        "paddingLeft": 16,
+        "paddingRight": 16,
+      }
+    }
+  >
+    <WithStyles(ForwardRef(Grid))
+      item={true}
+      style={
+        Object {
+          "marginTop": 10,
+        }
+      }
+    >
+      <ItalyRegions
+        data={Object {}}
+        loading={true}
+      />
+    </WithStyles(ForwardRef(Grid))>
+  </WithStyles(ForwardRef(Grid))>
 </Fragment>
 `;

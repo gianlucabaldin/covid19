@@ -57,14 +57,6 @@ it('has a center-aligned project description - with Enzyme', () => {
 
 ### Look for React Component children (inside another)
 
-#### with toBeDefined()
-
-```
-it('contains Summary component', () => {
-    expect(wrapper.find(<Summary />).length).toEqual(1);
-});
-```
-
 #### pointing to a particular inner className
 
 Attention: with MaterialUi a <Box className="myClassname"> outputs as
@@ -81,6 +73,22 @@ so if you "only" look for ".className" an check the lenght, it will be 2 (not 1)
 it('contains Summary component', () => {
     wrapper = mount(<MainContainer />);
     expect(wrapper.find('div.summary').length).toEqual(1);
+});
+```
+
+#### with Enzyme find()
+
+```
+it('contains Summary component', () => {
+    expect(wrapper.find(<Summary />).length).toEqual(1);
+});
+```
+
+#### with Enzyme contains()
+
+```
+it('contains Summary component', () => {
+    expect(wrapper.contains(<Summary />)).toEqual(true);
 });
 ```
 

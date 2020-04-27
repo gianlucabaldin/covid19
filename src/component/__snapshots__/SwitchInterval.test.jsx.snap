@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SwitchInterval should renders properly 1`] = `
+<WithStyles(ForwardRef(Typography))
+  component="div"
+>
+  <WithStyles(ForwardRef(Grid))
+    alignItems="center"
+    component="label"
+    container={true}
+    spacing={1}
+  >
+    <WithStyles(ForwardRef(Grid))
+      item={true}
+    >
+      Historical
+    </WithStyles(ForwardRef(Grid))>
+    <WithStyles(ForwardRef(Grid))
+      item={true}
+    >
+      <WithStyles(WithStyles(ForwardRef(Switch)))
+        name="checkedC"
+        onChange={[Function]}
+      />
+    </WithStyles(ForwardRef(Grid))>
+    <WithStyles(ForwardRef(Grid))
+      item={true}
+    >
+      Last 10 days
+    </WithStyles(ForwardRef(Grid))>
+  </WithStyles(ForwardRef(Grid))>
+</WithStyles(ForwardRef(Typography))>
+`;

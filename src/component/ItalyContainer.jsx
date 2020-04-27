@@ -143,6 +143,7 @@ const ItalyContainer = (props) => {
       >
         <Grid item>
           <ItalyChart
+            data-id="italy-container-chart-box"
             {...chartData}
             // width={width}
             onToggleSwitch={onToggleSwitch}

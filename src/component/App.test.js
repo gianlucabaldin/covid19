@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import App from './App';
 import Header from './Header';
-import MainContainer from './MainContainer';
+import ItalyContainer from './ItalyContainer';
 
 describe('App', () => {
   const wrapper = shallow(<App />);
@@ -16,8 +16,9 @@ describe('App', () => {
       expect(wrapper.find(Header).length).toEqual(1);
     });
 
-    it('contains MainContainer component', () => {
-      expect(wrapper.find(MainContainer).length).toEqual(1);
+    it('contains ItalyContainer component', () => {
+      expect(wrapper.find(ItalyContainer).length).toEqual(1);
+      expect(wrapper.contains(<ItalyContainer />)).toEqual(true);
     });
   });
 });

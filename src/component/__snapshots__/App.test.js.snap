@@ -3,6 +3,9 @@
 exports[`App renders correctly 1`] = `
 <div>
   <Header />
-  <MainContainer />
+  <ItalyContainer
+    data={Object {}}
+    error={false}
+  />
 </div>
 `;

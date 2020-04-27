@@ -65,7 +65,7 @@ const Summary = ({
               <TableCell align="center" id="summary-deceased">
                 {error ? '' : deceased}
               </TableCell>
-              <TableCell align="center" id="summary-deceased">
+              <TableCell align="center" id="summary-lastupdate">
                 {error ? '' : lastUpdate}
               </TableCell>
             </TableRow>

@@ -24,12 +24,12 @@ const Header = () => {
       style={{ boxShadow: 'none' }}
     >
       <Toolbar className={classes.toolbar}>
-        <Box width={200}>
+        <Box width={250}>
           <Typography variant="h4" color="primary">
             Covid 19
           </Typography>
-          <Typography variant="p" color="primary">
-            Latest & historical data
+          <Typography variant="body1" color="primary">
+            Latest updates & historical data
           </Typography>
         </Box>
         <Box>
