@@ -12,7 +12,7 @@ import {
 import { FlexibleWidthXYPlot } from 'react-vis/dist/make-vis-flexible';
 import Loading from './Loading';
 
-const Chart = ({ height, width, series, status, loading = true }) => {
+const Chart = ({ series, status, loading = true }) => {
   const initialHintValue = {
     data: {},
     over: false,

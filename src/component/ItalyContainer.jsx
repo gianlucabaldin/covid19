@@ -37,7 +37,7 @@ const tableInitialStatud = {
 };
 
 const ItalyContainer = (props) => {
-  const { width } = props;
+  // const { width } = props;
 
   const [summaryData, setSummaryData] = useState({ ...summaryInitialStatus });
   const [chartData, setChartData] = useState({ ...chartInitialStatus });
@@ -144,7 +144,7 @@ const ItalyContainer = (props) => {
         <Grid item>
           <ItalyChart
             {...chartData}
-            width={width}
+            // width={width}
             onToggleSwitch={onToggleSwitch}
           />
         </Grid>

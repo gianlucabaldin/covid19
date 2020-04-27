@@ -7,7 +7,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { Box, Hidden, withStyles } from '@material-ui/core';
+import { Hidden, withStyles } from '@material-ui/core';
 import { grey } from '@material-ui/core/colors';
 import Error from './Error';
 import { OPEN_PUGLIA_API } from '../utils/consts';

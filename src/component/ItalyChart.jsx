@@ -14,7 +14,7 @@ const ItalyChart = ({
   loading,
   checked,
   onToggleSwitch,
-  width = 500,
+  // width = 500,
 }) => {
   const {
     intensiveTherapy,
