@@ -13,8 +13,12 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 
+// https://github.com/cypress-io/cypress/issues/909
 // Import commands.js using ES2015 syntax:
-import './commands'
+import './commands';
+
+const cyEnv = Cypress.env();
+cyEnv.baseUrl && Cypress.config('baseUrl', cyEnv.baseUrl);
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
