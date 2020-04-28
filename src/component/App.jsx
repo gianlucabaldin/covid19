@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import ItalyContainer from './ItalyContainer';
 import Header from './Header';
-import Languages from './Languages';
 
 export const SECTIONS = {
   WORLDWIDE: 'WORLDWIDE',
@@ -14,7 +13,6 @@ const App = () => {
   const [activeSection, setActiveSection] = useState(SECTIONS.ITALY);
   return (
     <div>
-      <Languages />
       <Header />
       {activeSection === SECTIONS.ITALY && <ItalyContainer />}
     </div>

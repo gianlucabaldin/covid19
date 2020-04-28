@@ -6,10 +6,16 @@ import Typography from '@material-ui/core/Typography';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import { Box } from '@material-ui/core';
 import NavButtons from './NavButtons';
+import Languages from './Languages';
 
 const useStyles = makeStyles(() => ({
   toolbar: {
     justifyContent: 'space-between',
+  },
+  languages: {
+    display: 'flex',
+    width: 200,
+    textAlign: 'right',
   },
 }));
 
@@ -39,7 +45,8 @@ const Header = () => {
         <Box>
           <NavButtons />
         </Box>
-        <Box width={200} textAlign="right">
+        <Box className={classes.languages}>
+          <Languages />
           <GitHubIcon
             href="https://github.com/gianlucabaldin"
             fontSize="large"
