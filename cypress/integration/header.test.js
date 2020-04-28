@@ -1,4 +1,5 @@
-// / <reference types="cypress" />
+/* eslint-disable spaced-comment */
+/// <reference types="cypress" />
 
 context('Header', () => {
   beforeEach(() => {

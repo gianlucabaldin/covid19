@@ -1,4 +1,5 @@
-// ***********************************************************
+/* eslint-disable no-unused-expressions */
+/* eslint-disable spaced-comment */ // ***********************************************************
 // This example support/index.js is processed and
 // loaded automatically before your test files.
 //
