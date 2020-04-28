@@ -6,7 +6,7 @@ context('Header', () => {
   });
   context('should have', () => {
     it('logo', () => {
-      cy.get('[data-test-id="logo"]').should('have.text', 'covid19');
+      cy.get('[data-test-id="logo"]').should('have.text', 'Covid 19');
     });
     it('logo subtitle', () => {
       cy.get('[data-test-id="logo-subtitle"]').should(
