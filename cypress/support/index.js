@@ -17,6 +17,7 @@
 // https://github.com/cypress-io/cypress/issues/909
 // Import commands.js using ES2015 syntax:
 import './commands';
+import 'cypress-jest-adapter';
 
 const cyEnv = Cypress.env();
 cyEnv.baseUrl && Cypress.config('baseUrl', cyEnv.baseUrl);
