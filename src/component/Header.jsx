@@ -25,10 +25,14 @@ const Header = () => {
     >
       <Toolbar className={classes.toolbar}>
         <Box width={250}>
-          <Typography variant="h4" color="primary">
+          <Typography variant="h4" color="primary" data-test-id="logo">
             Covid 19
           </Typography>
-          <Typography variant="body1" color="primary">
+          <Typography
+            variant="body1"
+            color="primary"
+            data-test-id="logo-subtitle"
+          >
             Latest updates & historical data
           </Typography>
         </Box>
@@ -40,6 +44,7 @@ const Header = () => {
             href="https://github.com/gianlucabaldin"
             fontSize="large"
             cursor="pointer"
+            data-test-id="github-link"
           />
         </Box>
       </Toolbar>
