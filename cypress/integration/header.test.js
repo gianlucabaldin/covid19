@@ -16,14 +16,15 @@ context('Header', () => {
       );
     });
     it('github link', () => {
-      cy.get('[data-test-id="github-link"').should(
-        'have.property',
-        'href',
-        'https://github.com/gianlucabaldin',
-      );
+      cy.get('[data-test-id="github-link"').then((el) => {
+        expect(el).toHaveAttr('href', 'https://github.com/gianlucabaldin');
+      });
     });
     it('navbar with 4 buttons', () => {
-      cy.get('[data-test-id="logo"]').should('have.text', 'covid19');
+      cy.get('[data-test-id="nav-buttons"]').then((el) => {
+        expect(el).toHaveLength(1);
+        expect(el.children()).toHaveLength(4);
+      });
     });
   });
 });
