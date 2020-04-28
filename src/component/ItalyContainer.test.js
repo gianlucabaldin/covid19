@@ -41,7 +41,7 @@ describe('ItalyContainer', () => {
         </ItalyContainer>,
       );
       expect(
-        wrapper.find('[data-id="italy-container-chart-box"]').length,
+        wrapper.find('[data-test-id="italy-container-chart-box"]').length,
       ).toEqual(1);
     });
 

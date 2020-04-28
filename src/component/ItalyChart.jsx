@@ -26,7 +26,7 @@ const ItalyChart = ({
   } = data;
   return (
     <>
-      <Grid container spacing={2} data-id="swith-interval-container">
+      <Grid container spacing={2} data-test-id="swith-interval-container">
         <Grid item>
           <SwitchInterval onToggleSwitch={onToggleSwitch} checked={checked} />
         </Grid>

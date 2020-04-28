@@ -122,11 +122,11 @@ expect(wrapper.find('WithStyles(ForwardRef(Button))').length).toEqual(3);
 });
 ```
 
-##### look for a component child by "data-id" attribute
+##### look for a component child by "data-test-id" attribute
 
 ```
 it('should have 3 buttons', () => {
 const wrapper = shallow(<ItalyChart data={mockData} />);
-// expect(wrapper.find('[data-id="chart-italy"]').length).toEqual(1);
+// expect(wrapper.find('[data-test-id="chart-italy"]').length).toEqual(1);
 });
 ```

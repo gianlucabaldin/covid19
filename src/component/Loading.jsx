@@ -6,7 +6,7 @@ const Loading = ({ loading = true }) => (
     color="#303f9f"
     loading={loading}
     size={40}
-    data-id="loading-spinner"
+    data-test-id="loading-spinner"
   />
 );
 
