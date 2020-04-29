@@ -62,7 +62,10 @@ const Chart = ({ series, status, loading = true }) => {
       status.forEach((el) => {
         array.push(
           <span style={{ fontWeight: 'bold', textTransform: 'capitalize' }}>
-            {t(el.toString().toLowerCase()).replace('_', ' ').toUpperCase()}
+            {t(el.toString().toLowerCase())
+              .replace('_', ' ')
+              .replace('-', ' ')
+              .toUpperCase()}
           </span>,
         );
       });

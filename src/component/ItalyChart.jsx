@@ -4,26 +4,19 @@ import { Grid } from '@material-ui/core';
 import SwitchInterval from './SwitchInterval';
 import Error from './Error';
 import DataProvided from './DataProvided';
-import { STATUS, API_ITALY_HYSTORICAL_APIFY_SHORT_URL } from '../utils/consts';
-// import SwitchInterval from './SwitchInterval';
+import { API_ITALY_HYSTORICAL_APIFY_SHORT_URL } from '../utils/consts';
 import Chart from './Chart';
 
 const ItalyChart = ({
   data,
   error,
+  dataTestId,
   loading,
   checked,
   onToggleSwitch,
-  // width = 500,
 }) => {
-  const {
-    intensiveTherapy,
-    totalHospitalized,
-    totalPositive,
-    newDailyPositive,
-    dailyDeceased,
-    dailySwabs,
-  } = data;
+  if (error) return <Error />;
+
   return (
     <>
       <Grid container spacing={2} data-test-id="switch-interval-container">
@@ -32,49 +25,14 @@ const ItalyChart = ({
         </Grid>
       </Grid>
 
-      <Grid container data-test-id="italy-container-chart-box">
-        <Grid item xs={12} md={6} lg={4} style={{ padding: 16 }}>
-          <Chart
-            loading={loading}
-            series={[intensiveTherapy]}
-            status={[STATUS.INTENSIVE_THERAPY]}
-          />
-        </Grid>
-        <Grid item xs={12} md={6} lg={4} style={{ padding: 16 }}>
-          <Chart
-            loading={loading}
-            series={[totalHospitalized]}
-            status={[STATUS.TOTAL_HOSPITALIZED]}
-          />
-        </Grid>
-        <Grid item xs={12} md={6} lg={4} style={{ padding: 16 }}>
-          <Chart
-            loading={loading}
-            series={[totalPositive]}
-            status={[STATUS.TOTAL_POSITIVE]}
-          />
-        </Grid>
-        <Grid item xs={12} md={6} lg={4} style={{ padding: 16 }}>
-          <Chart
-            loading={loading}
-            series={[newDailyPositive]}
-            status={[STATUS.NEW_DAILY_POSITIVE]}
-          />
-        </Grid>
-        <Grid item xs={12} md={6} lg={4} style={{ padding: 16 }}>
-          <Chart
-            loading={loading}
-            series={[dailyDeceased]}
-            status={[STATUS.DAILY_DECEASED]}
-          />
-        </Grid>
-        <Grid item xs={12} md={6} lg={4} style={{ padding: 16 }}>
-          <Chart
-            loading={loading}
-            series={[dailySwabs]}
-            status={[STATUS.DAILY_SWABS]}
-          />
-        </Grid>
+      <Grid container data-test-id={`${dataTestId}-chart-container`}>
+        {data &&
+          data.length > 0 &&
+          data.map((el) => (
+            <Grid item xs={12} md={6} lg={4} style={{ padding: 16 }}>
+              <Chart loading={loading} series={[el.value]} status={[el.key]} />
+            </Grid>
+          ))}
       </Grid>
       <Grid container spacing={2}>
         <DataProvided href={API_ITALY_HYSTORICAL_APIFY_SHORT_URL} />

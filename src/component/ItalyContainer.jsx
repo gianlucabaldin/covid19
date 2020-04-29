@@ -20,14 +20,8 @@ const summaryInitialStatus = {
 };
 
 const chartInitialStatus = {
-  data: {
-    intensiveTherapy: [],
-    totalHospitalized: [],
-    totalPositive: [],
-    newDailyPositive: [],
-    dailyDeceased: [],
-    dailySwabs: [],
-  },
+  data: [],
+  dataTestId: SECTIONS.ITALY,
   error: false,
   loading: true,
   checked: true,
@@ -55,14 +49,14 @@ const ItalyContainer = () => {
     } = processData(res);
     setChartData({
       ...chartInitialStatus,
-      data: {
-        intensiveTherapy,
-        totalHospitalized,
-        totalPositive,
-        newDailyPositive,
-        dailyDeceased,
-        dailySwabs,
-      },
+      data: [
+        { key: 'intensive-therapy', value: intensiveTherapy },
+        { key: 'total-hospitalized', value: totalHospitalized },
+        { key: 'total-positive', value: totalPositive },
+        { key: 'new-daily-positive', value: newDailyPositive },
+        { key: 'daily-deceased', value: dailyDeceased },
+        { key: 'daily-swabs', value: dailySwabs },
+      ],
       loading: false,
     });
     // fill summary with last day-data extracted from previous fetch
@@ -83,6 +77,7 @@ const ItalyContainer = () => {
     });
     return res;
   };
+
   // fetch data from public api or mock (see implementation)
   const fetchData = () => {
     fetchItalyHistoricalAllApify(true)
@@ -122,14 +117,14 @@ const ItalyContainer = () => {
     } = processData(fetchedDataAll, checked);
     setChartData({
       ...chartInitialStatus,
-      data: {
-        intensiveTherapy,
-        totalHospitalized,
-        totalPositive,
-        newDailyPositive,
-        dailyDeceased,
-        dailySwabs,
-      },
+      data: [
+        { key: 'intensive-therapy', value: intensiveTherapy },
+        { key: 'total-hospitalized', value: totalHospitalized },
+        { key: 'total-positive', value: totalPositive },
+        { key: 'new-daily-positive', value: newDailyPositive },
+        { key: 'daily-deceased', value: dailyDeceased },
+        { key: 'daily-swabs', value: dailySwabs },
+      ],
       checked,
       loading: false,
     });
