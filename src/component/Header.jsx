@@ -1,10 +1,11 @@
+/* eslint-disable import/no-cycle */
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import GitHubIcon from '@material-ui/icons/GitHub';
-import { Box } from '@material-ui/core';
+import { Box, Link } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import NavButtons from './NavButtons';
 import Languages from './Languages';
@@ -20,7 +21,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Header = () => {
+const Header = ({ onClick }) => {
   const { t } = useTranslation();
   const classes = useStyles();
 
@@ -45,16 +46,22 @@ const Header = () => {
           </Typography>
         </Box>
         <Box>
-          <NavButtons />
+          <NavButtons onClick={onClick} />
         </Box>
         <Box className={classes.languages}>
           <Languages />
-          <GitHubIcon
-            href="https://github.com/gianlucabaldin"
-            fontSize="large"
-            cursor="pointer"
-            data-test-id="github-link"
-          />
+          <Link
+            href="https://github.com/gianlucabaldin/covid19"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <GitHubIcon
+              fontSize="large"
+              cursor="pointer"
+              data-test-id="github-link"
+              htmlColor="black"
+            />
+          </Link>
         </Box>
       </Toolbar>
     </AppBar>
