@@ -29,10 +29,10 @@
   "italyregions.positive-variations": "positive variations",
   "italyregions.new-positive": "new positive",
   "italyregions.discarged-healed": "discharged healed",
-  "sumamry.total-swabs": "total swabs",
-  "sumamry.total-cases": "total cases",
-  "sumamry.total-deceased": "total deceased",
-  "sumamry.last-update": "last update available",
+  "summary.total-swabs": "total swabs",
+  "summary.total-cases": "total cases",
+  "summary.total-deceased": "total deceased",
+  "summary.last-update": "last update available",
   "switch.historical": "historical",
   "switch.last-10-days": "last ten days"
 }

@@ -53,12 +53,12 @@ const Summary = ({
         >
           <TableHead>
             <TableRow key="tr-status" className={classes.trHeader}>
-              <TableCell align="center">{t('sumamry.total-swabs')}</TableCell>
-              <TableCell align="center">{t('sumamry.total-cases')}</TableCell>
+              <TableCell align="center">{t('summary.total-swabs')}</TableCell>
+              <TableCell align="center">{t('summary.total-cases')}</TableCell>
               <TableCell align="center">
-                {t('sumamry.total-deceased')}
+                {t('summary.total-deceased')}
               </TableCell>
-              <TableCell align="center">{t('sumamry.last-update')}</TableCell>
+              <TableCell align="center">{t('summary.last-update')}</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
