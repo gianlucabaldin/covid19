@@ -8,6 +8,10 @@ export const API_ITALY_HYSTORICAL_APIFY_SHORT_URL = 'api.apify.com';
 export const API_ITALY_REGION =
   'https://openpuglia.org/api/?q=getdatapccovid-19';
 
+// export const API_WORLDWIDE_TOTALS = "https://covidapi.info/api/v1/global"
+export const API_WORLDWIDE_HISTORICAL_TOTALS =
+  'https://covidapi.info/api/v1/global/count';
+
 export const OPEN_PUGLIA_API = 'openpuglia.org';
 export const COVID_19_API = 'covid19api.com';
 
@@ -25,4 +29,11 @@ export const STATUS = {
   NEW_DAILY_POSITIVE: 'NEW_DAILY_POSITIVE',
   DAILY_DECEASED: 'DAILY_DECEASED',
   DAILY_SWABS: 'DAILY_SWABS',
+};
+
+export const SECTIONS = {
+  WORLDWIDE: 'worldwide',
+  ITALY: 'italy',
+  COUNTRY_LIST: 'country-list',
+  EUROPE: 'europe',
 };

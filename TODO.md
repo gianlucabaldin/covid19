@@ -19,6 +19,7 @@
 - ~~mention data provider(s)~~
 - ~~github author page~~
 - heroku link
+- PropTypes
 - filter table by state/region
 - filter data by time
   - live

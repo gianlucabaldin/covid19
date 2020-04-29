@@ -30,6 +30,7 @@ const Summary = ({
   deceased,
   tamponi,
   lastUpdate,
+  dataTestId,
   error = false,
 }) => {
   const { t } = useTranslation();
@@ -41,7 +42,7 @@ const Summary = ({
     <Grid item>
       <TableContainer component={Paper}>
         <Table
-          data-test-id="italy-container-summary"
+          data-test-id={`${dataTestId}-container-summary`}
           className={classes.table}
           size="small"
           aria-label="a dense table"
@@ -63,16 +64,16 @@ const Summary = ({
           <TableBody>
             <TableRow key="td-status">
               <TableCell align="center" id="summary-swabs">
-                {error ? '' : tamponi}
+                {tamponi}
               </TableCell>
               <TableCell align="center" id="summary-totalCases">
-                {error ? '' : totalCases}
+                {totalCases}
               </TableCell>
               <TableCell align="center" id="summary-deceased">
-                {error ? '' : deceased}
+                {deceased}
               </TableCell>
               <TableCell align="center" id="summary-lastupdate">
-                {error ? '' : lastUpdate}
+                {lastUpdate}
               </TableCell>
             </TableRow>
           </TableBody>

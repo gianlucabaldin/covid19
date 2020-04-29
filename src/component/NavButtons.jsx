@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import { Box } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
-import { SECTIONS } from './App';
+import { SECTIONS } from '../utils/consts';
 
 const NavButtons = ({ onClick }) => {
   const { t } = useTranslation();
