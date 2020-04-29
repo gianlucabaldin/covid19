@@ -3,7 +3,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import ItalyContainer from './ItalyContainer';
 import { fetchItalyHistoricalAllApify } from '../utils/fetch';
-import ItalyChart from './ItalyChart';
+import ChartContainer from './ChartContainer';
 import ItalyRegions from './ItalyRegions';
 import Summary from './Summary';
 
@@ -15,8 +15,8 @@ describe('ItalyContainer', () => {
   });
 
   describe('contains', () => {
-    it('ItalyChart component', () => {
-      expect(wrapper.find(ItalyChart).length).toEqual(1);
+    it('ChartContainer component', () => {
+      expect(wrapper.find(ChartContainer).length).toEqual(1);
     });
 
     it('ItalyRegions component', () => {
@@ -34,10 +34,10 @@ describe('ItalyContainer', () => {
       chartData = await fetchItalyHistoricalAllApify(true);
     });
 
-    it('renders with its children ItalyChart', () => {
+    it('renders with its children ChartContainer', () => {
       wrapper = shallow(
         <ItalyContainer>
-          <ItalyChart data={chartData} />
+          <ChartContainer data={chartData} />
         </ItalyContainer>,
       );
       expect(

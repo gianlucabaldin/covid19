@@ -1,6 +1,6 @@
 # TODO
 
-- ItalyCharts: review into one single array param and print dynamicaly
+- ChartContainers: review into one single array param and print dynamicaly
 - Loading with react-loader-spinner ?
 - ~~enhance/split italycontainer management methods~~
 - ~~change mehod calculate marks, starting from last array element and going to zero -> make sure it works with "last week" filter too~~

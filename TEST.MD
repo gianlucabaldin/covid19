@@ -175,7 +175,7 @@ expect(wrapper.find('WithStyles(ForwardRef(Button))').length).toEqual(3);
 ```
 
 it('should have 3 buttons', () => {
-const wrapper = shallow(<ItalyChart data={mockData} />);
+const wrapper = shallow(<ChartContainer data={mockData} />);
 // expect(wrapper.find('[data-test-id="chart-italy"]').length).toEqual(1);
 });
 

@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import moment from 'moment';
-import ItalyChart from './ItalyChart';
+import ChartContainer fr./ChartContainerontainer';
 import ItalyRegions from './ItalyRegions';
 import { fetchItalyRegion, fetchWorldwideHistorical } from '../utils/fetch';
 import Summary from './Summary';
@@ -153,7 +153,7 @@ const WorldwideContainer = () => {
         justify="center"
       >
         <Grid item>
-          <ItalyChart {...chartData} onToggleSwitch={onToggleSwitch} />
+          <ChartContainer {...chartData} onToggleSwitch={onToggleSwitch} />
         </Grid>
       </Grid>
       <Grid
