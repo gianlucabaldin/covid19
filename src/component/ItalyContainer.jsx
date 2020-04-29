@@ -142,12 +142,7 @@ const ItalyContainer = (props) => {
         justify="center"
       >
         <Grid item>
-          <ItalyChart
-            data-test-id="italy-container-chart-box"
-            {...chartData}
-            // width={width}
-            onToggleSwitch={onToggleSwitch}
-          />
+          <ItalyChart {...chartData} onToggleSwitch={onToggleSwitch} />
         </Grid>
       </Grid>
       <Grid

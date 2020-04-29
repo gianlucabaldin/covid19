@@ -64,6 +64,7 @@ const ItalyRegions = ({ data, loading = true }) => {
     <>
       <TableContainer component={Paper}>
         <Table
+          data-test-id="italy-container-regions"
           className={classes.table}
           size="small"
           aria-label="a dense table"

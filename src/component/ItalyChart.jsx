@@ -26,13 +26,13 @@ const ItalyChart = ({
   } = data;
   return (
     <>
-      <Grid container spacing={2} data-test-id="swith-interval-container">
+      <Grid container spacing={2} data-test-id="switch-interval-container">
         <Grid item>
           <SwitchInterval onToggleSwitch={onToggleSwitch} checked={checked} />
         </Grid>
       </Grid>
 
-      <Grid container>
+      <Grid container data-test-id="italy-container-chart-box">
         <Grid item xs={12} md={6} lg={4} style={{ padding: 16 }}>
           <Chart
             loading={loading}
