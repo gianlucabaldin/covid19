@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import moment from 'moment';
-import ChartContainer fr./ChartContainerontainer';
+import ChartContainer from './ChartContainer';
 import ItalyRegions from './ItalyRegions';
 import { fetchItalyRegion, fetchItalyHistoricalAllApify } from '../utils/fetch';
 import Summary from './Summary';
