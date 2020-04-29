@@ -38,9 +38,7 @@ const tableInitialStatud = {
   loading: true,
 };
 
-const ItalyContainer = (props) => {
-  // const { width } = props;
-
+const ItalyContainer = () => {
   const [summaryData, setSummaryData] = useState({ ...summaryInitialStatus });
   const [chartData, setChartData] = useState({ ...chartInitialStatus });
   const [tableData, setTableData] = useState(tableInitialStatud);
@@ -70,13 +68,17 @@ const ItalyContainer = (props) => {
     // fill summary with last day-data extracted from previous fetch
     setSummaryData({
       ...summaryData,
-      tamponi: res[res.length - 1].tamponi,
-      totalCases: res[res.length - 1].totalCases,
-      deceased: res[res.length - 1].deceased,
-      lastUpdate: moment(
-        intensiveTherapy[intensiveTherapy.length - 1].x,
-        // ).format('DD / MM / YYYY'),
-      ).format('LLL'),
+      data: [
+        { key: 'total-swabs', value: res[res.length - 1].tamponi },
+        { key: 'total-cases', value: res[res.length - 1].totalCases },
+        { key: 'total-deceased', value: res[res.length - 1].deceased },
+        {
+          key: 'last-update',
+          value: moment(intensiveTherapy[intensiveTherapy.length - 1].x).format(
+            'LLL',
+          ),
+        },
+      ],
       error: false,
     });
     return res;
@@ -107,7 +109,6 @@ const ItalyContainer = (props) => {
   };
   useEffect(() => {
     fetchData();
-    // }, [activeSection]);
   }, []);
 
   const onToggleSwitch = (checked) => {
@@ -170,9 +171,9 @@ const ItalyContainer = (props) => {
   );
 };
 
-ItalyContainer.defaultProps = {
-  data: {},
-  error: false,
-};
+// ItalyContainer.defaultProps = {
+//   data: {},
+//   error: false,
+// };
 
 export default ItalyContainer;

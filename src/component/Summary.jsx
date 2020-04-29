@@ -25,14 +25,7 @@ const TableCell = withStyles({
   },
 })(MuiTableCell);
 
-const Summary = ({
-  totalCases,
-  deceased,
-  tamponi,
-  lastUpdate,
-  dataTestId,
-  error = false,
-}) => {
+const Summary = ({ data, dataTestId, error = false }) => {
   const { t } = useTranslation();
   const classes = useStyles();
 
@@ -53,28 +46,27 @@ const Summary = ({
         >
           <TableHead>
             <TableRow key="tr-status" className={classes.trHeader}>
-              <TableCell align="center">{t('summary.total-swabs')}</TableCell>
-              <TableCell align="center">{t('summary.total-cases')}</TableCell>
-              <TableCell align="center">
-                {t('summary.total-deceased')}
-              </TableCell>
-              <TableCell align="center">{t('summary.last-update')}</TableCell>
+              {data &&
+                data.length > 0 &&
+                data.map((el) => (
+                  <TableCell align="center">
+                    {t(el.key.replace('-', ' '))}
+                  </TableCell>
+                ))}
             </TableRow>
           </TableHead>
           <TableBody>
             <TableRow key="td-status">
-              <TableCell align="center" id="summary-swabs">
-                {tamponi}
-              </TableCell>
-              <TableCell align="center" id="summary-totalCases">
-                {totalCases}
-              </TableCell>
-              <TableCell align="center" id="summary-deceased">
-                {deceased}
-              </TableCell>
-              <TableCell align="center" id="summary-lastupdate">
-                {lastUpdate}
-              </TableCell>
+              {data &&
+                data.length > 0 &&
+                data.map((el) => (
+                  <TableCell
+                    align="center"
+                    data-test-id={'summary-'.concat(el.key)}
+                  >
+                    {el.value}
+                  </TableCell>
+                ))}
             </TableRow>
           </TableBody>
         </Table>
@@ -83,13 +75,13 @@ const Summary = ({
   );
 };
 
-Summary.defaultProps = {
-  data: {
-    totalCases: 0,
-    deceased: 0,
-    tamponi: 0,
-    error: false,
-  },
-};
+// Summary.defaultProps = {
+//   data: {
+//     totalCases: 0,
+//     deceased: 0,
+//     tamponi: 0,
+//     error: false,
+//   },
+// };
 
 export default Summary;
