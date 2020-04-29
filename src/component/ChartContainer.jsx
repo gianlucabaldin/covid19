@@ -30,7 +30,11 @@ const ItalyChart = ({
           data.length > 0 &&
           data.map((el) => (
             <Grid item xs={12} md={6} lg={4} style={{ padding: 16 }}>
-              <Chart loading={loading} series={[el.value]} status={[el.key]} />
+              <Chart
+                loading={loading}
+                series={Object.values(el)}
+                status={Object.keys(el)}
+              />
             </Grid>
           ))}
       </Grid>

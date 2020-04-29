@@ -108,16 +108,11 @@ export const processDataWorldwide = (data, lastTenDays = true) => {
 
   // in case of not historical (= last ten days), then filter result with the
   // array latest ones
-  /*
   if (lastTenDays) {
-    [
-    confirmed,
-    deaths,
-    recovered,
-    ].forEach((array) => {
+    [confirmed, deaths, recovered].forEach((array) => {
       array.splice(0, array.length - 10); // removes from i=0 to i=lenght-10
     });
-  } */
+  }
 
   return {
     confirmed,

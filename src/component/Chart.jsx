@@ -77,7 +77,7 @@ const Chart = ({ series, status, loading = true }) => {
       <Loading />
     </div>
   ) : (
-    <div>
+    <div style={{ minWidth: '400px' }}>
       <DiscreteColorLegend
         strokeWidth={2}
         orientation="vertical"

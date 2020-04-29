@@ -60,34 +60,17 @@ const WorldwideContainer = () => {
       ],
       error: false,
     });
-    // setChartData({
-    //   ...chartInitialStatus,
-    //   data: {
-    //     intensiveTherapy,
-    //     totalHospitalized,
-    //     totalPositive,
-    //     newDailyPositive,
-    //     dailyDeceased,
-    //     dailySwabs,
-    //   },
-    //   loading: false,
-    // });
-
-    // fill summary with last day-data extracted from previous fetch
-    // const lastItem = res[res.length - 1];
-    // setSummaryData({
-    //   confirmed: lastItem.confirmed,
-    //   deaths: 0,
-    //   recovered: 0,
-    // tamponi: res[res.length - 1].tamponi,
-    // confirmed: res[res.length - 1].totalCases,
-    // deaths: res[res.length - 1].deceased,
-    // receovered: moment(
-    //   intensiveTherapy[intensiveTherapy.length - 1].x,
-    // ).format('DD / MM / YYYY'),
-    //   ).format('LLL'),
-    //   error: false,
-    // });
+    setChartData({
+      ...chartInitialStatus,
+      data: [
+        {
+          confirmed,
+          deaths,
+          recovered,
+        },
+      ],
+      loading: false,
+    });
     return res;
   };
   // fetch data from public api or mock (see implementation)
@@ -119,24 +102,19 @@ const WorldwideContainer = () => {
   }, []);
 
   const onToggleSwitch = (checked) => {
-    const {
-      intensiveTherapy,
-      totalHospitalized,
-      totalPositive,
-      newDailyPositive,
-      dailyDeceased,
-      dailySwabs,
-    } = processData(fetchedDataAll, checked);
+    const { confirmed, deaths, recovered } = processDataWorldwide(
+      fetchedDataAll,
+      checked,
+    );
     setChartData({
       ...chartInitialStatus,
-      data: {
-        intensiveTherapy,
-        totalHospitalized,
-        totalPositive,
-        newDailyPositive,
-        dailyDeceased,
-        dailySwabs,
-      },
+      data: [
+        {
+          confirmed,
+          deaths,
+          recovered,
+        },
+      ],
       checked,
       loading: false,
     });
@@ -147,7 +125,7 @@ const WorldwideContainer = () => {
       <Grid container justify="center">
         <Summary {...summaryData} />
       </Grid>
-      {/* <Grid
+      <Grid
         container
         style={{ paddingLeft: 16, paddingRight: 16 }}
         justify="center"
@@ -156,7 +134,7 @@ const WorldwideContainer = () => {
           <ChartContainer {...chartData} onToggleSwitch={onToggleSwitch} />
         </Grid>
       </Grid>
-      <Grid
+      {/* <Grid
         container
         style={{ paddingLeft: 16, paddingRight: 16 }}
         justify="center"
@@ -164,8 +142,8 @@ const WorldwideContainer = () => {
         <Grid item style={{ marginTop: 10 }}>
           <Typography variant="h5">Region Details</Typography>
         </Grid>
-      </Grid>
-      <Grid
+      </Grid> */}
+      {/* <Grid
         container
         style={{ paddingLeft: 16, paddingRight: 16 }}
         justify="center"
@@ -173,7 +151,7 @@ const WorldwideContainer = () => {
         <Grid item style={{ marginTop: 10 }}>
           <ItalyRegions {...tableData} />
         </Grid>
-      </Grid> */}
+      </Grid>  */}
     </>
   );
 };

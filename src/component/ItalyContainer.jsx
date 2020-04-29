@@ -47,15 +47,18 @@ const ItalyContainer = () => {
       dailyDeceased,
       dailySwabs,
     } = processData(res);
+
     setChartData({
       ...chartInitialStatus,
       data: [
-        { key: 'intensive-therapy', value: intensiveTherapy },
-        { key: 'total-hospitalized', value: totalHospitalized },
-        { key: 'total-positive', value: totalPositive },
-        { key: 'new-daily-positive', value: newDailyPositive },
-        { key: 'daily-deceased', value: dailyDeceased },
-        { key: 'daily-swabs', value: dailySwabs },
+        {
+          'intensive-therapy': intensiveTherapy,
+        },
+        { 'total-hospitalized': totalHospitalized },
+        { 'total-positive': totalPositive },
+        { 'new-daily-positive': newDailyPositive },
+        { 'daily-deceased': dailyDeceased },
+        { 'daily-swabs': dailySwabs },
       ],
       loading: false,
     });
@@ -115,18 +118,21 @@ const ItalyContainer = () => {
       dailyDeceased,
       dailySwabs,
     } = processData(fetchedDataAll, checked);
+
     setChartData({
       ...chartInitialStatus,
       data: [
-        { key: 'intensive-therapy', value: intensiveTherapy },
-        { key: 'total-hospitalized', value: totalHospitalized },
-        { key: 'total-positive', value: totalPositive },
-        { key: 'new-daily-positive', value: newDailyPositive },
-        { key: 'daily-deceased', value: dailyDeceased },
-        { key: 'daily-swabs', value: dailySwabs },
+        {
+          'intensive-therapy': intensiveTherapy,
+        },
+        { 'total-hospitalized': totalHospitalized },
+        { 'total-positive': totalPositive },
+        { 'new-daily-positive': newDailyPositive },
+        { 'daily-deceased': dailyDeceased },
+        { 'daily-swabs': dailySwabs },
       ],
-      checked,
       loading: false,
+      checked,
     });
   };
 

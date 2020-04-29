@@ -13,6 +13,10 @@ context('WorldwideContainer', () => {
         'be.visible',
       );
     });
+
+    it('one chart summary', () => {
+      cy.get('[data-test-id="worldwide-chart-container"]').should('be.visible');
+    });
   });
 
   context('fetches data correctly', () => {

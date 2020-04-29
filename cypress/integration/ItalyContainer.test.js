@@ -14,7 +14,7 @@ context('ItalyContainer', () => {
       cy.get('[data-test-id="switch-interval-container"]').should('be.visible');
     });
     it('italy charts', () => {
-      cy.get('[data-test-id="italy-container-chart-box"]').should('be.visible');
+      cy.get('[data-test-id="italy-chart-container"]').should('be.visible');
     });
     it('regions table', () => {
       cy.get('[data-test-id="italy-container-regions"]').should('be.visible');
