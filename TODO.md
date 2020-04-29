@@ -50,6 +50,7 @@
 ##### Review if to use
 
 - react-router-dom
+- https://github.com/bahmutov/cypress-react-unit-test
 - ~~React-Router~~
 - ~~i18n~~
 - SCSS

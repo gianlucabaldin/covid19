@@ -16,6 +16,7 @@ const Languages = () => {
       <ButtonGroup
         color="primary"
         aria-label="outlined primary button group"
+        data-test-id="language-container"
         className={classes.group}
       >
         <Button
