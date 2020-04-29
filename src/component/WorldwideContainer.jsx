@@ -7,7 +7,7 @@ import ItalyChart from './ItalyChart';
 import ItalyRegions from './ItalyRegions';
 import { fetchItalyRegion, fetchWorldwideHistorical } from '../utils/fetch';
 import Summary from './Summary';
-import { processData } from '../utils/chartUtils';
+import { processData, processDataWorldwide } from '../utils/chartUtils';
 import { SECTIONS } from '../utils/consts';
 
 const summaryInitialStatus = {
@@ -23,12 +23,6 @@ const chartInitialStatus = {
     confirmed: [],
     deaths: [],
     recovered: [],
-    // intensiveTherapy: [],
-    // totalHospitalized: [],
-    // totalPositive: [],
-    // newDailyPositive: [],
-    // dailyDeceased: [],
-    // dailySwabs: [],
   },
   error: false,
   loading: true,
@@ -40,7 +34,7 @@ const chartInitialStatus = {
 //   loading: true,
 // };
 
-const WorldwideContainer = (props) => {
+const WorldwideContainer = () => {
   // const { width } = props;
 
   const [summaryData, setSummaryData] = useState({ ...summaryInitialStatus });
@@ -49,14 +43,23 @@ const WorldwideContainer = (props) => {
   const [fetchedDataAll, setFetchedDataAll] = useState();
 
   const extractData = (res) => {
-    const {
-      intensiveTherapy,
-      totalHospitalized,
-      totalPositive,
-      newDailyPositive,
-      dailyDeceased,
-      dailySwabs,
-    } = processData(res);
+    const { confirmed, deaths, recovered } = processDataWorldwide(res);
+
+    // get last item
+    const lastRecent = Object.keys(res).pop();
+    setSummaryData({
+      ...summaryData,
+      data: [
+        { key: 'total-confirmed', value: res[lastRecent].confirmed },
+        { key: 'total-deaths', value: res[lastRecent].deaths },
+        { key: 'total-recovered', value: res[lastRecent].recovered },
+        {
+          key: 'last-update',
+          value: moment(lastRecent).format('LLL'),
+        },
+      ],
+      error: false,
+    });
     // setChartData({
     //   ...chartInitialStatus,
     //   data: {
@@ -90,9 +93,9 @@ const WorldwideContainer = (props) => {
   // fetch data from public api or mock (see implementation)
   const fetchData = () => {
     fetchWorldwideHistorical(true)
-      // .then((res) => {
-      //   return extractData(res);
-      // })
+      .then((res) => {
+        return extractData(res.result);
+      })
       .then((res) => {
         setFetchedDataAll(res);
       })
@@ -113,7 +116,6 @@ const WorldwideContainer = (props) => {
   };
   useEffect(() => {
     fetchData();
-    // }, [activeSection]);
   }, []);
 
   const onToggleSwitch = (checked) => {

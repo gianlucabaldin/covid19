@@ -31,7 +31,9 @@
   "italyregions.discarged-healed": "discharged healed",
   "summary.total-swabs": "total swabs",
   "summary.total-cases": "total cases",
-  "summary.total-deceased": "total deceased",
+  "summary.total-confirmed": "total confirmed",
+  "summary.total-deaths": "total deaths",
+  "summary.total-recovered": "total recovered",
   "summary.last-update": "last update available",
   "switch.historical": "historical",
   "switch.last-10-days": "last ten days"

@@ -15,18 +15,30 @@ context('WorldwideContainer', () => {
     });
   });
 
-  context('fetches', () => {
-    it('summary data', () => {
-      cy.get('[data-test-id="switch-interval-container"]').should(
-        'contain.text',
-        '0',
+  context('fetches data correctly', () => {
+    it('confirmed', () => {
+      cy.get('[data-test-id="summary-total-confirmed"]').should(
+        'have.text',
+        '3116398',
       );
-      // it('italy charts', () => {
-      //   cy.get('[data-test-id="italy-container-chart-box"]').should('be.visible');
-      // });
-      // it('regions table', () => {
-      //   cy.get('[data-test-id="italy-container-regions"]').should('be.visible');
-      // });
+    });
+    it('deaths', () => {
+      cy.get('[data-test-id="summary-total-deaths"]').should(
+        'have.text',
+        '217153',
+      );
+    });
+    it('recovered', () => {
+      cy.get('[data-test-id="summary-total-recovered"]').should(
+        'have.text',
+        '928658',
+      );
+    });
+    it('last-update', () => {
+      cy.get('[data-test-id="summary-last-update"]').should(
+        'have.text',
+        'April 28, 2020 12:00 AM',
+      );
     });
   });
 });

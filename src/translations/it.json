@@ -31,7 +31,9 @@
   "italyregions.discarged-healed": "dimessi guariti",
   "summary.total-swabs": "tamponi totali",
   "summary.total-cases": "casi totali",
-  "summary.total-deceased": "decessi totali",
+  "summary.total-confirmed": "confermati totali",
+  "summary.total-deaths": "morti totali",
+  "summary.total-recovered": "recoverati totali",
   "summary.last-update": "ultimo aggiornamento disponibile",
   "switch.historical": "dati storici",
   "switch.last-10-days": "ultimi 10 giorni"

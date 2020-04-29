@@ -1,3 +1,5 @@
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable guard-for-in */
 /* eslint-disable no-param-reassign */
 /* eslint-disable import/prefer-default-export */
 
@@ -75,5 +77,51 @@ export const processData = (data, lastTenDays = true) => {
     newDailyPositive,
     dailyDeceased,
     dailySwabs,
+  };
+};
+
+// worldwide
+/**
+ * Prepare 3 arrays with reduced data
+ * @param {array} data the fetched data
+ * @param {boolean} lastTenDays if to extract data recent or historical
+ */
+export const processDataWorldwide = (data, lastTenDays = true) => {
+  const confirmed = [];
+  const deaths = [];
+  const recovered = [];
+  for (const property in data) {
+    const date = new Date(property);
+    confirmed.push({
+      x: date,
+      y: data[property].confirmed,
+    });
+    deaths.push({
+      x: date,
+      y: data[property].deaths,
+    });
+    recovered.push({
+      x: date,
+      y: data[property].recovered,
+    });
+  }
+
+  // in case of not historical (= last ten days), then filter result with the
+  // array latest ones
+  /*
+  if (lastTenDays) {
+    [
+    confirmed,
+    deaths,
+    recovered,
+    ].forEach((array) => {
+      array.splice(0, array.length - 10); // removes from i=0 to i=lenght-10
+    });
+  } */
+
+  return {
+    confirmed,
+    deaths,
+    recovered,
   };
 };
