@@ -1,7 +1,7 @@
 /* eslint-disable spaced-comment */
 /// <reference types="cypress" />
 
-context('App', () => {
+context('Navbuttons', () => {
   beforeEach(() => {
     cy.visit('/');
   });
@@ -13,41 +13,25 @@ context('App', () => {
         'MuiButton-containedPrimary',
       );
     });
-  });
-  context('switch location', () => {
-    it('to Europe', () => {
+
+    it('Europe button disabled', () => {
       cy.get('[data-test-id="nav-button-europe"]').should(
         'have.class',
         'MuiButton-outlinedPrimary',
       );
-      cy.get('[data-test-id="nav-button-europe"]').click();
-      cy.get('[data-test-id="nav-button-europe"]').should(
-        'have.class',
-        'MuiButton-containedPrimary',
-      );
     });
 
-    it('to Country List', () => {
+    it('Country List button disabled', () => {
       cy.get('[data-test-id="nav-button-country-list"]').should(
         'have.class',
         'MuiButton-outlinedPrimary',
       );
-      cy.get('[data-test-id="nav-button-country-list"]').click();
-      cy.get('[data-test-id="nav-button-country-list"]').should(
-        'have.class',
-        'MuiButton-containedPrimary',
-      );
     });
 
-    it('to Worldwide', () => {
+    it('Worldwide button disabled', () => {
       cy.get('[data-test-id="nav-button-worldwide"]').should(
         'have.class',
         'MuiButton-outlinedPrimary',
-      );
-      cy.get('[data-test-id="nav-button-worldwide"]').click();
-      cy.get('[data-test-id="nav-button-worldwide"]').should(
-        'have.class',
-        'MuiButton-containedPrimary',
       );
     });
   });
