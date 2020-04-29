@@ -46,11 +46,15 @@ const SwitchInterval = ({ onToggleSwitch, checked }) => {
   return (
     <Typography component="div">
       <Grid component="label" container alignItems="center" spacing={1}>
-        <Grid item>{t('switch.historical')}</Grid>
+        <Grid item style={{ textTransform: 'capitalize' }}>
+          {t('switch.historical')}
+        </Grid>
         <Grid item>
           <AntSwitch checked={checked} onChange={onToggle} name="checkedC" />
         </Grid>
-        <Grid item>{t('switch.last-10-days')}</Grid>
+        <Grid item style={{ textTransform: 'capitalize' }}>
+          {t('switch.last-10-days')}
+        </Grid>
       </Grid>
     </Typography>
   );

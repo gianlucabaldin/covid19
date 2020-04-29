@@ -48,10 +48,7 @@ const Chart = ({ series, status, loading = true }) => {
           </span>{' '}
           {moment(hint.data.x).format('DD/MM')} <br />
           <span style={{ fontWeight: 'bold', textTransform: 'capitalize' }}>
-            {t(hint.status.toString().toLowerCase())
-              .replace('_', ' ')
-              .toUpperCase()}
-            :
+            {t(hint.status.toString().toLowerCase()).replace('_', ' ')}:
           </span>{' '}
           {hint.data.y}
         </div>

@@ -28,6 +28,7 @@ const useStyles = makeStyles({
 const TableCell = withStyles({
   root: {
     border: '1px solid grey',
+    textTransform: 'uppercase',
   },
 })(MuiTableCell);
 

@@ -1,5 +1,5 @@
 {
-  "navbuttons.country-list": "lista pasi list",
+  "navbuttons.country-list": "lista paesi",
   "navbuttons.worldwide": "mondo",
   "navbuttons.europe": "europa",
   "navbuttons.italy": "italia",
@@ -34,5 +34,5 @@
   "sumamry.total-deceased": "decessi totali",
   "sumamry.last-update": "ultimo aggiornamento disponibile",
   "switch.historical": "dati storici",
-  "switch.last-10-days": "ultimi 10 giorniks"
+  "switch.last-10-days": "ultimi 10 giorni"
 }
