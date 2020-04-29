@@ -9,6 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { Hidden, withStyles } from '@material-ui/core';
 import { grey } from '@material-ui/core/colors';
+import { useTranslation } from 'react-i18next';
 import Error from './Error';
 import { OPEN_PUGLIA_API } from '../utils/consts';
 import DataProvided from './DataProvided';
@@ -32,6 +33,7 @@ const TableCell = withStyles({
 
 const ItalyRegions = ({ data, loading = true }) => {
   const classes = useStyles();
+  const { t } = useTranslation();
 
   /** Legend: 
     1- 'ricoverati con sintomi'       hospitalized with symptoms
@@ -67,31 +69,47 @@ const ItalyRegions = ({ data, loading = true }) => {
         >
           <TableHead>
             <TableRow key="header" className={classes.trHeader}>
-              <TableCell align="center">Region</TableCell>
+              <TableCell align="center">{t('italyregions.region')}</TableCell>
               <Hidden lgDown>
-                <TableCell align="center">Hospitalized With Symptoms</TableCell>
+                <TableCell align="center">
+                  {t('italyregions.hospidalized-symptoms')}
+                </TableCell>
               </Hidden>
-              <TableCell align="center">Intensive Care</TableCell>
+              <TableCell align="center">
+                {t('italyregions.intensive-care')}
+              </TableCell>
               <Hidden lgDown>
-                <TableCell align="center">Total Hospitalized</TableCell>
+                <TableCell align="center">
+                  {t('italyregions.total-hospidalized')}
+                </TableCell>
               </Hidden>
               <Hidden mdDown>
-                <TableCell align="center">Home Isolation</TableCell>
+                <TableCell align="center">
+                  {t('italyregions.home-isolation')}
+                </TableCell>
               </Hidden>
-              <TableCell align="center">Total Positives</TableCell>
+              <TableCell align="center">
+                {t('italyregions.total-positives')}
+              </TableCell>
               <Hidden lgDown>
-                <TableCell align="center">Positives Variation</TableCell>
+                <TableCell align="center">
+                  {t('italyregions.positive-variations')}
+                </TableCell>
               </Hidden>
               <Hidden lgDown>
-                <TableCell align="center">New Positives</TableCell>
+                <TableCell align="center">
+                  {t('italyregions.new-positive')}
+                </TableCell>
               </Hidden>
               <Hidden lgDown>
-                <TableCell align="center">Discharged Healed</TableCell>
+                <TableCell align="center">
+                  {t('italyregions.discarged-healed')}
+                </TableCell>
               </Hidden>
-              <TableCell align="center">Deaths</TableCell>
-              <TableCell align="center">Total Cases</TableCell>
+              <TableCell align="center">{t('deaths')}</TableCell>
+              <TableCell align="center">{t('total_cases')}</TableCell>
               <Hidden mdDown>
-                <TableCell align="center">Swabs</TableCell>
+                <TableCell align="center">{t('tamponi')}</TableCell>
               </Hidden>
             </TableRow>
           </TableHead>

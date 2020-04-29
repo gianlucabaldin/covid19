@@ -51,7 +51,7 @@
 
 - react-router-dom
 - ~~React-Router~~
-- i18n
+- ~~i18n~~
 - SCSS
 - Redux
 - Typescript

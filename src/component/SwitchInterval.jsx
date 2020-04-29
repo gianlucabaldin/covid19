@@ -1,5 +1,6 @@
 import React from 'react';
 import { withStyles, Switch, Typography, Grid } from '@material-ui/core';
+import { useTranslation } from 'react-i18next';
 
 const AntSwitch = withStyles((theme) => ({
   root: {
@@ -36,6 +37,7 @@ const AntSwitch = withStyles((theme) => ({
 }))(Switch);
 
 const SwitchInterval = ({ onToggleSwitch, checked }) => {
+  const { t } = useTranslation();
   const onToggle = (e) => {
     const newState = e.target.checked;
     onToggleSwitch(newState);
@@ -44,11 +46,11 @@ const SwitchInterval = ({ onToggleSwitch, checked }) => {
   return (
     <Typography component="div">
       <Grid component="label" container alignItems="center" spacing={1}>
-        <Grid item>Historical</Grid>
+        <Grid item>{t('switch.historical')}</Grid>
         <Grid item>
           <AntSwitch checked={checked} onChange={onToggle} name="checkedC" />
         </Grid>
-        <Grid item>Last 10 days</Grid>
+        <Grid item>{t('switch.last-10-days')}</Grid>
       </Grid>
     </Typography>
   );

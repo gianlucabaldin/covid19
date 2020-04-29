@@ -5,6 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import { Box } from '@material-ui/core';
+import { useTranslation } from 'react-i18next';
 import NavButtons from './NavButtons';
 import Languages from './Languages';
 
@@ -20,6 +21,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 const Header = () => {
+  const { t } = useTranslation();
   const classes = useStyles();
 
   return (
@@ -32,14 +34,14 @@ const Header = () => {
       <Toolbar className={classes.toolbar}>
         <Box width={250}>
           <Typography variant="h4" color="primary" data-test-id="logo">
-            Covid 19
+            Covid-19
           </Typography>
           <Typography
             variant="body1"
             color="primary"
             data-test-id="logo-subtitle"
           >
-            Latest updates & historical data
+            {t('header.subtitle')}
           </Typography>
         </Box>
         <Box>

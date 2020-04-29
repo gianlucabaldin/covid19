@@ -10,6 +10,7 @@ import {
   YAxis,
 } from 'react-vis/dist';
 import { FlexibleWidthXYPlot } from 'react-vis/dist/make-vis-flexible';
+import { useTranslation } from 'react-i18next';
 import Loading from './Loading';
 
 const Chart = ({ series, status, loading = true }) => {
@@ -19,6 +20,8 @@ const Chart = ({ series, status, loading = true }) => {
     status: '',
   };
   const [hint, setHint] = useState(initialHintValue);
+
+  const { t } = useTranslation();
 
   const mouseOver = (datapoint, datapointStatus) => {
     setHint({ data: datapoint, over: true, status: datapointStatus });
@@ -40,10 +43,15 @@ const Chart = ({ series, status, loading = true }) => {
             color: '#303f9f',
           }}
         >
-          <span style={{ fontWeight: 'bold' }}>Day: </span>{' '}
+          <span style={{ fontWeight: 'bold', textTransform: 'capitalize' }}>
+            {t('chart.day')}:{' '}
+          </span>{' '}
           {moment(hint.data.x).format('DD/MM')} <br />
-          <span style={{ fontWeight: 'bold' }}>
-            {hint.status.toString().replace('_', ' ').toUpperCase()}:
+          <span style={{ fontWeight: 'bold', textTransform: 'capitalize' }}>
+            {t(hint.status.toString().toLowerCase())
+              .replace('_', ' ')
+              .toUpperCase()}
+            :
           </span>{' '}
           {hint.data.y}
         </div>
@@ -56,8 +64,8 @@ const Chart = ({ series, status, loading = true }) => {
     if (status && status.length > 0) {
       status.forEach((el) => {
         array.push(
-          <span style={{ fontWeight: 'bold' }}>
-            {el.toString().replace('_', ' ').toUpperCase()}
+          <span style={{ fontWeight: 'bold', textTransform: 'capitalize' }}>
+            {t(el.toString().toLowerCase()).replace('_', ' ').toUpperCase()}
           </span>,
         );
       });

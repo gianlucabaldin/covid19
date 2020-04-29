@@ -1,8 +1,10 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import { Box } from '@material-ui/core';
+import { useTranslation } from 'react-i18next';
 
 const NavButtons = () => {
+  const { t } = useTranslation();
   return (
     <Box
       display="flex"
@@ -18,7 +20,7 @@ const NavButtons = () => {
           disabled
           data-test-id="nav-button-country-list"
         >
-          Country List
+          {t('navbuttons.country-list')}
         </Button>
       </Box>
       <Box m={1}>
@@ -27,7 +29,7 @@ const NavButtons = () => {
           color="primary"
           data-test-id="nav-button-worldwide"
         >
-          Worldwide
+          {t('navbuttons.worldwide')}
         </Button>
       </Box>
       <Box m={1}>
@@ -36,7 +38,7 @@ const NavButtons = () => {
           color="primary"
           data-test-id="nav-button-europe"
         >
-          Europe
+          {t('navbuttons.europe')}
         </Button>
       </Box>
       <Box m={1}>
@@ -45,7 +47,7 @@ const NavButtons = () => {
           color="primary"
           data-test-id="nav-button-italy"
         >
-          Italy
+          {t('navbuttons.italy')}
         </Button>
       </Box>
     </Box>
