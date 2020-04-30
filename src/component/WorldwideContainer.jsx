@@ -1,13 +1,13 @@
+/* eslint-disable no-sparse-arrays */
 /* eslint-disable camelcase */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect, useState } from 'react';
-import { Grid, Typography } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import moment from 'moment';
 import ChartContainer from './ChartContainer';
-import ItalyRegions from './ItalyRegions';
-import { fetchItalyRegion, fetchWorldwideHistorical } from '../utils/fetch';
+import { fetchWorldwideHistorical } from '../utils/fetch';
 import Summary from './Summary';
-import { processData, processDataWorldwide } from '../utils/chartUtils';
+import { processDataWorldwide } from '../utils/chartUtils';
 import { SECTIONS } from '../utils/consts';
 
 const summaryInitialStatus = {
@@ -57,13 +57,7 @@ const WorldwideContainer = () => {
     });
     setChartData({
       ...chartInitialStatus,
-      data: [
-        {
-          confirmed,
-          deaths,
-          recovered,
-        },
-      ],
+      data: [{ confirmed }, { deaths }, { recovered }],
       loading: false,
     });
     return res;
@@ -103,13 +97,7 @@ const WorldwideContainer = () => {
     );
     setChartData({
       ...chartInitialStatus,
-      data: [
-        {
-          confirmed,
-          deaths,
-          recovered,
-        },
-      ],
+      data: [{ confirmed }, { deaths }, { recovered }],
       checked,
       loading: false,
     });

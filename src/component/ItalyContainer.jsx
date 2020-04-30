@@ -48,20 +48,6 @@ const ItalyContainer = () => {
       dailySwabs,
     } = processData(res);
 
-    setChartData({
-      ...chartInitialStatus,
-      data: [
-        {
-          'intensive-therapy': intensiveTherapy,
-        },
-        { 'total-hospitalized': totalHospitalized },
-        { 'total-positive': totalPositive },
-        { 'new-daily-positive': newDailyPositive },
-        { 'daily-deceased': dailyDeceased },
-        { 'daily-swabs': dailySwabs },
-      ],
-      loading: false,
-    });
     // fill summary with last day-data extracted from previous fetch
     setSummaryData({
       ...summaryData,
@@ -77,6 +63,20 @@ const ItalyContainer = () => {
         },
       ],
       error: false,
+    });
+    setChartData({
+      ...chartInitialStatus,
+      data: [
+        {
+          'intensive-therapy': intensiveTherapy,
+        },
+        { 'total-hospitalized': totalHospitalized },
+        { 'total-positive': totalPositive },
+        { 'new-daily-positive': newDailyPositive },
+        { 'daily-deceased': dailyDeceased },
+        { 'daily-swabs': dailySwabs },
+      ],
+      loading: false,
     });
     return res;
   };
