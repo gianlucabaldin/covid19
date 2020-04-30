@@ -14,6 +14,7 @@ import Error from './Error';
 import { OPEN_PUGLIA_API } from '../utils/consts';
 import DataProvided from './DataProvided';
 import Loading from './Loading';
+import { getLocalizedValue } from '../utils/shared';
 
 const useStyles = makeStyles({
   table: {
@@ -126,46 +127,58 @@ const ItalyRegions = ({ data, loading = true }) => {
           ) : (
             <TableBody>
               {getdata().map((row) => (
-                <TableRow key={row.regione} hover>
+                <TableRow
+                  key={row.regione}
+                  hover
+                  data-test-id={`row-${row.regione}`}
+                >
                   <TableCell align="center">{row.regione}</TableCell>
                   <Hidden lgDown>
                     <TableCell align="center">
-                      {row['ricoverati con sintomi']}
+                      {getLocalizedValue(row['ricoverati con sintomi'])}
                     </TableCell>
                   </Hidden>
                   <TableCell align="center">
-                    {row['terapia intensiva']}
+                    {getLocalizedValue(row['terapia intensiva'])}
                   </TableCell>
                   <Hidden lgDown>
                     <TableCell align="center">
-                      {row['totale ospedalizzati']}
+                      {getLocalizedValue(row['totale ospedalizzati'])}
                     </TableCell>
                   </Hidden>
                   <Hidden mdDown>
                     <TableCell align="center">
-                      {row['isolamento domiciliare']}
+                      {getLocalizedValue(row['isolamento domiciliare'])}
                     </TableCell>
                   </Hidden>
-                  <TableCell align="center">{row['totale positivi']}</TableCell>
+                  <TableCell align="center">
+                    {getLocalizedValue(row['totale positivi'])}
+                  </TableCell>
                   <Hidden lgDown>
                     <TableCell align="center">
-                      {row['variazione totale positivi']}
-                    </TableCell>
-                  </Hidden>
-                  <Hidden lgDown>
-                    <TableCell align="center">
-                      {row['nuovi positivi']}
+                      {getLocalizedValue(row['variazione totale positivi'])}
                     </TableCell>
                   </Hidden>
                   <Hidden lgDown>
                     <TableCell align="center">
-                      {row['dimessi guariti']}
+                      {getLocalizedValue(row['nuovi positivi'])}
                     </TableCell>
                   </Hidden>
-                  <TableCell align="center">{row.deceduti}</TableCell>
-                  <TableCell align="center">{row['totale casi']}</TableCell>
+                  <Hidden lgDown>
+                    <TableCell align="center">
+                      {getLocalizedValue(row['dimessi guariti'])}
+                    </TableCell>
+                  </Hidden>
+                  <TableCell align="center">
+                    {getLocalizedValue(row.deceduti)}
+                  </TableCell>
+                  <TableCell align="center">
+                    {getLocalizedValue(row['totale casi'])}
+                  </TableCell>
                   <Hidden mdDown>
-                    <TableCell align="center">{row.tamponi}</TableCell>
+                    <TableCell align="center">
+                      {getLocalizedValue(row.tamponi)}
+                    </TableCell>
                   </Hidden>
                 </TableRow>
               ))}

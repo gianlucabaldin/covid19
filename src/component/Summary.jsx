@@ -11,6 +11,7 @@ import { withStyles, Grid } from '@material-ui/core';
 import { grey } from '@material-ui/core/colors';
 import { useTranslation } from 'react-i18next';
 import Error from './Error';
+import { getLocalizedValue } from '../utils/shared';
 
 const useStyles = makeStyles({
   trHeader: {
@@ -64,7 +65,7 @@ const Summary = ({ data, dataTestId, error = false }) => {
                     align="center"
                     data-test-id={'summary-'.concat(el.key)}
                   >
-                    {el.value}
+                    {getLocalizedValue(el.value)}
                   </TableCell>
                 ))}
             </TableRow>
