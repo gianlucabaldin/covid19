@@ -2,7 +2,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import ItalyContainer from './ItalyContainer';
-import { fetchItalyHistoricalAllApify } from '../utils/fetch';
+import { fetchItalyHistoricalAll } from '../utils/fetch';
 import ChartContainer from './ChartContainer';
 import ItalyRegions from './ItalyRegions';
 import Summary from './Summary';
@@ -31,7 +31,7 @@ describe('ItalyContainer', () => {
   describe('fetches (mock) data', () => {
     let chartData;
     beforeAll(async () => {
-      chartData = await fetchItalyHistoricalAllApify();
+      chartData = await fetchItalyHistoricalAll();
     });
 
     it('renders with its children ChartContainer', () => {

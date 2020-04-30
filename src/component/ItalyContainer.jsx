@@ -5,7 +5,7 @@ import { Grid, Typography } from '@material-ui/core';
 import moment from 'moment';
 import ChartContainer from './ChartContainer';
 import ItalyRegions from './ItalyRegions';
-import { fetchItalyRegion, fetchItalyHistoricalAllApify } from '../utils/fetch';
+import { fetchItalyRegion, fetchItalyHistoricalAll } from '../utils/fetch';
 import Summary from './Summary';
 import { processData } from '../utils/chartUtils';
 import { SECTIONS } from '../utils/consts';
@@ -83,7 +83,7 @@ const ItalyContainer = () => {
 
   // fetch data from public api or mock (see implementation)
   const fetchData = () => {
-    fetchItalyHistoricalAllApify()
+    fetchItalyHistoricalAll()
       .then((res) => {
         return extractData(res);
       })

@@ -1,12 +1,15 @@
+/* eslint-disable import/newline-after-import */
+/* eslint-disable import/first */
 /* eslint-disable import/no-cycle */
 import React, { useState } from 'react';
+import dotenv from 'dotenv';
+dotenv.config();
 import ItalyContainer from './ItalyContainer';
 import Header from './Header';
 import WorldwideContainer from './WorldwideContainer';
 import { SECTIONS } from '../utils/consts';
 
 // where is store MOCK_API for development purpose
-require('dotenv').config();
 
 const App = () => {
   const [activeSection, setActiveSection] = useState(SECTIONS.ITALY);

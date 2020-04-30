@@ -2,12 +2,12 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { XYPlot, LineMarkSeries } from 'react-vis/dist';
 import ItalyChart from './ItalyChart';
-import { fetchItalyHistoricalAllApify } from '../utils/fetch';
+import { fetchItalyHistoricalAll } from '../utils/fetch';
 import Error from './Error';
 
 xdescribe('ItalyChart', () => {
   it('renders with data with 3 series', async () => {
-    const mockData = await fetchItalyHistoricalAllApify(true);
+    const mockData = await fetchItalyHistoricalAll(true);
     const wrapper = shallow(<ItalyChart data={mockData} />);
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(XYPlot).length).toEqual(1);

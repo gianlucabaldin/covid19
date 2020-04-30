@@ -4,7 +4,7 @@ import { shallow, mount } from 'enzyme';
 import { TableContainer } from '@material-ui/core';
 import moment from 'moment';
 import Summary from './Summary';
-import { fetchItalyHistoricalAllApify } from '../utils/fetch';
+import { fetchItalyHistoricalAll } from '../utils/fetch';
 
 describe('Summary', () => {
   let wrapper = shallow(<Summary />);
@@ -21,7 +21,7 @@ describe('Summary', () => {
   describe('fetches (mock) data', () => {
     wrapper = shallow(<Summary />);
     it('fetchs data correctly', async () => {
-      await fetchItalyHistoricalAllApify().then((res) => {
+      await fetchItalyHistoricalAll().then((res) => {
         const mockData = {
           tamponi: res[res.length - 1].tamponi,
           totalCases: res[res.length - 1].totalCases,
