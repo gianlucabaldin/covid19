@@ -73,11 +73,11 @@ const Chart = ({ series, status, loading = true }) => {
     return array;
   };
   return loading ? (
-    <div style={{ width: '100%' }}>
+    <div>
       <Loading />
     </div>
   ) : (
-    <div style={{ minWidth: '400px' }}>
+    <div>
       <DiscreteColorLegend
         strokeWidth={2}
         orientation="vertical"

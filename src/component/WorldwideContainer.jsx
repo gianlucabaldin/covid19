@@ -19,11 +19,8 @@ const summaryInitialStatus = {
 };
 
 const chartInitialStatus = {
-  data: {
-    confirmed: [],
-    deaths: [],
-    recovered: [],
-  },
+  data: [],
+  dataTestId: SECTIONS.WORLDWIDE,
   error: false,
   loading: true,
   checked: true,
@@ -35,8 +32,6 @@ const chartInitialStatus = {
 // };
 
 const WorldwideContainer = () => {
-  // const { width } = props;
-
   const [summaryData, setSummaryData] = useState({ ...summaryInitialStatus });
   const [chartData, setChartData] = useState({ ...chartInitialStatus });
   // const [tableData, setTableData] = useState(tableInitialStatus);
@@ -130,9 +125,7 @@ const WorldwideContainer = () => {
         style={{ paddingLeft: 16, paddingRight: 16 }}
         justify="center"
       >
-        <Grid item>
-          <ChartContainer {...chartData} onToggleSwitch={onToggleSwitch} />
-        </Grid>
+        <ChartContainer {...chartData} onToggleSwitch={onToggleSwitch} />
       </Grid>
       {/* <Grid
         container

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import '../../node_modules/react-vis/dist/style.css';
 import { Grid } from '@material-ui/core';
@@ -17,6 +18,13 @@ const ItalyChart = ({
 }) => {
   if (error) return <Error />;
 
+  // if one chart per row --> high width, responsive grid otherwise
+  const getGridSize = () => {
+    return data && data.length > 1
+      ? { xs: 12, md: 6, lg: 4 }
+      : { xs: 12, md: 10 };
+  };
+
   return (
     <>
       <Grid container spacing={2} data-test-id="switch-interval-container">
@@ -25,11 +33,15 @@ const ItalyChart = ({
         </Grid>
       </Grid>
 
-      <Grid container data-test-id={`${dataTestId}-chart-container`}>
+      <Grid
+        container
+        data-test-id={`${dataTestId}-chart-container`}
+        justify="center"
+      >
         {data &&
           data.length > 0 &&
           data.map((el) => (
-            <Grid item xs={12} md={6} lg={4} style={{ padding: 16 }}>
+            <Grid item {...getGridSize()} style={{ padding: 16 }}>
               <Chart
                 loading={loading}
                 series={Object.values(el)}
