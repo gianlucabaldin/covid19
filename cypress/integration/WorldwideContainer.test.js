@@ -8,14 +8,14 @@ context('WorldwideContainer', () => {
   });
 
   context('should have', () => {
-    it('the summary', () => {
+    it('a summary', () => {
       cy.get('[data-test-id="worldwide-container-summary"]').should(
         'be.visible',
       );
     });
 
-    it('one chart summary', () => {
-      cy.get('[data-test-id="worldwide-chart-container"]').should('be.visible');
+    it('a country table', () => {
+      cy.get('[data-test-id="worldwide-table"]').should('be.visible');
     });
   });
 
