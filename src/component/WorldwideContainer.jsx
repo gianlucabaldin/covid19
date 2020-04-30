@@ -64,7 +64,7 @@ const WorldwideContainer = () => {
   };
   // fetch data from public api or mock (see implementation)
   const fetchData = () => {
-    fetchWorldwideHistorical(true)
+    fetchWorldwideHistorical()
       .then((res) => {
         return extractData(res.result);
       })

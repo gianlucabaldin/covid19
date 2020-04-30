@@ -7,8 +7,11 @@ import {
   API_WORLDWIDE_HISTORICAL_TOTALS,
 } from './consts';
 
+// read env var - used in development mode
+const mockApi = process.env.MOCK_API || false;
+
 // Italy
-export const fetchItalyHistoricalAllApify = async (mock = false) => {
+export const fetchItalyHistoricalAllApify = async (mock = mockApi) => {
   if (mock) {
     console.log('fetchItalyHistoricalAllApify mock = true');
     return mockItalyHistoricalResponseApify;
@@ -16,7 +19,7 @@ export const fetchItalyHistoricalAllApify = async (mock = false) => {
   return fetch(API_ITALY_HYSTORICAL).then((res) => res.json());
 };
 
-export const fetchItalyRegion = async (mock = false) => {
+export const fetchItalyRegion = async (mock = mockApi) => {
   if (mock) {
     console.log('fetchItalyRegion mock = true');
     return mockItalyRegionsResponse;
@@ -24,7 +27,7 @@ export const fetchItalyRegion = async (mock = false) => {
   return fetch(API_ITALY_REGION).then((res) => res.json());
 };
 
-export const fetchWorldwideHistorical = async (mock = false) => {
+export const fetchWorldwideHistorical = async (mock = mockApi) => {
   if (mock) {
     console.log('fetchWorldwideHistorical mock = true');
     return mockWorldwideSummary;

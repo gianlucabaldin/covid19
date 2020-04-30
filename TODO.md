@@ -39,7 +39,7 @@
 
 #### Remove
 
-- the mock var in fetch.js ( use process.env variable ?!!? )
+- ~~the mock var in fetch.js ( use process.env variable ?!!? )~~
 - remove background lightBlue from MainContainer
 - Moment package ?
 - ~~ReacVisCharts.jsx~~

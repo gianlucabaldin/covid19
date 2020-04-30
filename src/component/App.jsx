@@ -5,12 +5,8 @@ import Header from './Header';
 import WorldwideContainer from './WorldwideContainer';
 import { SECTIONS } from '../utils/consts';
 
-// export const SECTIONS = {
-//   WORLDWIDE: 'WORLDWIDE',
-//   ITALY: 'ITALY',
-//   COUNTRY_LIST: 'COUNTRY_LIST',
-//   EUROPE: 'EUROPE',
-// };
+// where is store MOCK_API for development purpose
+require('dotenv').config();
 
 const App = () => {
   const [activeSection, setActiveSection] = useState(SECTIONS.ITALY);

@@ -21,7 +21,7 @@ describe('Summary', () => {
   describe('fetches (mock) data', () => {
     wrapper = shallow(<Summary />);
     it('fetchs data correctly', async () => {
-      await fetchItalyHistoricalAllApify(true).then((res) => {
+      await fetchItalyHistoricalAllApify().then((res) => {
         const mockData = {
           tamponi: res[res.length - 1].tamponi,
           totalCases: res[res.length - 1].totalCases,

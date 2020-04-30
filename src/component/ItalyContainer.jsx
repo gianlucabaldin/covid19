@@ -83,7 +83,7 @@ const ItalyContainer = () => {
 
   // fetch data from public api or mock (see implementation)
   const fetchData = () => {
-    fetchItalyHistoricalAllApify(true)
+    fetchItalyHistoricalAllApify()
       .then((res) => {
         return extractData(res);
       })
@@ -96,7 +96,7 @@ const ItalyContainer = () => {
       });
 
     // fill table with fetched data
-    fetchItalyRegion(true)
+    fetchItalyRegion()
       .then((res) => {
         setTableData({ data: res, loading: false });
       })
