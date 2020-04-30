@@ -28,18 +28,6 @@ context('App', () => {
       );
     });
 
-    it('to Country List', () => {
-      cy.get('[data-test-id="nav-button-country-list"]').should(
-        'have.class',
-        'MuiButton-outlinedPrimary',
-      );
-      cy.get('[data-test-id="nav-button-country-list"]').click();
-      cy.get('[data-test-id="nav-button-country-list"]').should(
-        'have.class',
-        'MuiButton-containedPrimary',
-      );
-    });
-
     it('to Worldwide', () => {
       cy.get('[data-test-id="nav-button-worldwide"]').should(
         'have.class',

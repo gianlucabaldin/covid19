@@ -44,6 +44,5 @@ export const STATUS = {
 export const SECTIONS = {
   WORLDWIDE: 'worldwide',
   ITALY: 'italy',
-  COUNTRY_LIST: 'country-list',
   EUROPE: 'europe',
 };

@@ -24,16 +24,6 @@ const NavButtons = ({ onClick }) => {
     >
       <Box m={1}>
         <Button
-          variant={active === SECTIONS.COUNTRY_LIST ? 'contained' : 'outlined'}
-          color="primary"
-          data-test-id="nav-button-country-list"
-          onClick={() => handleClick(SECTIONS.COUNTRY_LIST)}
-        >
-          {t('navbuttons.country-list')}
-        </Button>
-      </Box>
-      <Box m={1}>
-        <Button
           variant={active === SECTIONS.WORLDWIDE ? 'contained' : 'outlined'}
           color="primary"
           data-test-id="nav-button-worldwide"

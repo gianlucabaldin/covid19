@@ -21,13 +21,6 @@ context('Navbuttons', () => {
       );
     });
 
-    it('Country List button disabled', () => {
-      cy.get('[data-test-id="nav-button-country-list"]').should(
-        'have.class',
-        'MuiButton-outlinedPrimary',
-      );
-    });
-
     it('Worldwide button disabled', () => {
       cy.get('[data-test-id="nav-button-worldwide"]').should(
         'have.class',
