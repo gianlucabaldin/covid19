@@ -1,16 +1,26 @@
 export const API_ITALY_HYSTORICAL =
-  'https://api.covid19api.com/total/dayone/country/italy';
-
-export const API_ITALY_HYSTORICAL_APIFY =
   'https://api.apify.com/v2/datasets/CUdKmb25Z3HjkoDiN/items?format=json&clean=1';
+
 export const API_ITALY_HYSTORICAL_APIFY_SHORT_URL = 'api.apify.com';
 
 export const API_ITALY_REGION =
   'https://openpuglia.org/api/?q=getdatapccovid-19';
 
-// export const API_WORLDWIDE_TOTALS = "https://covidapi.info/api/v1/global"
+/* LASTEST WORLDWIDE COUNT
+   { "2020-01-22": { "confirmed": 555, "deaths": 17, "recovered": 28 },
+     "2020-01-23": { "confirmed": 654, "deaths": 18, "recovered": 30 },
+   },....
+*/
 export const API_WORLDWIDE_HISTORICAL_TOTALS =
   'https://covidapi.info/api/v1/global/count';
+
+/* LATEST COUNT BY COUNTRY
+   { "SWE": { "confirmed": 20302, "deaths": 2462, "recovered": 1005}},
+   { "TZA": { "confirmed": 480, "deaths": 16, "recovered": 167 } },
+   .... 
+*/
+export const API_WORLDWIDE_LATEST_TOTALS =
+  'https://covidapi.info/api/v1/global/latest';
 
 export const OPEN_PUGLIA_API = 'openpuglia.org';
 export const COVID_19_API = 'covid19api.com';

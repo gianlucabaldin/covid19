@@ -2,7 +2,7 @@ import { mockItalyHistoricalResponseApify } from './mock/mockItalyHistoricalResp
 import { mockWorldwideSummary } from './mock/mockWorldwideSummary';
 import { mockItalyRegionsResponse } from './mock/mockItalyRegionsResponse';
 import {
-  API_ITALY_HYSTORICAL_APIFY,
+  API_ITALY_HYSTORICAL,
   API_ITALY_REGION,
   API_WORLDWIDE_HISTORICAL_TOTALS,
 } from './consts';
@@ -13,7 +13,7 @@ export const fetchItalyHistoricalAllApify = async (mock = false) => {
     console.log('fetchItalyHistoricalAllApify mock = true');
     return mockItalyHistoricalResponseApify;
   }
-  return fetch(API_ITALY_HYSTORICAL_APIFY).then((res) => res.json());
+  return fetch(API_ITALY_HYSTORICAL).then((res) => res.json());
 };
 
 export const fetchItalyRegion = async (mock = false) => {
