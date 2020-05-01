@@ -23,7 +23,8 @@ const useStyles = makeStyles({
   trHeader: {
     backgroundColor: grey[200],
   },
-  th: { fontWeight: 700, padding: 0 },
+  th: { fontWeight: 700, padding: 8 },
+  td: { padding: 8 },
 });
 
 const TableCell = withStyles({
@@ -72,47 +73,55 @@ const ItalyRegions = ({ data, loading = true }) => {
         >
           <TableHead>
             <TableRow key="header" className={classes.trHeader}>
-              <TableCell align="center">{t('italyregions.region')}</TableCell>
+              <TableCell align="center" className={classes.th}>
+                {t('italyregions.region')}
+              </TableCell>
               <Hidden lgDown>
-                <TableCell align="center">
+                <TableCell align="center" className={classes.th}>
                   {t('italyregions.hospidalized-symptoms')}
                 </TableCell>
               </Hidden>
-              <TableCell align="center">
+              <TableCell align="center" className={classes.th}>
                 {t('italyregions.intensive-care')}
               </TableCell>
               <Hidden lgDown>
-                <TableCell align="center">
+                <TableCell align="center" className={classes.th}>
                   {t('italyregions.total-hospidalized')}
                 </TableCell>
               </Hidden>
               <Hidden mdDown>
-                <TableCell align="center">
+                <TableCell align="center" className={classes.th}>
                   {t('italyregions.home-isolation')}
                 </TableCell>
               </Hidden>
-              <TableCell align="center">
+              <TableCell align="center" className={classes.th}>
                 {t('italyregions.total-positives')}
               </TableCell>
               <Hidden lgDown>
-                <TableCell align="center">
+                <TableCell align="center" className={classes.th}>
                   {t('italyregions.positive-variations')}
                 </TableCell>
               </Hidden>
               <Hidden lgDown>
-                <TableCell align="center">
+                <TableCell align="center" className={classes.th}>
                   {t('italyregions.new-positive')}
                 </TableCell>
               </Hidden>
               <Hidden lgDown>
-                <TableCell align="center">
+                <TableCell align="center" className={classes.th}>
                   {t('italyregions.discarged-healed')}
                 </TableCell>
               </Hidden>
-              <TableCell align="center">{t('deaths')}</TableCell>
-              <TableCell align="center">{t('total_cases')}</TableCell>
+              <TableCell align="center" className={classes.th}>
+                {t('deaths')}
+              </TableCell>
+              <TableCell align="center" className={classes.th}>
+                {t('total_cases')}
+              </TableCell>
               <Hidden mdDown>
-                <TableCell align="center">{t('tamponi')}</TableCell>
+                <TableCell align="center" className={classes.th}>
+                  {t('tamponi')}
+                </TableCell>
               </Hidden>
             </TableRow>
           </TableHead>
