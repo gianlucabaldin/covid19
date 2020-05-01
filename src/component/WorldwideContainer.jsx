@@ -12,6 +12,7 @@ import Summary from './Summary';
 import { processDataWorldwide } from '../utils/chartUtils';
 import { SECTIONS } from '../utils/consts';
 import WorldwideCountry from './WorldwideCountry';
+import ChartContainer from './ChartContainer';
 
 const summaryInitialStatus = {
   confirmed: 0,
@@ -113,13 +114,15 @@ const WorldwideContainer = () => {
       <Grid container justify="center">
         <Summary {...summaryData} />
       </Grid>
-      {/* <Grid
+
+      <Grid
         container
         style={{ paddingLeft: 16, paddingRight: 16 }}
         justify="center"
       >
-        <WorldwideCountry {...chartData} onToggleSwitch={onToggleSwitch} />
-      </Grid> */}
+        <ChartContainer {...chartData} onToggleSwitch={onToggleSwitch} />
+      </Grid>
+
       <Grid
         container
         style={{ paddingLeft: 16, paddingRight: 16 }}

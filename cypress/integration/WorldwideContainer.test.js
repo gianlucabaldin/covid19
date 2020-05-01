@@ -2,7 +2,7 @@
 /// <reference types="cypress" />
 
 context('WorldwideContainer', () => {
-  before(() => {
+  beforeEach(() => {
     cy.visit('/');
     cy.get('[data-test-id="nav-button-worldwide"]').click();
   });
@@ -12,6 +12,10 @@ context('WorldwideContainer', () => {
       cy.get('[data-test-id="worldwide-container-summary"]').should(
         'be.visible',
       );
+    });
+
+    it.only('a chart', () => {
+      cy.get('[data-test-id="worldwide-chart-container"]').should('be.visible');
     });
 
     it('a country table', () => {
