@@ -50,7 +50,7 @@ const Chart = ({ series, status, loading = true }) => {
           <span style={{ fontWeight: 'bold', textTransform: 'capitalize' }}>
             {t(hint.status.toString().toLowerCase()).replace('_', ' ')}:
           </span>{' '}
-          {hint.data.y}
+          {hint.data.y.toLocaleString()}
         </div>
       </Hint>
     ) : null;
