@@ -2,13 +2,16 @@
 /* eslint-disable camelcase */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect, useState } from 'react';
-import { Grid } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import moment from 'moment';
-import ChartContainer from './ChartContainer';
-import { fetchWorldwideHistorical } from '../utils/fetch';
+import {
+  fetchWorldwideHistorical,
+  fetchWorldwideCountryTotals,
+} from '../utils/fetch';
 import Summary from './Summary';
 import { processDataWorldwide } from '../utils/chartUtils';
 import { SECTIONS } from '../utils/consts';
+import WorldwideCountry from './WorldwideCountry';
 
 const summaryInitialStatus = {
   confirmed: 0,
@@ -26,15 +29,15 @@ const chartInitialStatus = {
   checked: true,
 };
 
-// const tableInitialStatus = {
-//   data: {},
-//   loading: true,
-// };
+const tableInitialStatus = {
+  data: {},
+  loading: true,
+};
 
 const WorldwideContainer = () => {
   const [summaryData, setSummaryData] = useState({ ...summaryInitialStatus });
   const [chartData, setChartData] = useState({ ...chartInitialStatus });
-  // const [tableData, setTableData] = useState(tableInitialStatus);
+  const [tableData, setTableData] = useState(tableInitialStatus);
   const [fetchedDataAll, setFetchedDataAll] = useState();
 
   const extractData = (res) => {
@@ -77,14 +80,14 @@ const WorldwideContainer = () => {
       });
 
     // fill table with fetched data
-    // fetchItalyRegion(true)
-    //   .then((res) => {
-    //     setTableData({ data: res, loading: false });
-    //   })
-    //   .catch((err) => {
-    //     // to fill
-    //     console.log('error', err);
-    //   });
+    fetchWorldwideCountryTotals()
+      .then((res) => {
+        setTableData({ data: res, loading: false });
+      })
+      .catch((err) => {
+        // to fill
+        console.log('error', err);
+      });
   };
   useEffect(() => {
     fetchData();
@@ -108,31 +111,31 @@ const WorldwideContainer = () => {
       <Grid container justify="center">
         <Summary {...summaryData} />
       </Grid>
+      {/* <Grid
+        container
+        style={{ paddingLeft: 16, paddingRight: 16 }}
+        justify="center"
+      >
+        <WorldwideCountry {...chartData} onToggleSwitch={onToggleSwitch} />
+      </Grid> */}
       <Grid
         container
         style={{ paddingLeft: 16, paddingRight: 16 }}
         justify="center"
       >
-        <ChartContainer {...chartData} onToggleSwitch={onToggleSwitch} />
+        <Grid item style={{ marginTop: 10 }}>
+          <Typography variant="h5">Country List</Typography>
+        </Grid>
       </Grid>
-      {/* <Grid
+      <Grid
         container
         style={{ paddingLeft: 16, paddingRight: 16 }}
         justify="center"
       >
         <Grid item style={{ marginTop: 10 }}>
-          <Typography variant="h5">Region Details</Typography>
+          <WorldwideCountry {...tableData} />
         </Grid>
-      </Grid> */}
-      {/* <Grid
-        container
-        style={{ paddingLeft: 16, paddingRight: 16 }}
-        justify="center"
-      >
-        <Grid item style={{ marginTop: 10 }}>
-          <ItalyRegions {...tableData} />
-        </Grid>
-      </Grid>  */}
+      </Grid>
     </>
   );
 };

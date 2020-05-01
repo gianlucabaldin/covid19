@@ -35,5 +35,6 @@
   "summary.total-recovered": "recoverati totali",
   "summary.last-update": "ultimo aggiornamento disponibile",
   "switch.historical": "dati storici",
-  "switch.last-10-days": "ultimi 10 giorni"
+  "switch.last-10-days": "ultimi 10 giorni",
+  "worldwide.country": "stato"
 }
