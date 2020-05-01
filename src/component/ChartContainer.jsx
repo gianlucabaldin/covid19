@@ -8,7 +8,7 @@ import DataProvided from './DataProvided';
 import { API_ITALY_HYSTORICAL_APIFY_SHORT_URL } from '../utils/consts';
 import Chart from './Chart';
 
-const ItalyChart = ({
+const ChartContainer = ({
   data,
   error,
   dataTestId,
@@ -57,4 +57,4 @@ const ItalyChart = ({
   );
 };
 
-export default ItalyChart;
+export default ChartContainer;
