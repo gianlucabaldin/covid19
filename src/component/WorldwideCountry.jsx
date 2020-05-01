@@ -22,13 +22,14 @@ const useStyles = makeStyles({
   trHeader: {
     backgroundColor: grey[200],
   },
-  th: { fontWeight: 700, padding: 0 },
+  th: { fontWeight: 700, padding: 8 },
 });
 
 const TableCell = withStyles({
   root: {
     border: '1px solid grey',
     textTransform: 'uppercase',
+    '&:last-child': { paddingRight: '8px' },
   },
 })(MuiTableCell);
 
@@ -84,10 +85,18 @@ const WorldwideCountry = ({ data, loading = true }) => {
         >
           <TableHead>
             <TableRow key="header" className={classes.trHeader}>
-              <TableCell align="center">{t('worldwide.country')}</TableCell>
-              <TableCell align="center">{t('confirmed')}</TableCell>
-              <TableCell align="center">{t('recovered')}</TableCell>
-              <TableCell align="center">{t('deaths')}</TableCell>
+              <TableCell align="center" className={classes.th}>
+                {t('worldwide.country')}
+              </TableCell>
+              <TableCell align="center" className={classes.th}>
+                {t('confirmed')}
+              </TableCell>
+              <TableCell align="center" className={classes.th}>
+                {t('recovered')}
+              </TableCell>
+              <TableCell align="center" className={classes.th}>
+                {t('deaths')}
+              </TableCell>
             </TableRow>
           </TableHead>
           {loading ? (
