@@ -10,7 +10,7 @@ import { withStyles } from '@material-ui/core';
 import { grey } from '@material-ui/core/colors';
 import { useTranslation } from 'react-i18next';
 import Error from './Error';
-import { API_WORLDWIDE_SHORT_URL } from '../utils/consts';
+import { API_COVID_API_INFO_SHORT_URL } from '../utils/consts';
 import DataProvided from './DataProvided';
 import Loading from './Loading';
 import { getLocalizedValue } from '../utils/shared';
@@ -113,7 +113,7 @@ const WorldwideCountry = ({ data, loading = true }) => {
         </Table>
       </TableContainer>
       {data && data.date && (
-        <DataProvided date={data.date} href={API_WORLDWIDE_SHORT_URL} />
+        <DataProvided date={data.date} href={API_COVID_API_INFO_SHORT_URL} />
       )}
     </>
   );

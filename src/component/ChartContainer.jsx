@@ -5,7 +5,7 @@ import { Grid } from '@material-ui/core';
 import SwitchInterval from './SwitchInterval';
 import Error from './Error';
 import DataProvided from './DataProvided';
-import { API_ITALY_HYSTORICAL_APIFY_SHORT_URL } from '../utils/consts';
+import { API_APIFY_SHORT_URL } from '../utils/consts';
 import Chart from './Chart';
 
 const ChartContainer = ({
@@ -15,6 +15,7 @@ const ChartContainer = ({
   loading,
   checked,
   onToggleSwitch,
+  href,
 }) => {
   if (error) return <Error />;
 
@@ -50,9 +51,11 @@ const ChartContainer = ({
             </Grid>
           ))}
       </Grid>
-      <Grid container spacing={2}>
-        <DataProvided href={API_ITALY_HYSTORICAL_APIFY_SHORT_URL} />
-      </Grid>
+      {href && (
+        <Grid container spacing={2}>
+          <DataProvided href={href} />
+        </Grid>
+      )}
     </>
   );
 };

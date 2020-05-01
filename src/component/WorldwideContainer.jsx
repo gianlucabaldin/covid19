@@ -10,7 +10,7 @@ import {
 } from '../utils/fetch';
 import Summary from './Summary';
 import { processDataWorldwide } from '../utils/chartUtils';
-import { SECTIONS } from '../utils/consts';
+import { SECTIONS, API_COVID_API_INFO_SHORT_URL } from '../utils/consts';
 import WorldwideCountry from './WorldwideCountry';
 import ChartContainer from './ChartContainer';
 
@@ -29,6 +29,7 @@ const chartInitialStatus = {
   error: false,
   loading: true,
   checked: true,
+  href: API_COVID_API_INFO_SHORT_URL,
 };
 
 const tableInitialStatus = {

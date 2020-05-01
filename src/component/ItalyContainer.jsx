@@ -8,7 +8,7 @@ import ItalyRegions from './ItalyRegions';
 import { fetchItalyRegion, fetchItalyHistoricalAll } from '../utils/fetch';
 import Summary from './Summary';
 import { processData } from '../utils/chartUtils';
-import { SECTIONS } from '../utils/consts';
+import { SECTIONS, API_APIFY_SHORT_URL } from '../utils/consts';
 
 const summaryInitialStatus = {
   tamponi: 0,
@@ -26,6 +26,7 @@ const chartInitialStatus = {
   error: false,
   loading: true,
   checked: true,
+  href: API_APIFY_SHORT_URL,
 };
 
 const tableInitialStatud = {

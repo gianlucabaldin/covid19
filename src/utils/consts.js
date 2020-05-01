@@ -1,8 +1,9 @@
+export const API_APIFY_SHORT_URL = 'api.apify.com';
+export const API_COVID_API_INFO_SHORT_URL = 'covidapi.info';
+export const API_OPEN_PUGLIA_SHORT_URL = 'openpuglia.org';
+
 export const API_ITALY_HYSTORICAL =
   'https://api.apify.com/v2/datasets/CUdKmb25Z3HjkoDiN/items?format=json&clean=1';
-
-export const API_ITALY_HYSTORICAL_APIFY_SHORT_URL = 'api.apify.com';
-export const API_WORLDWIDE_SHORT_URL = 'covidapi.info';
 
 export const API_ITALY_REGION =
   'https://openpuglia.org/api/?q=getdatapccovid-19';
@@ -22,9 +23,6 @@ export const API_WORLDWIDE_HISTORICAL_TOTALS =
 */
 export const API_WORLDWIDE_COUNTRY_TOTALS =
   'https://covidapi.info/api/v1/global/latest';
-
-export const OPEN_PUGLIA_API = 'openpuglia.org';
-export const COVID_19_API = 'covid19api.com';
 
 export const STATUS = {
   CONFIRMED: 'CONFIRMED',

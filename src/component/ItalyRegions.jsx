@@ -11,7 +11,7 @@ import { Hidden, withStyles } from '@material-ui/core';
 import { grey } from '@material-ui/core/colors';
 import { useTranslation } from 'react-i18next';
 import Error from './Error';
-import { OPEN_PUGLIA_API } from '../utils/consts';
+import { API_OPEN_PUGLIA_SHORT_URL } from '../utils/consts';
 import DataProvided from './DataProvided';
 import Loading from './Loading';
 import { getLocalizedValue } from '../utils/shared';
@@ -198,7 +198,7 @@ const ItalyRegions = ({ data, loading = true }) => {
       </TableContainer>
 
       {data && data.length > 0 && (
-        <DataProvided date={data[0].data} href={OPEN_PUGLIA_API} />
+        <DataProvided date={data[0].data} href={API_OPEN_PUGLIA_SHORT_URL} />
       )}
     </>
   );
