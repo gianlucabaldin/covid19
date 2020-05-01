@@ -18,6 +18,7 @@ const summaryInitialStatus = {
   deaths: 0,
   recovered: 0,
   dataTestId: SECTIONS.WORLDWIDE,
+  loading: true,
   error: false,
 };
 
@@ -56,6 +57,7 @@ const WorldwideContainer = () => {
           value: moment(lastRecent).format('LLL'),
         },
       ],
+      loading: false,
       error: false,
     });
     setChartData({
@@ -75,8 +77,8 @@ const WorldwideContainer = () => {
         setFetchedDataAll(res);
       })
       .catch(() => {
-        setSummaryData({ error: true });
-        setChartData({ error: true });
+        setSummaryData({ loading: false, error: true });
+        setChartData({ loading: false, error: true });
       });
 
     // fill table with fetched data

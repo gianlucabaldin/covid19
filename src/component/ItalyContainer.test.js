@@ -30,7 +30,7 @@ describe('ItalyContainer', () => {
 
   describe('fetches (mock) data', () => {
     let chartData;
-    beforeAll(async () => {
+    before(async () => {
       chartData = await fetchItalyHistoricalAll();
     });
 

@@ -12,6 +12,7 @@ import { grey } from '@material-ui/core/colors';
 import { useTranslation } from 'react-i18next';
 import Error from './Error';
 import { getLocalizedValue } from '../utils/shared';
+import Loading from './Loading';
 
 const useStyles = makeStyles({
   trHeader: {
@@ -26,7 +27,7 @@ const TableCell = withStyles({
   },
 })(MuiTableCell);
 
-const Summary = ({ data, dataTestId, error = false }) => {
+const Summary = ({ data, dataTestId, loading = true, error = false }) => {
   const { t } = useTranslation();
   const classes = useStyles();
 
@@ -57,8 +58,13 @@ const Summary = ({ data, dataTestId, error = false }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            <TableRow key="td-status">
-              {data &&
+            <TableRow key="td-value">
+              {loading ? (
+                <div>
+                  <Loading />
+                </div>
+              ) : (
+                data &&
                 data.length > 0 &&
                 data.map((el) => (
                   <TableCell
@@ -67,7 +73,8 @@ const Summary = ({ data, dataTestId, error = false }) => {
                   >
                     {getLocalizedValue(el.value)}
                   </TableCell>
-                ))}
+                ))
+              )}
             </TableRow>
           </TableBody>
         </Table>

@@ -57,14 +57,16 @@ const WorldwideCountry = ({ data, loading = true }) => {
       const values = Object.values(row)[0];
       return (
         <TableRow key={row.regione} hover data-test-id={`row-${country}`}>
-          <TableCell align="center">{country}</TableCell>
-          <TableCell align="center">
+          <TableCell align="center" data-test-id={`td-${country}`}>
+            {country}
+          </TableCell>
+          <TableCell align="center" data-test-id={`td-${country}-confirmed`}>
             {getLocalizedValue(values.confirmed)}
           </TableCell>
-          <TableCell align="center">
+          <TableCell align="center" data-test-id={`td-${country}-recovered`}>
             {getLocalizedValue(values.recovered)}
           </TableCell>
-          <TableCell align="center">
+          <TableCell align="center" data-test-id={`td-${country}-deaths`}>
             {getLocalizedValue(values.deaths)}
           </TableCell>
         </TableRow>
@@ -76,7 +78,7 @@ const WorldwideCountry = ({ data, loading = true }) => {
     <>
       <TableContainer>
         <Table
-          data-test-id="italy-container-regions"
+          data-test-id="worldwide-country-table"
           size="small"
           aria-label="a dense table"
         >

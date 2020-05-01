@@ -16,6 +16,7 @@ const summaryInitialStatus = {
   deceased: 0,
   lastUpdate: '',
   dataTestId: SECTIONS.ITALY,
+  loading: true,
   error: false,
 };
 
@@ -62,6 +63,7 @@ const ItalyContainer = () => {
           ),
         },
       ],
+      loading: false,
       error: false,
     });
     setChartData({
@@ -91,7 +93,7 @@ const ItalyContainer = () => {
         setFetchedDataAll(res);
       })
       .catch(() => {
-        setSummaryData({ error: true });
+        setSummaryData({ loading: false, error: true });
         setChartData({ error: true });
       });
 

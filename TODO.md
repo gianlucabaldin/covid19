@@ -1,7 +1,8 @@
 # TODO
 
+- check loading component without mock
 - insert data-test-id for every cell to be localized from ItalyRegions.test.js
-- use dot to separate thousands
+- ~~use dot to separate thousands~~
 - change with https://recharts.org/en-US/api
 - ~~ChartContainers: review into one single array param and print dynamicaly~~
 - Loading with react-loader-spinner ?
