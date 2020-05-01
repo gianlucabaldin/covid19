@@ -31,6 +31,7 @@ const TableCell = withStyles({
   root: {
     border: '1px solid grey',
     textTransform: 'uppercase',
+    '&:last-child': { paddingRight: '8px' },
   },
 })(MuiTableCell);
 
