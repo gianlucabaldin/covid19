@@ -1,4 +1,4 @@
-import { mockItalyHistoricalResponseApify } from './mock/mockItalyHistoricalResponse_Apify';
+import { mockItalyHistoricalResponse } from './mock/mockItalyHistoricalResponse';
 import { mockWorldwideSummary } from './mock/mockWorldwideSummary';
 import { mockItalyRegionsResponse } from './mock/mockItalyRegionsResponse';
 import {
@@ -16,7 +16,7 @@ const mockApi = process.env.REACT_APP_MOCK_API || false;
 export const fetchItalyHistoricalAll = async () => {
   if (mockApi) {
     console.log('fetchItalyHistoricalAll mock = true');
-    return mockItalyHistoricalResponseApify;
+    return mockItalyHistoricalResponse;
   }
   return fetch(API_ITALY_HYSTORICAL).then((res) => res.json());
 };
