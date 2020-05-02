@@ -26,19 +26,19 @@ context('EuropeContainer', () => {
       it('confirmed', () => {
         cy.get('[data-test-id="summary-total-confirmed"]').should(
           'have.text',
-          '3.116.398',
+          '1.169.227',
         );
       });
       it('deaths', () => {
         cy.get('[data-test-id="summary-total-deaths"]').should(
           'have.text',
-          '217.153',
+          '129.236',
         );
       });
       it('recovered', () => {
         cy.get('[data-test-id="summary-total-recovered"]').should(
           'have.text',
-          '928.658',
+          '441.784',
         );
       });
       it('last-update', () => {
