@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import moment from 'moment';
+import { useTranslation } from 'react-i18next';
 import ChartContainer from './ChartContainer';
 import ItalyRegions from './ItalyRegions';
 import { fetchItalyRegion, fetchItalyHistoricalAll } from '../utils/fetch';
@@ -35,6 +36,8 @@ const tableInitialStatud = {
 };
 
 const ItalyContainer = () => {
+  const { t } = useTranslation();
+
   const [summaryData, setSummaryData] = useState({ ...summaryInitialStatus });
   const [chartData, setChartData] = useState({ ...chartInitialStatus });
   const [tableData, setTableData] = useState(tableInitialStatud);
@@ -159,7 +162,9 @@ const ItalyContainer = () => {
         justify="center"
       >
         <Grid item style={{ marginTop: 10 }}>
-          <Typography variant="h5">Region Details</Typography>
+          <Typography variant="h5" style={{ textTransform: 'capitalize' }}>
+            {t('regions-details')}
+          </Typography>
         </Grid>
       </Grid>
       <Grid

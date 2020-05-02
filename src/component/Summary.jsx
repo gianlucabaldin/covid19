@@ -52,7 +52,7 @@ const Summary = ({ data, dataTestId, loading = true, error = false }) => {
                 data.length > 0 &&
                 data.map((el) => (
                   <TableCell align="center">
-                    {t(el.key.replace('-', ' '))}
+                    {t('summary.'.concat(el.key))}
                   </TableCell>
                 ))}
             </TableRow>
