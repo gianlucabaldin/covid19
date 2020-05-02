@@ -8,6 +8,7 @@ import ItalyContainer from './ItalyContainer';
 import Header from './Header';
 import WorldwideContainer from './WorldwideContainer';
 import { SECTIONS } from '../utils/consts';
+import EuropeContainer from './EuropeContainer';
 
 // where is store MOCK_API for development purpose
 
@@ -21,8 +22,7 @@ const App = () => {
       <Header onClick={handleClick} />
       {activeSection === SECTIONS.ITALY && <ItalyContainer />}
       {activeSection === SECTIONS.WORLDWIDE && <WorldwideContainer />}
-      {activeSection === SECTIONS.COUNTRY_LIST && <div>COUNTRY_LIST</div>}
-      {activeSection === SECTIONS.EUROPE && <div>EUROPE</div>}
+      {activeSection === SECTIONS.EUROPE && <EuropeContainer />}
     </div>
   );
 };

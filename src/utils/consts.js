@@ -45,3 +45,34 @@ export const SECTIONS = {
   ITALY: 'italy',
   EUROPE: 'europe',
 };
+
+export const europeanCountries = [
+  'AUT', // Austria
+  'BEL', // Belgium
+  'BGR', // Bulgaria
+  'CYP', // Cyprus
+  'CZE', // Czech Republic
+  'DEU', // Germany
+  'DNK', // Denmark
+  'ESP', // Spain
+  'EST', // Estonia
+  'FIN', // Finland
+  'FRA', // France
+  'GBR', // United Kingdom
+  'GRC', // Greece
+  'HRV', // Croatia
+  'HUN', // Hungary
+  'IRL', // Ireland, Republic of (EIRE)
+  'ITA', // Italy
+  'LTU', // Lithuania
+  'LUX', // Luxembourg
+  'LVA', // Latvia
+  'MLT', // Malta
+  'NLD', // Netherlands
+  'POL', // Poland
+  'PRT', // Portugal
+  'ROU', // Romania
+  'SVK', // Slovakia
+  'SVN', // Slovenia
+  'SWE', // Sweden
+];

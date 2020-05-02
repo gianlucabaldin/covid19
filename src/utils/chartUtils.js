@@ -3,6 +3,8 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable import/prefer-default-export */
 
+import { europeanCountries } from './consts';
+
 /**
  * Prepare 3 arrays with reduced data
  * @param {array} data the fetched data
@@ -114,6 +116,28 @@ export const processDataWorldwide = (data, lastTenDays = true) => {
     });
   }
 
+  return {
+    confirmed,
+    deaths,
+    recovered,
+  };
+};
+
+export const filterEuropeanCountries = (results) => {
+  return results.filter((country) =>
+    europeanCountries.includes(Object.keys(country)[0]),
+  );
+};
+
+export const europeanSummatory = (results) => {
+  let confirmed = 0;
+  let recovered = 0;
+  let deaths = 0;
+  results.map((el) => {
+    confirmed += Object.values(el)[0].confirmed;
+    recovered += Object.values(el)[0].recovered;
+    deaths += Object.values(el)[0].deaths;
+  });
   return {
     confirmed,
     deaths,
