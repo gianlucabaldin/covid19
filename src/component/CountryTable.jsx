@@ -118,7 +118,7 @@ const CountryTable = ({ data, loading = true, dataTestId, href }) => {
           )}
         </Table>
       </TableContainer>
-      {data && data.date && <DataProvided date={data.date} href={href} />}
+      {href && <DataProvided href={href} />}
     </>
   );
 };

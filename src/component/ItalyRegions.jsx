@@ -35,7 +35,7 @@ const TableCell = withStyles({
   },
 })(MuiTableCell);
 
-const ItalyRegions = ({ data, loading = true }) => {
+const ItalyRegions = ({ data, loading = true, href }) => {
   const classes = useStyles();
   const { t } = useTranslation();
 
@@ -230,9 +230,7 @@ const ItalyRegions = ({ data, loading = true }) => {
         </Table>
       </TableContainer>
 
-      {data && data.length > 0 && (
-        <DataProvided date={data[0].data} href={API_OPEN_PUGLIA_SHORT_URL} />
-      )}
+      {href && <DataProvided href={API_OPEN_PUGLIA_SHORT_URL} />}
     </>
   );
 };

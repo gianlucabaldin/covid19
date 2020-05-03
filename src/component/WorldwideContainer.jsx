@@ -36,6 +36,7 @@ const tableInitialStatus = {
   data: {},
   loading: true,
   dataTestId: SECTIONS.WORLDWIDE,
+  href: API_COVID_API_INFO_SHORT_URL,
 };
 
 const WorldwideContainer = () => {
@@ -81,7 +82,7 @@ const WorldwideContainer = () => {
       })
       .catch(() => {
         setSummaryData({ loading: false, error: true });
-        setChartData({ loading: false, error: true });
+        setChartData({ ...chartInitialStatus, loading: false, error: true });
       });
 
     // fill table with fetched data

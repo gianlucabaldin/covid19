@@ -9,7 +9,11 @@ import ItalyRegions from './ItalyRegions';
 import { fetchItalyRegion, fetchItalyHistoricalAll } from '../utils/fetch';
 import Summary from './Summary';
 import { processData } from '../utils/chartUtils';
-import { SECTIONS, API_APIFY_SHORT_URL } from '../utils/consts';
+import {
+  SECTIONS,
+  API_APIFY_SHORT_URL,
+  API_OPEN_PUGLIA_SHORT_URL,
+} from '../utils/consts';
 
 const summaryInitialStatus = {
   tamponi: 0,
@@ -30,9 +34,10 @@ const chartInitialStatus = {
   href: API_APIFY_SHORT_URL,
 };
 
-const tableInitialStatud = {
+const tableInitialStatus = {
   data: {},
   loading: true,
+  href: API_OPEN_PUGLIA_SHORT_URL,
 };
 
 const ItalyContainer = () => {
@@ -40,7 +45,7 @@ const ItalyContainer = () => {
 
   const [summaryData, setSummaryData] = useState({ ...summaryInitialStatus });
   const [chartData, setChartData] = useState({ ...chartInitialStatus });
-  const [tableData, setTableData] = useState(tableInitialStatud);
+  const [tableData, setTableData] = useState(tableInitialStatus);
   const [fetchedDataAll, setFetchedDataAll] = useState();
 
   const extractData = (res) => {
@@ -104,7 +109,7 @@ const ItalyContainer = () => {
     // fill table with fetched data
     fetchItalyRegion()
       .then((res) => {
-        setTableData({ data: res, loading: false });
+        setTableData({ ...tableInitialStatus, data: res, loading: false });
       })
       .catch((err) => {
         // to fill

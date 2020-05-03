@@ -31,7 +31,6 @@ const tableInitialStatus = {
 
 const EuropeContainer = () => {
   const [summaryData, setSummaryData] = useState({ ...summaryInitialStatus });
-  // const [chartData, setChartData] = useState({ ...chartInitialStatus });
   const [tableData, setTableData] = useState(tableInitialStatus);
 
   const extractData = (res) => {
