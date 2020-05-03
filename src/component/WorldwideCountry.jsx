@@ -9,6 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import { withStyles } from '@material-ui/core';
 import { grey } from '@material-ui/core/colors';
 import { useTranslation } from 'react-i18next';
+import Flag from 'react-world-flags';
 import Error from './Error';
 import { API_COVID_API_INFO_SHORT_URL } from '../utils/consts';
 import DataProvided from './DataProvided';
@@ -58,6 +59,9 @@ const WorldwideCountry = ({ data, loading = true }) => {
       const values = Object.values(row)[0];
       return (
         <TableRow key={row.regione} hover data-test-id={`row-${country}`}>
+          <TableCell align="center" data-test-id={`td-flag-${country}`}>
+            <Flag code={country} height={16} />
+          </TableCell>
           <TableCell align="center" data-test-id={`td-${country}`}>
             {country}
           </TableCell>
@@ -85,6 +89,9 @@ const WorldwideCountry = ({ data, loading = true }) => {
         >
           <TableHead>
             <TableRow key="header" className={classes.trHeader}>
+              <TableCell align="center" className={classes.th}>
+                {' '}
+              </TableCell>
               <TableCell align="center" className={classes.th}>
                 {t('worldwide.country')}
               </TableCell>
