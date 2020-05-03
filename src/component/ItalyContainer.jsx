@@ -159,7 +159,7 @@ const ItalyContainer = () => {
         style={{ paddingLeft: 16, paddingRight: 16 }}
         justify="center"
       >
-        <Grid item>
+        <Grid item xs={12}>
           <ChartContainer {...chartData} onToggleSwitch={onToggleSwitch} />
         </Grid>
       </Grid>

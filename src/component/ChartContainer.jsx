@@ -28,7 +28,7 @@ const ChartContainer = ({
   return (
     <>
       <Grid container spacing={2}>
-        <Grid item>
+        <Grid item xs={12}>
           <SwitchInterval onToggleSwitch={onToggleSwitch} checked={checked} />
         </Grid>
       </Grid>

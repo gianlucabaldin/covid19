@@ -1,5 +1,11 @@
 import React from 'react';
-import { withStyles, Switch, Typography, Grid } from '@material-ui/core';
+import {
+  withStyles,
+  Switch,
+  Typography,
+  Grid,
+  makeStyles,
+} from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 
 const AntSwitch = withStyles((theme) => ({
@@ -36,16 +42,33 @@ const AntSwitch = withStyles((theme) => ({
   checked: {},
 }))(Switch);
 
+const useStyles = makeStyles((theme) => ({
+  grid: {
+    [theme.breakpoints.down('sm')]: {
+      display: 'flex',
+      justifyContent: 'center',
+      paddingTop: 10,
+    },
+  },
+}));
+
 const SwitchInterval = ({ onToggleSwitch, checked }) => {
   const { t } = useTranslation();
   const onToggle = (e) => {
     const newState = e.target.checked;
     onToggleSwitch(newState);
   };
+  const classes = useStyles();
 
   return (
     <Typography component="div" data-test-id="switch-interval-container">
-      <Grid component="label" container alignItems="center" spacing={1}>
+      <Grid
+        component="label"
+        container
+        alignItems="center"
+        spacing={1}
+        className={classes.grid}
+      >
         <Grid item style={{ textTransform: 'capitalize' }}>
           {t('switch.historical')}
         </Grid>
