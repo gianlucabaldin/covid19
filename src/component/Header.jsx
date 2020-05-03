@@ -10,14 +10,37 @@ import { useTranslation } from 'react-i18next';
 import NavButtons from './NavButtons';
 import Languages from './Languages';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   toolbar: {
     justifyContent: 'space-between',
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column',
+    },
+  },
+  logo: {
+    order: 1,
+    textAlign: 'inherit',
+    [theme.breakpoints.down('sm')]: {
+      paddingTop: 8,
+      paddingBottom: 8,
+      textAlign: 'center',
+    },
+  },
+  navbuttons: {
+    order: 2,
+    [theme.breakpoints.down('sm')]: {
+      order: 3,
+      paddingTop: 0,
+    },
   },
   languages: {
     display: 'flex',
     width: 200,
     textAlign: 'right',
+    order: 3,
+    [theme.breakpoints.down('sm')]: {
+      order: 2,
+    },
   },
 }));
 
@@ -33,7 +56,7 @@ const Header = ({ onClick }) => {
       style={{ boxShadow: 'none' }}
     >
       <Toolbar className={classes.toolbar}>
-        <Box width={250}>
+        <Box width={250} className={classes.logo}>
           <Typography variant="h4" color="primary" data-test-id="logo">
             Covid-19
           </Typography>
@@ -45,7 +68,7 @@ const Header = ({ onClick }) => {
             {t('header.subtitle')}
           </Typography>
         </Box>
-        <Box>
+        <Box className={classes.navbuttons}>
           <NavButtons onClick={onClick} />
         </Box>
         <Box className={classes.languages}>
