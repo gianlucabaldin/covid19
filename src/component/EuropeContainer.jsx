@@ -22,15 +22,6 @@ const summaryInitialStatus = {
   error: false,
 };
 
-// const chartInitialStatus = {
-//   data: [],
-//   dataTestId: SECTIONS.EUROPE,
-//   error: false,
-//   loading: true,
-//   checked: true,
-//   href: API_COVID_API_INFO_SHORT_URL,
-// };
-
 const tableInitialStatus = {
   data: {},
   loading: true,
@@ -42,7 +33,6 @@ const EuropeContainer = () => {
   const [summaryData, setSummaryData] = useState({ ...summaryInitialStatus });
   // const [chartData, setChartData] = useState({ ...chartInitialStatus });
   const [tableData, setTableData] = useState(tableInitialStatus);
-  const [fetchedDataAll, setFetchedDataAll] = useState();
 
   const extractData = (res) => {
     const filtered = filterEuropeanCountries(res.result);
@@ -69,14 +59,6 @@ const EuropeContainer = () => {
       loading: false,
     });
     return res.result;
-    /*
-    setChartData({
-      ...chartInitialStatus,
-      data: [{ confirmed }, { deaths }, { recovered }],
-      loading: false,
-    });
-    return res;
-    */
   };
   // fetch data from public api or mock (see implementation)
   const fetchData = () => {
@@ -84,12 +66,8 @@ const EuropeContainer = () => {
       .then((res) => {
         return extractData(res);
       })
-      .then((res) => {
-        setFetchedDataAll(res);
-      })
       .catch(() => {
         setSummaryData({ loading: false, error: true });
-        // setChartData({ loading: false, error: true });
       });
   };
 
@@ -97,31 +75,11 @@ const EuropeContainer = () => {
     fetchData();
   }, []);
 
-  //   const onToggleSwitch = (checked) => {
-  //     const { confirmed, deaths, recovered } = processDataWorldwide(
-  //       fetchedDataAll,
-  //       checked,
-  //     );
-  //     setChartData({
-  //       ...chartInitialStatus,
-  //       data: [{ confirmed }, { deaths }, { recovered }],
-  //       checked,
-  //       loading: false,
-  //     });
-  //   };
-
   return (
     <>
       <Grid container justify="center">
         <Summary {...summaryData} />
       </Grid>
-      {/* <Grid
-        container
-        style={{ paddingLeft: 16, paddingRight: 16 }}
-        justify="center"
-      >
-        <ChartContainer {...chartData} onToggleSwitch={onToggleSwitch} />
-      </Grid> */}
       <Grid
         container
         style={{ paddingLeft: 16, paddingRight: 16 }}
