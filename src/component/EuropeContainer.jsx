@@ -4,23 +4,14 @@
 import React, { useEffect, useState } from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import moment from 'moment';
-import {
-  fetchWorldwideHistorical,
-  fetchWorldwideCountryTotals,
-} from '../utils/fetch';
+import { fetchWorldwideCountryTotals } from '../utils/fetch';
 import Summary from './Summary';
 import {
-  processDataWorldwide,
   filterEuropeanCountries,
   europeanSummatory,
 } from '../utils/chartUtils';
-import {
-  SECTIONS,
-  API_COVID_API_INFO_SHORT_URL,
-  europeanCountries,
-} from '../utils/consts';
-// import EuropeCountries from './EuropeCountries';
-import ChartContainer from './ChartContainer';
+import { SECTIONS, API_COVID_API_INFO_SHORT_URL } from '../utils/consts';
+import WorldwideCountry from './WorldwideCountry';
 
 const summaryInitialStatus = {
   confirmed: 0,
@@ -31,14 +22,14 @@ const summaryInitialStatus = {
   error: false,
 };
 
-const chartInitialStatus = {
-  data: [],
-  dataTestId: SECTIONS.EUROPE,
-  error: false,
-  loading: true,
-  checked: true,
-  href: API_COVID_API_INFO_SHORT_URL,
-};
+// const chartInitialStatus = {
+//   data: [],
+//   dataTestId: SECTIONS.EUROPE,
+//   error: false,
+//   loading: true,
+//   checked: true,
+//   href: API_COVID_API_INFO_SHORT_URL,
+// };
 
 const tableInitialStatus = {
   data: {},
@@ -48,11 +39,11 @@ const tableInitialStatus = {
 const EuropeContainer = () => {
   const [summaryData, setSummaryData] = useState({ ...summaryInitialStatus });
   // const [chartData, setChartData] = useState({ ...chartInitialStatus });
-  // const [tableData, setTableData] = useState(tableInitialStatus);
+  const [tableData, setTableData] = useState(tableInitialStatus);
   const [fetchedDataAll, setFetchedDataAll] = useState();
 
-  const extractData = (response) => {
-    const filtered = filterEuropeanCountries(response.result);
+  const extractData = (res) => {
+    const filtered = filterEuropeanCountries(res.result);
 
     const { confirmed, deaths, recovered } = europeanSummatory(filtered);
     setSummaryData({
@@ -63,13 +54,15 @@ const EuropeContainer = () => {
         { key: 'total-deaths', value: deaths },
         {
           key: 'last-update',
-          value: moment(response.date).format('LLL'),
+          value: moment(res.date).format('LLL'),
         },
       ],
       loading: false,
       error: false,
     });
-    return response.result;
+
+    setTableData({ data: { result: filtered }, loading: false });
+    return res.result;
     /*
     setChartData({
       ...chartInitialStatus,
@@ -92,18 +85,8 @@ const EuropeContainer = () => {
         // setSummaryData({ loading: false, error: true });
         // setChartData({ loading: false, error: true });
       });
-    /*
-    // fill table with fetched data
-    fetchWorldwideCountryTotals()
-      .then((res) => {
-        setTableData({ data: res, loading: false });
-      })
-      .catch((err) => {
-        // to fill
-        console.log('error', err);
-      });
-*/
   };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -133,7 +116,7 @@ const EuropeContainer = () => {
       >
         <ChartContainer {...chartData} onToggleSwitch={onToggleSwitch} />
       </Grid> */}
-      {/* <Grid
+      <Grid
         container
         style={{ paddingLeft: 16, paddingRight: 16 }}
         justify="center"
@@ -141,16 +124,16 @@ const EuropeContainer = () => {
         <Grid item style={{ marginTop: 10 }}>
           <Typography variant="h5">Country List</Typography>
         </Grid>
-      </Grid> */}
-      {/* <Grid
+      </Grid>
+      <Grid
         container
         style={{ paddingLeft: 16, paddingRight: 16 }}
         justify="center"
       >
         <Grid item style={{ marginTop: 10 }}>
-          <EuropeCountries {...tableData} />
+          <WorldwideCountry {...tableData} />
         </Grid>
-      </Grid> */}
+      </Grid>
     </>
   );
 };
