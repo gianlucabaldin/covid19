@@ -16,16 +16,30 @@ import DataProvided from './DataProvided';
 import Loading from './Loading';
 import { getLocalizedValue } from '../utils/shared';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   table: {
     minWidth: 650,
+    [theme.breakpoints.down('sm')]: {
+      minWidth: 'auto',
+    },
   },
   trHeader: {
     backgroundColor: grey[200],
   },
-  th: { fontWeight: 700, padding: 8 },
-  td: { padding: 8 },
-});
+  th: {
+    fontWeight: 700,
+    [theme.breakpoints.down('sm')]: {
+      padding: 3,
+    },
+    padding: 8,
+  },
+  td: {
+    [theme.breakpoints.down('sm')]: {
+      padding: 3,
+    },
+    padding: 8,
+  },
+}));
 
 const TableCell = withStyles({
   root: {
@@ -82,9 +96,11 @@ const ItalyRegions = ({ data, loading = true, href }) => {
                   {t('italyregions.hospidalized-symptoms')}
                 </TableCell>
               </Hidden>
-              <TableCell align="center" className={classes.th}>
-                {t('italyregions.intensive-care')}
-              </TableCell>
+              <Hidden mdDown>
+                <TableCell align="center" className={classes.th}>
+                  {t('italyregions.intensive-care')}
+                </TableCell>
+              </Hidden>
               <Hidden lgDown>
                 <TableCell align="center" className={classes.th}>
                   {t('italyregions.total-hospidalized')}
@@ -142,7 +158,9 @@ const ItalyRegions = ({ data, loading = true, href }) => {
                   hover
                   data-test-id={`row-${row.regione}`}
                 >
-                  <TableCell align="center">{row.regione}</TableCell>
+                  <TableCell align="center" className={classes.td}>
+                    {row.regione}
+                  </TableCell>
                   <Hidden lgDown>
                     <TableCell
                       align="center"
@@ -151,15 +169,19 @@ const ItalyRegions = ({ data, loading = true, href }) => {
                       {getLocalizedValue(row['ricoverati con sintomi'])}
                     </TableCell>
                   </Hidden>
-                  <TableCell
-                    align="center"
-                    data-test-id={`td-${row.regione}-terapia-intensiva`}
-                  >
-                    {getLocalizedValue(row['terapia intensiva'])}
-                  </TableCell>
+                  <Hidden mdDown>
+                    <TableCell
+                      align="center"
+                      className={classes.td}
+                      data-test-id={`td-${row.regione}-terapia-intensiva`}
+                    >
+                      {getLocalizedValue(row['terapia intensiva'])}
+                    </TableCell>
+                  </Hidden>
                   <Hidden lgDown>
                     <TableCell
                       align="center"
+                      className={classes.td}
                       data-test-id={`td-${row.regione}-totale-ospedalizzati`}
                     >
                       {getLocalizedValue(row['totale ospedalizzati'])}
@@ -168,6 +190,7 @@ const ItalyRegions = ({ data, loading = true, href }) => {
                   <Hidden mdDown>
                     <TableCell
                       align="center"
+                      className={classes.td}
                       data-test-id={`td-${row.regione}-isolamento-domiciliare'`}
                     >
                       {getLocalizedValue(row['isolamento domiciliare'])}
@@ -175,6 +198,7 @@ const ItalyRegions = ({ data, loading = true, href }) => {
                   </Hidden>
                   <TableCell
                     align="center"
+                    className={classes.td}
                     data-test-id={`td-${row.regione}-totale-positivi`}
                   >
                     {getLocalizedValue(row['totale positivi'])}
@@ -182,6 +206,7 @@ const ItalyRegions = ({ data, loading = true, href }) => {
                   <Hidden lgDown>
                     <TableCell
                       align="center"
+                      className={classes.td}
                       data-test-id={`td-${row.regione}-variazione-totale-positivi`}
                     >
                       {getLocalizedValue(row['variazione totale positivi'])}
@@ -190,6 +215,7 @@ const ItalyRegions = ({ data, loading = true, href }) => {
                   <Hidden lgDown>
                     <TableCell
                       align="center"
+                      className={classes.td}
                       data-test-id={`td-${row.regione}-nuovi-positivi`}
                     >
                       {getLocalizedValue(row['nuovi positivi'])}
@@ -198,6 +224,7 @@ const ItalyRegions = ({ data, loading = true, href }) => {
                   <Hidden lgDown>
                     <TableCell
                       align="center"
+                      className={classes.td}
                       data-test-id={`td-${row.regione}-dimessi-guariti`}
                     >
                       {getLocalizedValue(row['dimessi guariti'])}
@@ -205,12 +232,14 @@ const ItalyRegions = ({ data, loading = true, href }) => {
                   </Hidden>
                   <TableCell
                     align="center"
+                    className={classes.td}
                     data-test-id={`td-${row.regione}-deceduti`}
                   >
                     {getLocalizedValue(row.deceduti)}
                   </TableCell>
                   <TableCell
                     align="center"
+                    className={classes.td}
                     data-test-id={`td-${row.regione}-totale-casi`}
                   >
                     {getLocalizedValue(row['totale casi'])}
@@ -218,6 +247,7 @@ const ItalyRegions = ({ data, loading = true, href }) => {
                   <Hidden mdDown>
                     <TableCell
                       align="center"
+                      className={classes.td}
                       data-test-id={`td-${row.regione}-tamponi`}
                     >
                       {getLocalizedValue(row.tamponi)}

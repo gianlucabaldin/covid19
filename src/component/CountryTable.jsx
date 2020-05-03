@@ -6,7 +6,7 @@ import MuiTableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import { withStyles } from '@material-ui/core';
+import { withStyles, Typography, Box } from '@material-ui/core';
 import { grey } from '@material-ui/core/colors';
 import { useTranslation } from 'react-i18next';
 import Flag from 'react-world-flags';
@@ -15,15 +15,32 @@ import DataProvided from './DataProvided';
 import Loading from './Loading';
 import { getLocalizedValue } from '../utils/shared';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   table: {
     minWidth: 650,
+    [theme.breakpoints.down('sm')]: {
+      minWidth: 'auto',
+    },
   },
   trHeader: {
     backgroundColor: grey[200],
   },
-  th: { fontWeight: 700, padding: 8 },
-});
+  th: {
+    fontWeight: 700,
+    [theme.breakpoints.down('sm')]: {
+      padding: 3,
+    },
+    padding: 8,
+    textAlign: 'center',
+  },
+  td: {
+    [theme.breakpoints.down('sm')]: {
+      padding: 3,
+    },
+    textAlign: 'center',
+    padding: 8,
+  },
+}));
 
 const TableCell = withStyles({
   root: {
@@ -58,19 +75,32 @@ const CountryTable = ({ data, loading = true, dataTestId, href }) => {
       const values = Object.values(row)[0];
       return (
         <TableRow key={row.regione} hover data-test-id={`row-${country}`}>
-          <TableCell align="center" data-test-id={`td-flag-${country}`}>
-            <Flag code={country} height={16} />
-          </TableCell>
-          <TableCell align="center" data-test-id={`td-${country}`}>
+          <TableCell className={classes.td} data-test-id={`td-${country}`}>
+            <Typography
+              component="span"
+              data-test-id={`td-flag-${country}`}
+              style={{ marginRight: '5px' }}
+            >
+              <Flag code={country} height={16} />
+            </Typography>
             {country}
           </TableCell>
-          <TableCell align="center" data-test-id={`td-${country}-confirmed`}>
+          <TableCell
+            className={classes.td}
+            data-test-id={`td-${country}-confirmed`}
+          >
             {getLocalizedValue(values.confirmed)}
           </TableCell>
-          <TableCell align="center" data-test-id={`td-${country}-recovered`}>
+          <TableCell
+            className={classes.td}
+            data-test-id={`td-${country}-recovered`}
+          >
             {getLocalizedValue(values.recovered)}
           </TableCell>
-          <TableCell align="center" data-test-id={`td-${country}-deaths`}>
+          <TableCell
+            className={classes.td}
+            data-test-id={`td-${country}-deaths`}
+          >
             {getLocalizedValue(values.deaths)}
           </TableCell>
         </TableRow>
@@ -88,21 +118,12 @@ const CountryTable = ({ data, loading = true, dataTestId, href }) => {
         >
           <TableHead>
             <TableRow key="header" className={classes.trHeader}>
-              <TableCell align="center" className={classes.th}>
-                {' '}
-              </TableCell>
-              <TableCell align="center" className={classes.th}>
+              <TableCell className={classes.th}>
                 {t('worldwide.country')}
               </TableCell>
-              <TableCell align="center" className={classes.th}>
-                {t('confirmed')}
-              </TableCell>
-              <TableCell align="center" className={classes.th}>
-                {t('recovered')}
-              </TableCell>
-              <TableCell align="center" className={classes.th}>
-                {t('deaths')}
-              </TableCell>
+              <TableCell className={classes.th}>{t('confirmed')}</TableCell>
+              <TableCell className={classes.th}>{t('recovered')}</TableCell>
+              <TableCell className={classes.th}>{t('deaths')}</TableCell>
             </TableRow>
           </TableHead>
           {loading ? (

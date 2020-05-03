@@ -179,7 +179,7 @@ const ItalyContainer = () => {
         style={{ paddingLeft: 16, paddingRight: 16 }}
         justify="center"
       >
-        <Grid item style={{ marginTop: 10 }}>
+        <Grid item style={{ marginTop: 10 }} xs={12}>
           <ItalyRegions {...tableData} />
         </Grid>
       </Grid>
