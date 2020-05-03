@@ -144,49 +144,82 @@ const ItalyRegions = ({ data, loading = true }) => {
                 >
                   <TableCell align="center">{row.regione}</TableCell>
                   <Hidden lgDown>
-                    <TableCell align="center">
+                    <TableCell
+                      align="center"
+                      data-test-id={`td-${row.regione}-ricoverati-con-sintomi`}
+                    >
                       {getLocalizedValue(row['ricoverati con sintomi'])}
                     </TableCell>
                   </Hidden>
-                  <TableCell align="center">
+                  <TableCell
+                    align="center"
+                    data-test-id={`td-${row.regione}-terapia-intensiva`}
+                  >
                     {getLocalizedValue(row['terapia intensiva'])}
                   </TableCell>
                   <Hidden lgDown>
-                    <TableCell align="center">
+                    <TableCell
+                      align="center"
+                      data-test-id={`td-${row.regione}-totale-ospedalizzati`}
+                    >
                       {getLocalizedValue(row['totale ospedalizzati'])}
                     </TableCell>
                   </Hidden>
                   <Hidden mdDown>
-                    <TableCell align="center">
+                    <TableCell
+                      align="center"
+                      data-test-id={`td-${row.regione}-isolamento-domiciliare'`}
+                    >
                       {getLocalizedValue(row['isolamento domiciliare'])}
                     </TableCell>
                   </Hidden>
-                  <TableCell align="center">
+                  <TableCell
+                    align="center"
+                    data-test-id={`td-${row.regione}-totale-positivi`}
+                  >
                     {getLocalizedValue(row['totale positivi'])}
                   </TableCell>
                   <Hidden lgDown>
-                    <TableCell align="center">
+                    <TableCell
+                      align="center"
+                      data-test-id={`td-${row.regione}-variazione-totale-positivi`}
+                    >
                       {getLocalizedValue(row['variazione totale positivi'])}
                     </TableCell>
                   </Hidden>
                   <Hidden lgDown>
-                    <TableCell align="center">
+                    <TableCell
+                      align="center"
+                      data-test-id={`td-${row.regione}-nuovi-positivi`}
+                    >
                       {getLocalizedValue(row['nuovi positivi'])}
                     </TableCell>
                   </Hidden>
                   <Hidden lgDown>
-                    <TableCell align="center">
+                    <TableCell
+                      align="center"
+                      data-test-id={`td-${row.regione}-dimessi-guariti`}
+                    >
                       {getLocalizedValue(row['dimessi guariti'])}
                     </TableCell>
                   </Hidden>
-                  <TableCell align="center">
+                  <TableCell
+                    align="center"
+                    data-test-id={`td-${row.regione}-deceduti`}
+                  >
                     {getLocalizedValue(row.deceduti)}
                   </TableCell>
-                  <TableCell align="center">
+                  <TableCell
+                    align="center"
+                    data-test-id={`td-${row.regione}-totale-casi`}
+                  >
                     {getLocalizedValue(row['totale casi'])}
                   </TableCell>
                   <Hidden mdDown>
-                    <TableCell align="center">
+                    <TableCell
+                      align="center"
+                      data-test-id={`td-${row.regione}-tamponi`}
+                    >
                       {getLocalizedValue(row.tamponi)}
                     </TableCell>
                   </Hidden>
