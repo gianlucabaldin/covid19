@@ -150,7 +150,9 @@ const ItalyContainer = () => {
   return (
     <div data-test-id="italy-container">
       <Grid container justify="center">
-        <Summary {...summaryData} />
+        <Grid item xs={12} md={5}>
+          <Summary {...summaryData} />
+        </Grid>
       </Grid>
       <Grid
         container

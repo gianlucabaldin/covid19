@@ -14,11 +14,23 @@ import Error from './Error';
 import { getLocalizedValue } from '../utils/shared';
 import Loading from './Loading';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   trHeader: {
     backgroundColor: grey[200],
   },
-});
+  th: {
+    [theme.breakpoints.down('sm')]: {
+      padding: 4,
+      '&:last-child': { paddingRight: 4 },
+    },
+  },
+  td: {
+    [theme.breakpoints.down('sm')]: {
+      padding: 4,
+      '&:last-child': { paddingRight: 4 },
+    },
+  },
+}));
 
 const TableCell = withStyles({
   root: {
@@ -51,7 +63,7 @@ const Summary = ({ data, dataTestId, loading = true, error = false }) => {
               {data &&
                 data.length > 0 &&
                 data.map((el) => (
-                  <TableCell align="center">
+                  <TableCell align="center" className={classes.th}>
                     {t('summary.'.concat(el.key))}
                   </TableCell>
                 ))}
@@ -69,6 +81,7 @@ const Summary = ({ data, dataTestId, loading = true, error = false }) => {
                 data.map((el) => (
                   <TableCell
                     align="center"
+                    className={classes.td}
                     data-test-id={'summary-'.concat(el.key)}
                   >
                     {getLocalizedValue(el.value)}
