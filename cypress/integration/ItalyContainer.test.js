@@ -49,7 +49,7 @@ context('ItalyContainer', () => {
       });
     });
 
-    context.only('within table', () => {
+    context('within table', () => {
       it('Abruzzo intensive care: 24', () => {
         cy.get('[data-test-id="td-Abruzzo-terapia-intensiva"]').should(
           'have.text',
