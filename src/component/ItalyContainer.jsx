@@ -143,7 +143,7 @@ const ItalyContainer = () => {
   };
 
   return (
-    <>
+    <div data-test-id="italy-container">
       <Grid container justify="center">
         <Summary {...summaryData} />
       </Grid>
@@ -176,7 +176,7 @@ const ItalyContainer = () => {
           <ItalyRegions {...tableData} />
         </Grid>
       </Grid>
-    </>
+    </div>
   );
 };
 

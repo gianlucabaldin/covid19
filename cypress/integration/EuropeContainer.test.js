@@ -2,7 +2,7 @@
 /// <reference types="cypress" />
 
 context('EuropeContainer', () => {
-  beforeEach(() => {
+  before(() => {
     cy.visit('/');
     cy.get('[data-test-id="nav-button-europe"]').click();
   });
@@ -10,10 +10,6 @@ context('EuropeContainer', () => {
   context('should have', () => {
     it('a summary', () => {
       cy.get('[data-test-id="europe-container-summary"]').should('be.visible');
-    });
-
-    it.skip('a chart', () => {
-      cy.get('[data-test-id="europe-chart-container"]').should('be.visible');
     });
 
     it('a country table', () => {

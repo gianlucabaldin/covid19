@@ -35,6 +35,7 @@ const tableInitialStatus = {
   data: {},
   loading: true,
   dataTestId: SECTIONS.EUROPE,
+  href: API_COVID_API_INFO_SHORT_URL,
 };
 
 const EuropeContainer = () => {

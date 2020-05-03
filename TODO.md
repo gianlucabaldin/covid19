@@ -1,27 +1,13 @@
 # TODO
 
 - check loading component without mock
+- check UI responsive
 - insert data-test-id for every cell to be localized from ItalyRegions.test.js
-- ~~use dot to separate thousands~~
 - change with https://recharts.org/en-US/api
-- ~~ChartContainers: review into one single array param and print dynamicaly~~
 - Loading with react-loader-spinner ?
-- ~~enhance/split italycontainer management methods~~
-- ~~change mehod calculate marks, starting from last array element and going to zero -> make sure it works with "last week" filter too~~
-- ~~if checked and re-checked, accuracy value is fine but is not accordingly to chart~~
-- ~~change "last week" with "last 10 days" and use {{baseUrl}}/live/country/{{country}}~~
-- ~~review Accuracy css style~~
-- ~~insert 1 label on every mark series (3 total)~~
-- ~~insert footer~~
-- ~~sort region table~~
-- ~~replicate rezise on italy region like charts~~
-- ~~move logic from children to container~~
-- ~~Hint on series~~
+- sort region table
 - memoization fetch call / component
 - navigazione con componente https://material-ui.com/components/bottom-navigation/
-- ~~data last update time~~
-- ~~mention data provider(s)~~
-- ~~github author page~~
 - heroku link
 - PropTypes
 - filter table by state/region

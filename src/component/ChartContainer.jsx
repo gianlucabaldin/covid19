@@ -5,7 +5,6 @@ import { Grid } from '@material-ui/core';
 import SwitchInterval from './SwitchInterval';
 import Error from './Error';
 import DataProvided from './DataProvided';
-import { API_APIFY_SHORT_URL } from '../utils/consts';
 import Chart from './Chart';
 
 const ChartContainer = ({
@@ -28,7 +27,7 @@ const ChartContainer = ({
 
   return (
     <>
-      <Grid container spacing={2} data-test-id="switch-interval-container">
+      <Grid container spacing={2}>
         <Grid item>
           <SwitchInterval onToggleSwitch={onToggleSwitch} checked={checked} />
         </Grid>

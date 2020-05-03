@@ -10,6 +10,7 @@ const DataProvided = ({ href }) => {
         variant="subtitle2"
         display="inline"
         style={{ fontStyle: 'italic', marginRight: 4 }}
+        data-test-id="data-provided"
       >
         {t('dataprovided.data-provided-by')}
       </Typography>

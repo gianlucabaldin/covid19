@@ -44,7 +44,7 @@ const SwitchInterval = ({ onToggleSwitch, checked }) => {
   };
 
   return (
-    <Typography component="div">
+    <Typography component="div" data-test-id="switch-interval-container">
       <Grid component="label" container alignItems="center" spacing={1}>
         <Grid item style={{ textTransform: 'capitalize' }}>
           {t('switch.historical')}

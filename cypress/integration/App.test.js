@@ -2,42 +2,26 @@
 /// <reference types="cypress" />
 
 context('App', () => {
-  beforeEach(() => {
+  before(() => {
     cy.visit('/');
   });
 
   context('should have', () => {
-    it('Italy button as active default', () => {
-      cy.get('[data-test-id="nav-button-italy"]').should(
-        'have.class',
-        'MuiButton-containedPrimary',
-      );
-    });
-  });
-
-  context('switch location', () => {
-    it('to Europe', () => {
-      cy.get('[data-test-id="nav-button-europe"]').should(
-        'have.class',
-        'MuiButton-outlinedPrimary',
-      );
-      cy.get('[data-test-id="nav-button-europe"]').click();
-      cy.get('[data-test-id="nav-button-europe"]').should(
-        'have.class',
-        'MuiButton-containedPrimary',
-      );
+    it('header', () => {
+      cy.get('[data-test-id="appbar"]').should('be.visible');
     });
 
-    it('to Worldwide', () => {
-      cy.get('[data-test-id="nav-button-worldwide"]').should(
-        'have.class',
-        'MuiButton-outlinedPrimary',
-      );
-      cy.get('[data-test-id="nav-button-worldwide"]').click();
-      cy.get('[data-test-id="nav-button-worldwide"]').should(
-        'have.class',
-        'MuiButton-containedPrimary',
-      );
+    it('navbuttons', () => {
+      cy.get('[data-test-id="nav-buttons"]').should('be.visible');
+    });
+
+    it('language', () => {
+      cy.get('[data-test-id="language-container"]').should('be.visible');
+    });
+
+    // Italy as default section after loading
+    it('italy container', () => {
+      cy.get('[data-test-id="italy-container"]').should('be.visible');
     });
   });
 });

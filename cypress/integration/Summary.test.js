@@ -2,18 +2,19 @@
 /// <reference types="cypress" />
 
 context('Summary', () => {
-  beforeEach(() => {
+  before(() => {
     cy.visit('/');
   });
 
   context('should have', () => {
     it('a container', () => {
-      cy.get('[data-test-id="italy-container-summary"]').should('be.visible');
+      cy.get('[data-test-id$="-container-summary"]').should('be.visible');
     });
   });
 
   context('should show summary values', () => {
     // with env var mock = true
+    // Italy container as page load default
     context('Italy', () => {
       it('total swabs: 1.757.659', () => {
         cy.get('[data-test-id="summary-total-swabs"]').should(
@@ -31,31 +32,6 @@ context('Summary', () => {
         cy.get('[data-test-id="summary-total-deceased"]').should(
           'have.text',
           '26.644',
-        );
-      });
-    });
-
-    context('Worldwide', () => {
-      // with env var mock = true
-      beforeEach(() => {
-        cy.get('[data-test-id="nav-button-worldwide"]').click();
-      });
-      it('total confirmed: 3.116.398', () => {
-        cy.get('[data-test-id="summary-total-confirmed"]').should(
-          'have.text',
-          '3.116.398',
-        );
-      });
-      it('total deaths: 217.153', () => {
-        cy.get('[data-test-id="summary-total-deaths"]').should(
-          'have.text',
-          '217.153',
-        );
-      });
-      it('total recovered: 928.658', () => {
-        cy.get('[data-test-id="summary-total-recovered"]').should(
-          'have.text',
-          '928.658',
         );
       });
     });

@@ -54,13 +54,9 @@ const Header = ({ onClick }) => {
             href="https://github.com/gianlucabaldin/covid19"
             target="_blank"
             rel="noreferrer"
+            data-test-id="github-link"
           >
-            <GitHubIcon
-              fontSize="large"
-              cursor="pointer"
-              data-test-id="github-link"
-              htmlColor="black"
-            />
+            <GitHubIcon fontSize="large" cursor="pointer" htmlColor="black" />
           </Link>
         </Box>
       </Toolbar>

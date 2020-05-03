@@ -2,7 +2,7 @@
 /// <reference types="cypress" />
 
 context('Languages', () => {
-  beforeEach(() => {
+  before(() => {
     cy.visit('/');
   });
 
@@ -19,13 +19,6 @@ context('Languages', () => {
       cy.get('[data-test-id="logo-subtitle"]').should(
         'have.text',
         'Latest updates & historical data',
-      );
-    });
-    it('on app load it should show in english', () => {
-      cy.get('[data-test-id="language-ita"]').click();
-      cy.get('[data-test-id="logo-subtitle"]').should(
-        'have.text',
-        'Ultimi aggiornamenti e dati storici',
       );
     });
   });

@@ -11,7 +11,6 @@ import { grey } from '@material-ui/core/colors';
 import { useTranslation } from 'react-i18next';
 import Flag from 'react-world-flags';
 import Error from './Error';
-import { API_COVID_API_INFO_SHORT_URL } from '../utils/consts';
 import DataProvided from './DataProvided';
 import Loading from './Loading';
 import { getLocalizedValue } from '../utils/shared';
@@ -34,7 +33,7 @@ const TableCell = withStyles({
   },
 })(MuiTableCell);
 
-const CountryTable = ({ data, loading = true, dataTestId }) => {
+const CountryTable = ({ data, loading = true, dataTestId, href }) => {
   const classes = useStyles();
   const { t } = useTranslation();
 
@@ -119,9 +118,7 @@ const CountryTable = ({ data, loading = true, dataTestId }) => {
           )}
         </Table>
       </TableContainer>
-      {data && data.date && (
-        <DataProvided date={data.date} href={API_COVID_API_INFO_SHORT_URL} />
-      )}
+      {data && data.date && <DataProvided date={data.date} href={href} />}
     </>
   );
 };

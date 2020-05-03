@@ -2,7 +2,7 @@
 /// <reference types="cypress" />
 
 context('Navbuttons', () => {
-  beforeEach(() => {
+  before(() => {
     cy.visit('/');
   });
 
