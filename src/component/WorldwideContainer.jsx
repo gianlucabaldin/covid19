@@ -11,7 +11,7 @@ import {
 import Summary from './Summary';
 import { processDataWorldwide } from '../utils/chartUtils';
 import { SECTIONS, API_COVID_API_INFO_SHORT_URL } from '../utils/consts';
-import WorldwideCountry from './WorldwideCountry';
+import CountryTable from './CountryTable';
 import ChartContainer from './ChartContainer';
 
 const summaryInitialStatus = {
@@ -140,7 +140,7 @@ const WorldwideContainer = () => {
         justify="center"
       >
         <Grid item style={{ marginTop: 10 }}>
-          <WorldwideCountry {...tableData} />
+          <CountryTable {...tableData} />
         </Grid>
       </Grid>
     </>

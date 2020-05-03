@@ -34,7 +34,7 @@ const TableCell = withStyles({
   },
 })(MuiTableCell);
 
-const WorldwideCountry = ({ data, loading = true, dataTestId }) => {
+const CountryTable = ({ data, loading = true, dataTestId }) => {
   const classes = useStyles();
   const { t } = useTranslation();
 
@@ -125,4 +125,4 @@ const WorldwideCountry = ({ data, loading = true, dataTestId }) => {
     </>
   );
 };
-export default WorldwideCountry;
+export default CountryTable;

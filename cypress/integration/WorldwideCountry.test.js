@@ -1,7 +1,7 @@
 /* eslint-disable spaced-comment */
 /// <reference types="cypress" />
 
-context('WorldwideCountry', () => {
+context('CountryTable', () => {
   beforeEach(() => {
     cy.visit('/');
     cy.get('[data-test-id="nav-button-worldwide"]').click();

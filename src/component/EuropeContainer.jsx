@@ -11,7 +11,7 @@ import {
   europeanSummatory,
 } from '../utils/chartUtils';
 import { SECTIONS, API_COVID_API_INFO_SHORT_URL } from '../utils/consts';
-import WorldwideCountry from './WorldwideCountry';
+import CountryTable from './CountryTable';
 
 const summaryInitialStatus = {
   confirmed: 0,
@@ -136,7 +136,7 @@ const EuropeContainer = () => {
         justify="center"
       >
         <Grid item style={{ marginTop: 10 }}>
-          <WorldwideCountry {...tableData} />
+          <CountryTable {...tableData} />
         </Grid>
       </Grid>
     </>
