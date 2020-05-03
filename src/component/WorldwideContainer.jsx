@@ -35,6 +35,7 @@ const chartInitialStatus = {
 const tableInitialStatus = {
   data: {},
   loading: true,
+  dataTestId: SECTIONS.WORLDWIDE,
 };
 
 const WorldwideContainer = () => {
@@ -86,7 +87,7 @@ const WorldwideContainer = () => {
     // fill table with fetched data
     fetchWorldwideCountryTotals()
       .then((res) => {
-        setTableData({ data: res, loading: false });
+        setTableData({ ...tableInitialStatus, data: res, loading: false });
       })
       .catch((err) => {
         // to fill

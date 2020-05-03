@@ -34,6 +34,7 @@ const summaryInitialStatus = {
 const tableInitialStatus = {
   data: {},
   loading: true,
+  dataTestId: SECTIONS.EUROPE,
 };
 
 const EuropeContainer = () => {
@@ -61,7 +62,11 @@ const EuropeContainer = () => {
       error: false,
     });
 
-    setTableData({ data: { result: filtered }, loading: false });
+    setTableData({
+      ...tableInitialStatus,
+      data: { result: filtered },
+      loading: false,
+    });
     return res.result;
     /*
     setChartData({
@@ -82,7 +87,7 @@ const EuropeContainer = () => {
         setFetchedDataAll(res);
       })
       .catch(() => {
-        // setSummaryData({ loading: false, error: true });
+        setSummaryData({ loading: false, error: true });
         // setChartData({ loading: false, error: true });
       });
   };

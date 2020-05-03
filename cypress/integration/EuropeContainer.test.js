@@ -7,12 +7,12 @@ context('EuropeContainer', () => {
     cy.get('[data-test-id="nav-button-europe"]').click();
   });
 
-  context.only('should have', () => {
+  context('should have', () => {
     it('a summary', () => {
       cy.get('[data-test-id="europe-container-summary"]').should('be.visible');
     });
 
-    it('a chart', () => {
+    it.skip('a chart', () => {
       cy.get('[data-test-id="europe-chart-container"]').should('be.visible');
     });
 
@@ -44,23 +44,26 @@ context('EuropeContainer', () => {
       it('last-update', () => {
         cy.get('[data-test-id="summary-last-update"]').should(
           'have.text',
-          'April 28, 2020 12:00 AM',
+          'April 29, 2020 12:00 AM',
         );
       });
     });
 
     context('within table', () => {
-      it('AFG confirmed 1.989', () => {
-        cy.get('[data-test-id="td-AFG-confirmed"]').should(
+      it('AUT confirmed 15.402', () => {
+        cy.get('[data-test-id="td-AUT-confirmed"]').should(
           'have.text',
-          '1.939',
+          '15.402',
         );
       });
-      it('AFG recovered 252', () => {
-        cy.get('[data-test-id="td-AFG-recovered"]').should('have.text', '252');
+      it('AUT recovered 12.779', () => {
+        cy.get('[data-test-id="td-AUT-recovered"]').should(
+          'have.text',
+          '12.779',
+        );
       });
-      it('AFG deaths 60', () => {
-        cy.get('[data-test-id="td-AFG-deaths"]').should('have.text', '60');
+      it('AUT deaths 580', () => {
+        cy.get('[data-test-id="td-AUT-deaths"]').should('have.text', '580');
       });
     });
   });

@@ -34,7 +34,7 @@ const TableCell = withStyles({
   },
 })(MuiTableCell);
 
-const WorldwideCountry = ({ data, loading = true }) => {
+const WorldwideCountry = ({ data, loading = true, dataTestId }) => {
   const classes = useStyles();
   const { t } = useTranslation();
 
@@ -83,7 +83,7 @@ const WorldwideCountry = ({ data, loading = true }) => {
     <>
       <TableContainer>
         <Table
-          data-test-id="worldwide-country-table"
+          data-test-id={`${dataTestId}-country-table`}
           size="small"
           aria-label="a dense table"
         >
