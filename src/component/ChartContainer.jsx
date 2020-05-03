@@ -1,11 +1,24 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import '../../node_modules/react-vis/dist/style.css';
-import { Grid } from '@material-ui/core';
+import { Grid, makeStyles } from '@material-ui/core';
 import SwitchInterval from './SwitchInterval';
 import Error from './Error';
 import DataProvided from './DataProvided';
 import Chart from './Chart';
+
+const useStyles = makeStyles((theme) => ({
+  grid: {
+    padding: 16,
+    [theme.breakpoints.down('sm')]: {
+      padding: '8px 0px',
+      paddingTop: 16,
+      paddingBottom: 0,
+      paddingRight: 0,
+      paddingLeft: 0,
+    },
+  },
+}));
 
 const ChartContainer = ({
   data,
@@ -16,6 +29,7 @@ const ChartContainer = ({
   onToggleSwitch,
   href,
 }) => {
+  const classes = useStyles();
   if (error) return <Error />;
 
   // if one chart per row --> high width, responsive grid otherwise
@@ -41,7 +55,7 @@ const ChartContainer = ({
         {data &&
           data.length > 0 &&
           data.map((el) => (
-            <Grid item {...getGridSize()} style={{ padding: 16 }}>
+            <Grid item {...getGridSize()} className={classes.grid}>
               <Chart
                 loading={loading}
                 series={Object.values(el)}

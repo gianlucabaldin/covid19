@@ -11,9 +11,23 @@ import {
 } from 'react-vis/dist';
 import { FlexibleWidthXYPlot } from 'react-vis/dist/make-vis-flexible';
 import { useTranslation } from 'react-i18next';
+import { makeStyles } from '@material-ui/core';
 import Loading from './Loading';
 
+const useStyles = makeStyles((theme) => ({
+  legend: {
+    marginLeft: '40%',
+    padding: 0,
+    [theme.breakpoints.down('sm')]: {
+      marginLeft: 'inherit',
+      textAlign: 'center',
+    },
+  },
+}));
+
 const Chart = ({ series, status, loading = true }) => {
+  const classes = useStyles();
+
   const initialHintValue = {
     data: {},
     over: false,
@@ -82,7 +96,8 @@ const Chart = ({ series, status, loading = true }) => {
         strokeWidth={2}
         orientation="vertical"
         items={getLegend()}
-        style={{ marginLeft: '40%', padding: 0 }}
+        // style={{ marginLeft: '40%', padding: 0 }}
+        className={classes.legend}
       />
       <FlexibleWidthXYPlot height={250} xType="time">
         <HorizontalGridLines />
