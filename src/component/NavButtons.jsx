@@ -24,12 +24,12 @@ const NavButtons = ({ onClick }) => {
     >
       <Box m={1}>
         <Button
-          variant={active === SECTIONS.WORLDWIDE ? 'contained' : 'outlined'}
+          variant={active === SECTIONS.ITALY ? 'contained' : 'outlined'}
           color="primary"
-          data-test-id="nav-button-worldwide"
-          onClick={() => handleClick(SECTIONS.WORLDWIDE)}
+          data-test-id="nav-button-italy"
+          onClick={() => handleClick(SECTIONS.ITALY)}
         >
-          {t('navbuttons.worldwide')}
+          {t('navbuttons.italy')}
         </Button>
       </Box>
       <Box m={1}>
@@ -42,14 +42,15 @@ const NavButtons = ({ onClick }) => {
           {t('navbuttons.europe')}
         </Button>
       </Box>
+
       <Box m={1}>
         <Button
-          variant={active === SECTIONS.ITALY ? 'contained' : 'outlined'}
+          variant={active === SECTIONS.WORLDWIDE ? 'contained' : 'outlined'}
           color="primary"
-          data-test-id="nav-button-italy"
-          onClick={() => handleClick(SECTIONS.ITALY)}
+          data-test-id="nav-button-worldwide"
+          onClick={() => handleClick(SECTIONS.WORLDWIDE)}
         >
-          {t('navbuttons.italy')}
+          {t('navbuttons.worldwide')}
         </Button>
       </Box>
     </Box>
