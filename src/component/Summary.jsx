@@ -45,6 +45,9 @@ const Summary = ({ data, dataTestId, loading = true, error = false }) => {
 
   if (error) return <Error />;
 
+  // if(loading) return
+  // debugger;
+
   return (
     <Grid item>
       <TableContainer component={Paper}>
@@ -72,7 +75,9 @@ const Summary = ({ data, dataTestId, loading = true, error = false }) => {
           <TableBody>
             <TableRow key="td-value">
               {loading ? (
-                <Loading />
+                <div style={{ padding: 8, textAlign: 'center' }}>
+                  <Loading />
+                </div>
               ) : (
                 data &&
                 data.length > 0 &&
