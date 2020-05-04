@@ -1,7 +1,3 @@
-# TODO
-
-- check mock before deploying
-
 ##### Review if to use
 
 - VictoryCharts package instead of ReactVis charts
