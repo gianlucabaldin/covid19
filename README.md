@@ -16,9 +16,20 @@ Live demo here -->
 - Translationa: [i18n-next](https://react.i18next.com/)
 - Testing: [Jest](https://jestjs.io/docs/en/expect.html) and JestCli , [Enzyme](https://gist.github.com/jahe/9bf2cb1f849b7ed96c6ce20ede7f66a2), [Jest-Enzyme Matchers](https://github.com/FormidableLabs/enzyme-matchers/blob/master/packages/jest-enzyme/README.md) and [Cypress](https://www.cypress.io/)
 
-## Special methodologies used
+## Methodologies used
 
 - TDD - [react-tdd](https://github.com/15Dkatz/react-tdd/blob/master/lootcheck/src/components/App.test.js)
+
+## Mock
+
+If you want to playground locally and avoit API requests, you can take advantage of the mocks (way more fast).
+To use them, create a ".env" file at root level, add just the following code line
+
+```
+REACT_APP_MOCK_API=true
+```
+
+and restart npm. Mocks are updated around 28-29th, April 2020.
 
 ## Scripts
 
