@@ -28,7 +28,8 @@
     "test:coverage": "react-scripts test --verbose --coverage",
     "eject": "react-scripts eject",
     "lint": "./node_modules/.bin/eslint .",
-    "cypress": "./node_modules/.bin/cypress open"
+    "cypress": "./node_modules/.bin/cypress open",
+    "cypress:headless": "./node_modules/.bin/cypress run --headless"
   },
   "eslintConfig": {
     "extends": "react-app"
