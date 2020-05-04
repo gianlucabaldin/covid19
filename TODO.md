@@ -4,12 +4,6 @@
 - change with https://recharts.org/en-US/api
 - heroku link
 - PropTypes
-- filter data by state
-  - all
-  - confirmed
-  - revored
-  - deaths
-  - E2E Cypress
 
 #### Remove
 
