@@ -44,7 +44,7 @@ const AntSwitch = withStyles((theme) => ({
 
 const useStyles = makeStyles((theme) => ({
   grid: {
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       display: 'flex',
       justifyContent: 'center',
       paddingTop: 10,
