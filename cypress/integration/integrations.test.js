@@ -18,19 +18,16 @@ context('component integration', () => {
           'have.class',
           'MuiButton-containedPrimary',
         );
+      });
+      describe('ìt shows', () => {
+        it('the eurpean summary', () => {
+          cy.get('[data-test-id="europe-container-summary"]').should(
+            'be.visible',
+          );
+        });
 
-        describe('ìt shows', () => {
-          it('shows europe summary', () => {
-            cy.get('[data-test-id="europe-container-summary"]').should(
-              'be.visible',
-            );
-          });
-
-          it('a country table', () => {
-            cy.get('[data-test-id="europe-country-table"]').should(
-              'be.visible',
-            );
-          });
+        it('a country table', () => {
+          cy.get('[data-test-id="europe-country-table"]').should('be.visible');
         });
       });
     });
@@ -48,17 +45,12 @@ context('component integration', () => {
         );
       });
       describe('it shows', () => {
-        it('shows worldwide summary', () => {
+        it('the worldwide summary', () => {
           cy.get('[data-test-id="worldwide-container-summary"]').should(
             'be.visible',
           );
         });
 
-        it('a country table', () => {
-          cy.get('[data-test-id="worldwide-country-table"]').should(
-            'be.visible',
-          );
-        });
         it('a country table', () => {
           cy.get('[data-test-id="worldwide-country-table"]').should(
             'be.visible',
