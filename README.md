@@ -4,7 +4,7 @@ This application was writter just as a playground in my spare time during Covid1
 
 Given that my goal was to deploy it as soon as possible (since I hope in few months it will be ...useless) it's still work in progress, any bug report is appreciated.
 
-Live demo here -->
+Live demo here --> https://covid19gb.herokuapp.com/
 
 ## Libraries used
 
