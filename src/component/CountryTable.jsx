@@ -50,14 +50,19 @@ const TableCell = withStyles({
   },
 })(MuiTableCell);
 
-const CountryTable = ({ data, loading = true, dataTestId, href }) => {
+const CountryTable = ({
+  data,
+  loading = true,
+  dataTestId,
+  href,
+  error = false,
+}) => {
   const classes = useStyles();
   const { t } = useTranslation();
 
   const { result } = data;
 
-  if (!result || (result && result.length && result.length === 0))
-    return <Error />;
+  if (error) return <Loading />;
 
   // sort alphabetically by country
   const getdata = () => {

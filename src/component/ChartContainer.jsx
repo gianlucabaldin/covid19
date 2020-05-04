@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ChartContainer = ({
   data,
-  error,
+  error = false,
   dataTestId,
   loading,
   checked,
@@ -30,6 +30,7 @@ const ChartContainer = ({
   href,
 }) => {
   const classes = useStyles();
+
   if (error) return <Error />;
 
   // if one chart per row --> high width, responsive grid otherwise

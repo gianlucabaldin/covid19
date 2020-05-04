@@ -45,9 +45,6 @@ const Summary = ({ data, dataTestId, loading = true, error = false }) => {
 
   if (error) return <Error />;
 
-  // if(loading) return
-  // debugger;
-
   return (
     <Grid item>
       <TableContainer component={Paper}>
