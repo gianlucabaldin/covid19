@@ -63,7 +63,7 @@ const Summary = ({ data, dataTestId, loading = true, error = false }) => {
               {data &&
                 data.length > 0 &&
                 data.map((el) => (
-                  <TableCell align="center" className={classes.th}>
+                  <TableCell align="center" className={classes.th} key={el.key}>
                     {t('summary.'.concat(el.key))}
                   </TableCell>
                 ))}
@@ -72,9 +72,7 @@ const Summary = ({ data, dataTestId, loading = true, error = false }) => {
           <TableBody>
             <TableRow key="td-value">
               {loading ? (
-                <div>
-                  <Loading />
-                </div>
+                <Loading />
               ) : (
                 data &&
                 data.length > 0 &&
@@ -83,6 +81,7 @@ const Summary = ({ data, dataTestId, loading = true, error = false }) => {
                     align="center"
                     className={classes.td}
                     data-test-id={'summary-'.concat(el.key)}
+                    key={el.key}
                   >
                     {getLocalizedValue(el.value)}
                   </TableCell>

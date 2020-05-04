@@ -54,8 +54,8 @@ const ChartContainer = ({
       >
         {data &&
           data.length > 0 &&
-          data.map((el) => (
-            <Grid item {...getGridSize()} className={classes.grid}>
+          data.map((el, i) => (
+            <Grid item {...getGridSize()} className={classes.grid} key={i}>
               <Chart
                 loading={loading}
                 series={Object.values(el)}

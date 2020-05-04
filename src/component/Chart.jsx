@@ -104,6 +104,7 @@ const Chart = ({ series, status, loading = true }) => {
           series.length > 0 &&
           series.map((serie, i) => (
             <LineMarkSeries
+              key={i}
               getNull={(d) => d.y !== undefined} // data hole / attribute changes
               // curve="curveMonotoneX"
               data={serie || []}
