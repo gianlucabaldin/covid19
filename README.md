@@ -1,6 +1,6 @@
 ## About the application
 
-This application was writter just as a playground in my spare time during Covid19 quarantine, with the purpose to try out some npm packages (like react-i18n-next and react-vis) and new methodology (TDD/BDD) I haven't used before and to give a fancy & easy application to spread infos about Covid19 status, with particular focus on my country -Italy- is beign affetcted hardly by the virus.
+This application was written just as a playground in my spare time during Covid19 quarantine, with the purpose to try out some npm packages (like react-i18n-next and react-vis) and new methodology (TDD/BDD) I haven't used before and to give a fancy & easy application to spread infos about Covid19 status, with particular focus on my country -Italy- is beign affetcted hardly by the virus.
 
 Given that my goal was to deploy it as soon as possible (since I hope in few months it will be ...useless) it's still work in progress, any bug report is appreciated.
 
