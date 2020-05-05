@@ -38,5 +38,6 @@
   "summary.last-update": "last update available",
   "switch.historical": "historical",
   "switch.last-10-days": "last ten days",
-  "worldwide.country": "country"
+  "worldwide.country": "country",
+  "country_list": "country list"
 }

@@ -4,6 +4,7 @@
 import React, { useEffect, useState } from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import moment from 'moment';
+import { useTranslation } from 'react-i18next';
 import {
   fetchWorldwideHistorical,
   fetchWorldwideCountryTotals,
@@ -40,6 +41,8 @@ const tableInitialStatus = {
 };
 
 const WorldwideContainer = () => {
+  const { t } = useTranslation();
+
   const [summaryData, setSummaryData] = useState({ ...summaryInitialStatus });
   const [chartData, setChartData] = useState({ ...chartInitialStatus });
   const [tableData, setTableData] = useState(tableInitialStatus);
@@ -140,7 +143,9 @@ const WorldwideContainer = () => {
         justify="center"
       >
         <Grid item style={{ marginTop: 10 }}>
-          <Typography variant="h5">Country List</Typography>
+          <Typography variant="h5" style={{ textTransform: 'capitalize' }}>
+            {t('country_list')}
+          </Typography>
         </Grid>
       </Grid>
       <Grid
