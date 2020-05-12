@@ -165,6 +165,17 @@ const ItalyContainer = () => {
         style={{ paddingLeft: 16, paddingRight: 16 }}
         justify="center"
       >
+        {/* TEMPORARY ERROR ON APIFY PROVIDER MESSAGE - START */}
+        <Grid item xs={12} style={{ textAlign: 'center', marginTop: 20 }}>
+          <Typography
+            variant="subtitle1"
+            style={{ color: 'red', fontWeight: 'bold' }}
+          >
+            {t('source_data_error')}
+          </Typography>
+        </Grid>
+        {/* TEMPORARY ERROR ON APIFY PROVIDER MESSAGE - END */}
+
         <Grid item xs={12}>
           <ChartContainer {...chartData} onToggleSwitch={onToggleSwitch} />
         </Grid>

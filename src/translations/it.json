@@ -39,5 +39,6 @@
   "switch.historical": "dati storici",
   "switch.last-10-days": "ultimi 10 giorni",
   "worldwide.country": "stato",
-  "country_list": "lista stati"
+  "country_list": "lista stati",
+  "source_data_error": "AGGIORNAMENTO: c'è un errore nell'origine dati con l'aggiornamento del 12/05, i grafici italiani potrebbero risultare inconsistenti"
 }
