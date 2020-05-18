@@ -20,6 +20,15 @@ export const processData = (data, lastTenDays = true) => {
 
   data.forEach((el, i, array) => {
     const date = new Date(el.lastUpdatedAtSource);
+    // Author note: source data is broken at 12/5/2020 giving 3 items with same date but different counts
+    // (the latter is the good) mismatching all charts, the provider won't fix it by its side and asked me
+    // to fix it by my side with a workoround / It's ashaming coding by I have to
+    if (
+      i < array.length - 1 &&
+      array[i].lastUpdatedAtSource === array[i + 1].lastUpdatedAtSource
+    ) {
+      return; // if same date, skip it and keep the latter
+    }
 
     intensiveTherapy.push({
       x: date,
